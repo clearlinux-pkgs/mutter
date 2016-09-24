@@ -1,0 +1,58 @@
+--- mutter-3.22.0/src/wayland/meta-wayland-tablet-seat.c~	2016-09-24 00:10:05.000000000 +0000
++++ mutter-3.22.0/src/wayland/meta-wayland-tablet-seat.c	2016-09-24 00:10:15.326372848 +0000
+@@ -28,6 +28,8 @@
+ #include <glib.h>
+ 
+ #include <wayland-server.h>
++#include <meta/meta-backend.h>
++#include "backends/meta-backend-private.h"
+ #include "tablet-unstable-v2-server-protocol.h"
+ 
+ #include "meta-wayland-private.h"
+--- mutter-3.22.0/src/wayland/meta-wayland-tablet-tool.c~	2016-09-14 14:29:39.000000000 +0000
++++ mutter-3.22.0/src/wayland/meta-wayland-tablet-tool.c	2016-09-24 00:14:36.593136222 +0000
+@@ -29,6 +29,9 @@
+ #include <clutter/evdev/clutter-evdev.h>
+ 
+ #include <wayland-server.h>
++#include <meta/meta-backend.h>
++#include "backends/meta-backend-private.h"
++#include <linux/input-event-codes.h>
+ #include "tablet-unstable-v2-server-protocol.h"
+ #include "meta-wayland-private.h"
+ #include "meta-wayland-surface-role-tablet-cursor.h"
+--- mutter-3.22.0/src/wayland/meta-wayland-tablet-pad-group.c~	2016-08-29 22:17:55.000000000 +0000
++++ mutter-3.22.0/src/wayland/meta-wayland-tablet-pad-group.c	2016-09-24 00:24:20.037547356 +0000
+@@ -26,6 +26,9 @@
+ #include "config.h"
+ 
+ #include <wayland-server.h>
++#include <meta/meta-backend.h>
++#include "backends/meta-backend-private.h"
++
+ #include "tablet-unstable-v2-server-protocol.h"
+ 
+ #include "meta-surface-actor-wayland.h"
+--- mutter-3.22.0/src/wayland/meta-wayland-tablet-pad.c~	2016-08-29 22:17:55.000000000 +0000
++++ mutter-3.22.0/src/wayland/meta-wayland-tablet-pad.c	2016-09-24 00:29:56.978394824 +0000
+@@ -29,6 +29,8 @@
+ #include <glib/gi18n-lib.h>
+ 
+ #include <wayland-server.h>
++#include <meta/meta-backend.h>
++
+ #include "tablet-unstable-v2-server-protocol.h"
+ #include "backends/meta-input-settings-private.h"
+ 
+--- mutter-3.22.0/src/wayland/meta-wayland-keyboard.c~	2016-09-16 14:24:13.000000000 +0000
++++ mutter-3.22.0/src/wayland/meta-wayland-keyboard.c	2016-09-24 00:47:00.147248720 +0000
+@@ -61,9 +61,7 @@
+ 
+ #include "meta-wayland-private.h"
+ 
+-#ifdef HAVE_NATIVE_BACKEND
+ #include "backends/native/meta-backend-native.h"
+-#endif
+ 
+ #define GSD_KEYBOARD_SCHEMA "org.gnome.settings-daemon.peripherals.keyboard"
+ typedef enum
