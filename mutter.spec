@@ -4,9 +4,9 @@
 #
 Name     : mutter
 Version  : 3.22.0
-Release  : 1
-URL      : https://download.gnome.org/core/3.22/3.22.0/sources/mutter-3.22.0.tar.xz
-Source0  : https://download.gnome.org/core/3.22/3.22.0/sources/mutter-3.22.0.tar.xz
+Release  : 2
+URL      : http://ftp.gnome.org/pub/gnome/sources/mutter/3.22/mutter-3.22.0.tar.xz
+Source0  : http://ftp.gnome.org/pub/gnome/sources/mutter/3.22/mutter-3.22.0.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
 Group    : Development/Tools
 License  : GPL-2.0
