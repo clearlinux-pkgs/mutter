@@ -1254,11 +1254,13 @@ libmutter.so.0:meta_window_get_all_monitors
 libmutter.so.0:meta_window_get_buffer_rect
 libmutter.so.0:meta_window_get_client_area_rect
 libmutter.so.0:meta_window_get_client_machine
+libmutter.so.0:meta_window_get_client_pid
 libmutter.so.0:meta_window_get_compositor_private
 libmutter.so.0:meta_window_get_current_tile_area
 libmutter.so.0:meta_window_get_current_tile_monitor_number
 libmutter.so.0:meta_window_get_description
 libmutter.so.0:meta_window_get_display
+libmutter.so.0:meta_window_get_flatpak_id
 libmutter.so.0:meta_window_get_frame
 libmutter.so.0:meta_window_get_frame_bounds
 libmutter.so.0:meta_window_get_frame_rect
