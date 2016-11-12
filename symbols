@@ -993,6 +993,7 @@ libmutter.so.0:meta_wayland_gtk_shell_init
 libmutter.so.0:meta_wayland_init
 libmutter.so.0:meta_wayland_input_device_get_seat
 libmutter.so.0:meta_wayland_input_device_get_type
+libmutter.so.0:meta_wayland_input_device_next_serial
 libmutter.so.0:meta_wayland_keyboard_can_popup
 libmutter.so.0:meta_wayland_keyboard_create_new_resource
 libmutter.so.0:meta_wayland_keyboard_disable
