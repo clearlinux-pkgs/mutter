@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.22.2
-Release  : 5
+Release  : 6
 URL      : http://ftp.gnome.org/pub/gnome/sources/mutter/3.22/mutter-3.22.2.tar.xz
 Source0  : http://ftp.gnome.org/pub/gnome/sources/mutter/3.22/mutter-3.22.2.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
@@ -118,6 +118,7 @@ locales components for the mutter package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1487367815
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
 --enable-native-backend
@@ -131,6 +132,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1487367815
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
@@ -429,8 +431,13 @@ rm -rf %{buildroot}
 /usr/include/mutter/meta/util.h
 /usr/include/mutter/meta/window.h
 /usr/include/mutter/meta/workspace.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libmutter.so
+/usr/lib64/pkgconfig/libmutter.pc
+/usr/lib64/pkgconfig/mutter-clutter-1.0.pc
+/usr/lib64/pkgconfig/mutter-clutter-x11-1.0.pc
+/usr/lib64/pkgconfig/mutter-cogl-1.0.pc
+/usr/lib64/pkgconfig/mutter-cogl-pango-1.0.pc
+/usr/lib64/pkgconfig/mutter-cogl-path-1.0.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -438,13 +445,14 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libmutter.so.0
+/usr/lib64/libmutter.so.0.0.0
 /usr/lib64/mutter/libmutter-clutter-1.0.so
 /usr/lib64/mutter/libmutter-cogl-pango.so
 /usr/lib64/mutter/libmutter-cogl-path.so
 /usr/lib64/mutter/libmutter-cogl.so
 /usr/lib64/mutter/plugins/default.so
 
-%files locales -f mutter.lang 
+%files locales -f mutter.lang
 %defattr(-,root,root,-)
 
