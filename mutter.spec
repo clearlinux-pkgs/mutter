@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.24.0
-Release  : 7
+Release  : 8
 URL      : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.0.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
@@ -119,7 +119,7 @@ locales components for the mutter package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490629707
+export SOURCE_DATE_EPOCH=1491325204
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
 --enable-native-backend
@@ -133,7 +133,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1490629707
+export SOURCE_DATE_EPOCH=1491325204
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
