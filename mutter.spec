@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.24.0
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.0.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
