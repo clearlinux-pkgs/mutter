@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.24.1
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.1.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
@@ -18,6 +18,7 @@ Requires: mutter-doc
 BuildRequires : gettext
 BuildRequires : libXtst-dev
 BuildRequires : libgudev-dev
+BuildRequires : mesa-extras
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(clutter-1.0)
 BuildRequires : pkgconfig(cogl-1.0)
@@ -50,6 +51,7 @@ BuildRequires : sed
 BuildRequires : startup-notification-dev
 BuildRequires : zenity
 Patch1: build.patch
+Patch2: disable-netwm-ping-dialogs.patch
 
 %description
 Outline of test categories:
@@ -116,14 +118,15 @@ locales components for the mutter package.
 %prep
 %setup -q -n mutter-3.24.1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1491932123
-export CFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export SOURCE_DATE_EPOCH=1492523891
+export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
 --enable-native-backend
@@ -137,7 +140,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1491932123
+export SOURCE_DATE_EPOCH=1492523891
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
