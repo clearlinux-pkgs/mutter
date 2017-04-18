@@ -3,3 +3,4 @@
 startup-notification-dev
 zenity
 libgudev-dev
+mesa-extras
