@@ -1,2 +1,3 @@
 build.patch
 disable-netwm-ping-dialogs.patch
+headless.patch

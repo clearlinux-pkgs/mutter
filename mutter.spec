@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.24.2
-Release  : 16
+Release  : 17
 URL      : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.24/mutter-3.24.2.tar.xz
 Summary  : An object oriented GL/GLES Abstraction/Utility Layer
@@ -54,6 +54,7 @@ BuildRequires : zenity
 %define debug_package %{nil}
 Patch1: build.patch
 Patch2: disable-netwm-ping-dialogs.patch
+Patch3: headless.patch
 
 %description
 Outline of test categories:
@@ -121,13 +122,14 @@ locales components for the mutter package.
 %setup -q -n mutter-3.24.2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495716403
+export SOURCE_DATE_EPOCH=1495717231
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -145,7 +147,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1495716403
+export SOURCE_DATE_EPOCH=1495717231
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
