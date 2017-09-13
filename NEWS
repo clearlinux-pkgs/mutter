@@ -1,57 +1,139 @@
-3.24.4
+3.26.0
 ======
-* Fix wacom cursor offset on wayland [Jason; #784009]
-* Do not throttle motion events on tablet tools [Carlos; #783535]
-* Handle left-handed mode on pen/eraser devices [Carlos; #782027]
-* Fix crash when decreasing number of workspaces [Florian; #784223]
-* Fix crash when moving across on-adjacent monitors [Jonas; #783630]
-* Fix window moving/resizing via tablet tools [Jason; #777333]
-* Improve stability of tablet plugs/unplugs [Carlos; #784881]
-* Implement tablet rings/strips configuration [Carlos; #782033]
-* Support tablet wheel events on wayland [Jason; #783716]
-* Misc. bug fixes [Carlos, Jonas; #784402, #784867, #781723]
-
 Contributors:
-  Jonas Ådahl, Carlos Garnacho, Jason Gerecke, Florian Müllner
+  Florian Müllner
 
 Translations:
-  Jordi Mas [ca]
+  Trần Ngọc Quân [vi], Inaki Larranaga Murgoitio [eu], Jordi Mas [ca],
+  Anders Jonsson [sv], Alexander Shopov [bg], Ask Hjorth Larsen [da],
+  Jean-Baptiste Holcroft [fr], A S Alam [pa]
 
-3.24.3
+3.25.92
+=======
+* Add screencast and remote desktop support [Jonas; #784199]
+* Support running with no attached monitors [Jonas; #730551]
+* Add a vertical gradient effect to background actor [Alessandro; #786618]
+* Misc. bug fixes [Mario, Daniel, Piotr, Jonas, Bastien; #786619, #786677,
+  #772218, #786918, #760670]
+
+Contributors:
+  Jonas Ådahl, Alessandro Bono, Piotr Drąg, Bastien Nocera,
+  Mario Sanchez Prada, Daniel Stone
+
+Translations:
+  Marek Cernocky [cs], Aurimas Černius [lt], Piotr Drąg [pl],
+  Fran Dieguez [gl], gogo [hr], Dušan Kazik [sk], Milo Casagrande [it],
+  Jordi Mas [ca], Cheng-Chia Tseng [zh_TW], Марко Костић [sr],
+  Милош Поповић [sr@latin], Rūdolfs Mazurs [lv], Matej Urbančič [sl],
+  Ask Hjorth Larsen [da], Piotr Drąg [it, lt], Jiri Grönroos [fi],
+  Emin Tufan Çetin [tr], Wolfgang Stöggl [de], Kukuh Syafaat [id],
+  Yuras Shumovich [be], Changwoo Ryu [ko], Alexander Shopov [bg],
+  Rafael Fontenelle [pt_BR], Balázs Úr [hu]
+
+3.25.91
+=======
+* Reduce memory use of suspended instances [Jonas; #786299]
+* Make supported scales determination saner [Rui; #786474]
+* Fix crash on inhibit-shortcuts dialog reponse [Jonas; #786385]
+* Support libinput's tag-and-drag setting [freeroot; #775755]
+* Avoid overlapping keybindings with multiple layouts [Jonas; #786408]
+* Fix non-transformed cursor on rotated monitors [Jonas; #786023]
+* Avoid unnecessary work during background painting [Alessandro; #783512]
+* Misc. bug fixes [Alberts, Jonas, Mario; #691611, #786300, #777732, #786568]
+
+Contributors:
+  freeroot, Jonas Ådahl, Alessandro Bono, Carlos Garnacho, Rui Matos,
+  Alberts Muktupāvels, Mario Sanchez Prada
+
+Translations:
+  Muhammet Kara [tr], Claude Paroz [fr], Мирослав Николић [sr, sr@latin],
+  Pawan Chitrakar [ne], Kukuh Syafaat [id]
+
+3.25.90
+=======
+* Add zwp_linux_dmabuf_v1 support [Daniel; #785262]
+* Add (x)wayland shortcut inhibitor support [Olivier; #783342]
+* Misc. bug fixes [Daniel, Carlos, Cosimo; #785263, #785347, #767805]
+
+Contributors:
+  Jonas Ådahl, Cosimo Cecchi, Olivier Fourdan, Carlos Garnacho, Daniel Stone
+
+Translations:
+  Fabio Tomat [fur], Kukuh Syafaat [id], Aurimas Černius [lt],
+  Daniel Mustieles [es], Baurzhan Muftakhidinov [kk], Jordi Mas [ca],
+  Matej Urbančič [sl], Marek Cernocky [cs], gogo [hr], Fran Dieguez [gl],
+  Balázs Meskó [hu]
+
+3.25.4
 ======
+* Do not throttle motion events on tablet tools [Carlos; #783535]
+* Handle left-handed mode on pen/eraser devices [Carlos; #782027]
+* Add wl_surface.damage_buffer() support [Jonas; #784080]
+* Fix crash when moving across on-adjacent monitors [Jonas; #783630]
+* Fix window moving/resizing via tablet tools [Jason; #777333]
+* Support fractional monitor scaling [Jonas, Marco; #765011]
+* Keep override-redirect windows stacked on top [Rui; #780485]
+* Implement tablet rings/strips configuration [Carlos; #782033]
+* Support tablet wheel events on wayland [Jason; #783716]
+* Move g-s-d xrandr functionality into mutter [Rui; #781906]
+* Misc. bug fixes [Florian, Jason, Miguel, Carlos, Jonas; #783502, #784009,
+  #784223, #784272, #784402, #784881, #762083, #784867, #781723]
+
+Contributors:
+  Jonas Ådahl, Miguel A. Vico, Emmanuele Bassi, Carlos Garnacho, Jason Gerecke,
+  Rui Matos, Florian Müllner, Marco Trevisan (Treviño)
+
+3.25.3
+======
+* Ignore hotplug-mode-update value on startup [Marco; #783073]
+* Implement configurable monitor scales on X11 [Jonas; #777732]
 * Fix handling of tiled monitors [Jonas; #781723]
-* Fix swapped red and blue channels in CoglTexture data [Carlos; #779234]
-* Fix glitches when opening a window maximized [Olivier; #781353, #782183]
-* Implement support for disable-while-typing option [Evan; #764852]
+* Handle multiple keycodes for keysym [Christian; #781223]
 * Consider subsurfaces when grabbing [mindtree; #781811]
+* Fix logic for HiPDPI scaling of TV outputs [Christian; #777347]
 * Fix handling of left-handed mode on pen/eraser devices [Carlos; #782027]
 * Fix output cycling in non-display-attached tablets [Carlos; #782032]
 * Fix wacom cursor offset on wayland [Jason; #784009]
 * Handle EXIF orientation of backgrounds [Silvère; #783125]
-* Misc. bug fixes [Jonas, Bastien, Ikey, Carlos; #782156, #780407, #757661,
-  #783113, #781703]
+* Misc. bug fixes [Piotr, Tim, Bastien, Jonas, Florian, Benoit, Carlos; #772218,
+  #783161, #780407, #783113, #783293, #783505, #781703]
 
 Contributors:
-  mitchmindtree, Jonas Ådahl, Ikey Doherty, Olivier Fourdan, Carlos Garnacho,
-  Jason Gerecke, Silvère Latchurié, Bastien Nocera, Evan Welsh
-
-3.24.2
-======
-* Don't crash when wayland clients commit to destroyed surfaces [Jonas; #781391]
-* Fix frame updates on hide-titlebar-when-maximized changes [Florian; #781862]
-* Fix accessible screen coordinates on X11 [Florian; #781902]
-* Fix copy+paste of UTF8 strings between X11 and wayland [Carlos; #782472]
-* Fix non-wayland builds [Chris; #780533]
-* Misc. bug fixes [Philip, Matthias, Nigel; #781242, #780215, #759085]
-
-Contributors:
-  Jonas Ådahl, Philip Chimento, Carlos Garnacho, Matthias Liertzer,
-  Florian Müllner, Nigel Taylor, Chris Vine
+  mitchmindtree, Jonas Ådahl, Ikey Doherty, Piotr Drąg, Carlos Garnacho,
+  Jason Gerecke, Benoit Gschwind, Christian Kellner, Silvère Latchurié,
+  Tim Lunn, Florian Müllner, Bastien Nocera, Marco Trevisan (Treviño)
 
 Translations:
-  Jordi Mas [ca]
+  Fabio Tomat [fur], Kukuh Syafaat [id], Khaled Hosny [ar],
+  Daniel Mustieles [es]
 
-3.24.1
+3.25.2
+======
+* Fix frame updates on hide-titlebar-when-maximized changes [Florian; #781862]
+* Fix accessible screen coordinates on X11 [Florian; #781902]
+* Use less CPU when rendering fast-updating windows [Carlos, Emmanuele; #782344]
+* Compute geometry of clients that don't set one explicitly [Olivier; #782213]
+* Fix copy+paste of UTF8 strings between X11 and wayland [Carlos; #782472]
+* Fix non-wayland builds [Chris; #780533]
+* Add plugin vfunc to implement a custom force-quit dialog [Carlos; #711619]
+* Fix swapped red and blue channels in CoglTexture data [Carlos; #779234
+* Fix build where libtool's link_all_deplibs defaults to 'no' [Marco; #782821]
+* Fix glitches when opening a window maximized [Olivier; #781353, #782183]
+* Fix wrong cursor after window underneath the pointer changed [Carlos; #755164]
+* Implement support for disable-while-typing option [Evan; #764852]
+* Emit size-change signal when tiling [Alessandro; #782968]
+* Misc. bug fixes [Nigel, Matthias, Jonas; #759085, #780215, #782156, #782152]
+
+Contributors:
+  Jonas Ådahl, Emmanuele Bassi, Alessandro Bono, Olivier Fourdan,
+  Carlos Garnacho, Matthias Liertzer, Florian Müllner, Nigel Taylor,
+  Marco Trevisan (Treviño), Chris Vine, Evan Welsh
+
+Translations:
+  Fabio Tomat [fur], Jordi Mas [ca], Mario Blättermann [de],
+  Emin Tufan Çetin [tr], Balázs Úr [hu]
+
+3.25.1
 ======
 * Always sync window geometry on state changes [Jonas; #780292]
 * Use EGL instead of GLX when drawing using GLES [Jonas; #771636]
@@ -60,13 +142,17 @@ Translations:
 * Scale relative motion deltas with monitor scale [Jonas, Carlos; #778119]
 * Use texture fallback when setting hardware cursor fails [Jente; #770020]
 * Fix lock-up when using additional theme variants [Shantanu; #780254]
+* Rework low-level monitor configuration [Jonas; #777732]
+* Fix building with GLES2 instead of GL [Mario; #781398]
+* Misc. bug fixes [Jonas, Piotr, Philip; #780304, #772218, #781242, #781391]
 
 Contributors:
-  Jonas Ådahl, Carlos Garnacho, Shantanu Goel, Jente Hidskes, Armin Krezović,
-  Florian Müllner
+  Jonas Ådahl, Philip Chimento, Piotr Drąg, Carlos Garnacho, Shantanu Goel,
+  Jente Hidskes, Armin Krezović, Rui Matos, Florian Müllner, Mario Sanchez Prada
 
 Translations:
-  Yuras Shumovich [be], Yosef Or Boczko [he], Tom Tryfonidis [el]
+  Yuras Shumovich [be], Yosef Or Boczko [he], Tom Tryfonidis [el],
+  Fabio Tomat [fur], Kukuh Syafaat [id]
 
 3.24.0
 ======
