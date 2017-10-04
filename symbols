@@ -572,6 +572,7 @@ libmutter-1.so.0:meta_line2_intersects_with
 libmutter-1.so.0:meta_locale_direction_get_type
 libmutter-1.so.0:meta_logical_monitor_add_monitor
 libmutter-1.so.0:meta_logical_monitor_config_free
+libmutter-1.so.0:meta_logical_monitor_configs_have_monitor
 libmutter-1.so.0:meta_logical_monitor_get_layout
 libmutter-1.so.0:meta_logical_monitor_get_monitors
 libmutter-1.so.0:meta_logical_monitor_get_scale
@@ -655,6 +656,7 @@ libmutter-1.so.0:meta_monitor_manager_dummy_get_type
 libmutter-1.so.0:meta_monitor_manager_ensure_configured
 libmutter-1.so.0:meta_monitor_manager_get
 libmutter-1.so.0:meta_monitor_manager_get_capabilities
+libmutter-1.so.0:meta_monitor_manager_get_config_manager
 libmutter-1.so.0:meta_monitor_manager_get_default_layout_mode
 libmutter-1.so.0:meta_monitor_manager_get_display_configuration_timeout
 libmutter-1.so.0:meta_monitor_manager_get_is_builtin_display_on
@@ -728,6 +730,7 @@ libmutter-1.so.0:meta_monitors_config_key_equal
 libmutter-1.so.0:meta_monitors_config_key_free
 libmutter-1.so.0:meta_monitors_config_key_hash
 libmutter-1.so.0:meta_monitors_config_new
+libmutter-1.so.0:meta_monitors_config_new_full
 libmutter-1.so.0:meta_motion_direction_get_type
 libmutter-1.so.0:meta_orientation_manager_get_orientation
 libmutter-1.so.0:meta_orientation_manager_get_type
@@ -1304,6 +1307,7 @@ libmutter-1.so.0:meta_wayland_surface_assign_role
 libmutter-1.so.0:meta_wayland_surface_begin_grab_op
 libmutter-1.so.0:meta_wayland_surface_calculate_input_region
 libmutter-1.so.0:meta_wayland_surface_calculate_window_geometry
+libmutter-1.so.0:meta_wayland_surface_cancel_inhibit_shortcuts_dialog
 libmutter-1.so.0:meta_wayland_surface_configure_notify
 libmutter-1.so.0:meta_wayland_surface_create
 libmutter-1.so.0:meta_wayland_surface_delete
@@ -1319,7 +1323,6 @@ libmutter-1.so.0:meta_wayland_surface_get_relative_coordinates
 libmutter-1.so.0:meta_wayland_surface_get_toplevel
 libmutter-1.so.0:meta_wayland_surface_get_toplevel_window
 libmutter-1.so.0:meta_wayland_surface_get_type
-libmutter-1.so.0:meta_wayland_surface_hide_inhibit_shortcuts_dialog
 libmutter-1.so.0:meta_wayland_surface_inhibit_shortcuts
 libmutter-1.so.0:meta_wayland_surface_inhibit_shortcuts_dialog_init
 libmutter-1.so.0:meta_wayland_surface_is_shortcuts_inhibited
@@ -1497,7 +1500,6 @@ libmutter-1.so.0:meta_window_get_client_area_rect
 libmutter-1.so.0:meta_window_get_client_machine
 libmutter-1.so.0:meta_window_get_client_pid
 libmutter-1.so.0:meta_window_get_compositor_private
-libmutter-1.so.0:meta_window_get_current_tile_area
 libmutter-1.so.0:meta_window_get_current_tile_monitor_number
 libmutter-1.so.0:meta_window_get_description
 libmutter-1.so.0:meta_window_get_display
@@ -1528,6 +1530,7 @@ libmutter-1.so.0:meta_window_get_screen
 libmutter-1.so.0:meta_window_get_session_geometry
 libmutter-1.so.0:meta_window_get_stable_sequence
 libmutter-1.so.0:meta_window_get_startup_id
+libmutter-1.so.0:meta_window_get_tile_area
 libmutter-1.so.0:meta_window_get_tile_match
 libmutter-1.so.0:meta_window_get_title
 libmutter-1.so.0:meta_window_get_titlebar_rect
@@ -1601,6 +1604,7 @@ libmutter-1.so.0:meta_window_reload_property_from_xwindow
 libmutter-1.so.0:meta_window_requested_bypass_compositor
 libmutter-1.so.0:meta_window_requested_dont_bypass_compositor
 libmutter-1.so.0:meta_window_resize_frame_with_gravity
+libmutter-1.so.0:meta_window_restore_tile
 libmutter-1.so.0:meta_window_same_application
 libmutter-1.so.0:meta_window_set_alive
 libmutter-1.so.0:meta_window_set_compositor_private
@@ -1633,6 +1637,7 @@ libmutter-1.so.0:meta_window_show_menu
 libmutter-1.so.0:meta_window_show_menu_for_rect
 libmutter-1.so.0:meta_window_showing_on_its_workspace
 libmutter-1.so.0:meta_window_shutdown_group
+libmutter-1.so.0:meta_window_stack_just_above
 libmutter-1.so.0:meta_window_stack_just_below
 libmutter-1.so.0:meta_window_stick
 libmutter-1.so.0:meta_window_tile
