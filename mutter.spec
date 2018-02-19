@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.26.2
-Release  : 25
+Release  : 26
 URL      : https://download.gnome.org/sources/mutter/3.26/mutter-3.26.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.26/mutter-3.26.2.tar.xz
 Summary  : Mutter window manager library
@@ -33,6 +33,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcanberra-gtk3)
 BuildRequires : pkgconfig(libinput)
+BuildRequires : pkgconfig(libsystemd)
 BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(upower-glib)
@@ -127,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1509980227
+export SOURCE_DATE_EPOCH=1519051740
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -135,7 +136,7 @@ export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
 --enable-native-backend
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -145,7 +146,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1509980227
+export SOURCE_DATE_EPOCH=1519051740
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
