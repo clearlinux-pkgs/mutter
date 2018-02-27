@@ -1,0 +1,31 @@
+From 171f9c0290dea87cfe146d18b253cf44ff5c5c33 Mon Sep 17 00:00:00 2001
+From: Icarus Sparry <icarus.w.sparry@intel.com>
+Date: Tue, 27 Feb 2018 09:37:03 -0800
+Subject: [PATCH] Avoid a NULL pointer dereference for headless
+
+If there are currently no monitors, do not dereference a NULL.
+There are lots of bugs for gnome-shell
+e.g. https://bugzilla.redhat.com/show_bug.cgi?id=1421882 faulting due
+to no connected monitors, this one seems to just be another.
+
+Signed-off-by: Icarus Sparry <icarus.w.sparry@intel.com>
+---
+ src/core/window.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/window.c b/src/core/window.c
+index c2d9869..e274b02 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -2772,7 +2772,7 @@ meta_window_maximize_internal (MetaWindow        *window,
+   meta_window_recalc_features (window);
+   set_net_wm_state (window);
+ 
+-  if (window->monitor->in_fullscreen)
++  if (window->monitor && window->monitor->in_fullscreen)
+     meta_screen_queue_check_fullscreen (window->screen);
+ 
+   g_object_freeze_notify (G_OBJECT (window));
+-- 
+2.16.2
+
