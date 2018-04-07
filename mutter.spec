@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.0
-Release  : 31
+Release  : 32
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Summary  : Mutter window manager library
@@ -52,6 +52,7 @@ BuildRequires : pkgconfig(xrandr)
 BuildRequires : sed
 BuildRequires : startup-notification-dev
 BuildRequires : wayland-dev
+BuildRequires : xorg-server
 BuildRequires : zenity
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -133,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523119934
+export SOURCE_DATE_EPOCH=1523133341
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -151,7 +152,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523119934
+export SOURCE_DATE_EPOCH=1523133341
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter

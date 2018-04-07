@@ -6,3 +6,4 @@ zenity
 gobject-introspection-dev
 gobject-introspection
 wayland-dev
+xorg-server
