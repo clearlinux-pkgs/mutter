@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.0
-Release  : 32
+Release  : 33
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Summary  : Mutter window manager library
@@ -128,22 +128,35 @@ locales components for the mutter package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+pushd ..
+cp -a mutter-3.28.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523133341
-export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export SOURCE_DATE_EPOCH=1523218389
+export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
 --enable-native-backend
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=haswell"
+export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
+export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+%configure --disable-static --enable-compile-warnings=minimum \
+--disable-schemas-compile \
+--enable-native-backend   --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
@@ -152,13 +165,28 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523133341
+export SOURCE_DATE_EPOCH=1523218389
 rm -rf %{buildroot}
+pushd ../buildavx2/
+%make_install
+popd
 %make_install
 %find_lang mutter
 
 %files
 %defattr(-,root,root,-)
+%exclude /usr/lib64/haswell/mutter/Cally-2.gir
+%exclude /usr/lib64/haswell/mutter/Cally-2.typelib
+%exclude /usr/lib64/haswell/mutter/Clutter-2.gir
+%exclude /usr/lib64/haswell/mutter/Clutter-2.typelib
+%exclude /usr/lib64/haswell/mutter/ClutterX11-2.gir
+%exclude /usr/lib64/haswell/mutter/ClutterX11-2.typelib
+%exclude /usr/lib64/haswell/mutter/Cogl-2.gir
+%exclude /usr/lib64/haswell/mutter/Cogl-2.typelib
+%exclude /usr/lib64/haswell/mutter/CoglPango-2.gir
+%exclude /usr/lib64/haswell/mutter/CoglPango-2.typelib
+%exclude /usr/lib64/haswell/mutter/Meta-2.gir
+%exclude /usr/lib64/haswell/mutter/Meta-2.typelib
 /usr/lib64/mutter/Cally-2.gir
 /usr/lib64/mutter/Cally-2.typelib
 /usr/lib64/mutter/Clutter-2.gir
@@ -174,6 +202,7 @@ rm -rf %{buildroot}
 
 %files bin
 %defattr(-,root,root,-)
+/usr/bin/haswell/mutter
 /usr/bin/mutter
 /usr/libexec/mutter-restart-helper
 
@@ -190,6 +219,7 @@ rm -rf %{buildroot}
 
 %files dev
 %defattr(-,root,root,-)
+%exclude /usr/lib64/haswell/libmutter-2.so
 /usr/include/mutter/clutter-2/cally/cally-actor.h
 /usr/include/mutter/clutter-2/cally/cally-clone.h
 /usr/include/mutter/clutter-2/cally/cally-factory.h
@@ -471,6 +501,13 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/haswell/libmutter-2.so.0
+/usr/lib64/haswell/libmutter-2.so.0.0.0
+/usr/lib64/haswell/mutter/libmutter-clutter-2.so
+/usr/lib64/haswell/mutter/libmutter-cogl-2.so
+/usr/lib64/haswell/mutter/libmutter-cogl-pango-2.so
+/usr/lib64/haswell/mutter/libmutter-cogl-path-2.so
+/usr/lib64/haswell/mutter/plugins/default.so
 /usr/lib64/libmutter-2.so.0
 /usr/lib64/libmutter-2.so.0.0.0
 /usr/lib64/mutter/libmutter-clutter-2.so
