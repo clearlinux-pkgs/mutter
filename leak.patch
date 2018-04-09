@@ -132,3 +132,14 @@ index 0c1d2cd54..4d239fe90 100644
    else
      meta_wayland_surface_apply_pending_state (surface, surface->pending);
  }
+--- mutter-3.28.0/src/core/window.c~	2018-03-09 19:13:14.000000000 +0000
++++ mutter-3.28.0/src/core/window.c	2018-04-09 01:39:15.297895314 +0000
+@@ -5268,7 +5268,7 @@
+ load_default_window_icon (int size)
+ {
+   GtkIconTheme *theme = gtk_icon_theme_get_default ();
+-  GdkPixbuf *pixbuf;
++  g_autoptr (GdkPixbuf) pixbuf = NULL;
+   const char *icon_name;
+ 
+   if (gtk_icon_theme_has_icon (theme, META_DEFAULT_ICON_NAME))
