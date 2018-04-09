@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.0
-Release  : 33
+Release  : 34
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Summary  : Mutter window manager library
@@ -60,6 +60,7 @@ BuildRequires : zenity
 Patch1: build.patch
 Patch2: headless.patch
 Patch3: 0001-Avoid-a-NULL-pointer-dereference-for-headless.patch
+Patch4: leak.patch
 
 %description
 Outline of test categories:
@@ -128,6 +129,7 @@ locales components for the mutter package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 pushd ..
 cp -a mutter-3.28.0 buildavx2
 popd
@@ -137,7 +139,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523218389
+export SOURCE_DATE_EPOCH=1523237073
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -165,7 +167,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523218389
+export SOURCE_DATE_EPOCH=1523237073
 rm -rf %{buildroot}
 pushd ../buildavx2/
 %make_install
