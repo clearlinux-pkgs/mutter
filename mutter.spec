@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.0
-Release  : 38
+Release  : 39
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.0.tar.xz
 Summary  : Mutter window manager library
@@ -139,7 +139,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523323084
+export SOURCE_DATE_EPOCH=1523979994
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -149,14 +149,13 @@ export CXXFLAGS="$CXXFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffuncti
 --enable-native-backend
 make  %{?_smp_mflags}
 
-unset PKG_CONFIG_PATH
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
 export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 %configure --disable-static --enable-compile-warnings=minimum \
 --disable-schemas-compile \
---enable-native-backend   --libdir=/usr/lib64/haswell
+--enable-native-backend   --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
 make  %{?_smp_mflags}
 popd
 %check
@@ -167,7 +166,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523323084
+export SOURCE_DATE_EPOCH=1523979994
 rm -rf %{buildroot}
 pushd ../buildavx2/
 %make_install
@@ -204,6 +203,7 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+/usr/bin/haswell/mutter
 /usr/bin/mutter
 /usr/libexec/mutter-restart-helper
 
