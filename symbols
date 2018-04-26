@@ -538,6 +538,7 @@ libmutter-2.so.0:meta_gpu_get_outputs
 libmutter-2.so.0:meta_gpu_get_type
 libmutter-2.so.0:meta_gpu_has_hotplug_mode_update
 libmutter-2.so.0:meta_gpu_kms_apply_crtc_mode
+libmutter-2.so.0:meta_gpu_kms_error_quark
 libmutter-2.so.0:meta_gpu_kms_flip_crtc
 libmutter-2.so.0:meta_gpu_kms_get_fd
 libmutter-2.so.0:meta_gpu_kms_get_file_path

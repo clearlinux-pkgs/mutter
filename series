@@ -2,4 +2,3 @@ build.patch
 #disable-netwm-ping-dialogs.patch
 headless.patch
 0001-Avoid-a-NULL-pointer-dereference-for-headless.patch
-leak.patch
