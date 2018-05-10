@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.2
-Release  : 42
+Release  : 43
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.2.tar.xz
 Summary  : Mutter window manager library
