@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.28.2
-Release  : 43
+Release  : 44
 URL      : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.28/mutter-3.28.2.tar.xz
 Summary  : Mutter window manager library
@@ -133,7 +133,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1525826613
+export SOURCE_DATE_EPOCH=1526067608
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -151,7 +151,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1525826613
+export SOURCE_DATE_EPOCH=1526067608
 rm -rf %{buildroot}
 %make_install
 %find_lang mutter
