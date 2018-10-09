@@ -597,7 +597,6 @@ libmutter-3.so.0:meta_inhibit_shortcuts_dialog_response_get_type
 libmutter-3.so.0:meta_inhibit_shortcuts_dialog_show
 libmutter-3.so.0:meta_init
 libmutter-3.so.0:meta_init_backend
-libmutter-3.so.0:meta_input_device_is_trackball
 libmutter-3.so.0:meta_input_settings_get_pad_action_label
 libmutter-3.so.0:meta_input_settings_get_tablet_logical_monitor
 libmutter-3.so.0:meta_input_settings_get_tablet_mapping
@@ -794,12 +793,14 @@ libmutter-3.so.0:meta_monitor_switch_config_type_get_type
 libmutter-3.so.0:meta_monitor_tiled_get_tile_group_id
 libmutter-3.so.0:meta_monitor_tiled_get_type
 libmutter-3.so.0:meta_monitor_tiled_new
+libmutter-3.so.0:meta_monitors_config_get_switch_config
 libmutter-3.so.0:meta_monitors_config_get_type
 libmutter-3.so.0:meta_monitors_config_key_equal
 libmutter-3.so.0:meta_monitors_config_key_free
 libmutter-3.so.0:meta_monitors_config_key_hash
 libmutter-3.so.0:meta_monitors_config_new
 libmutter-3.so.0:meta_monitors_config_new_full
+libmutter-3.so.0:meta_monitors_config_set_switch_config
 libmutter-3.so.0:meta_motion_direction_get_type
 libmutter-3.so.0:meta_orientation_manager_get_orientation
 libmutter-3.so.0:meta_orientation_manager_get_type
@@ -965,6 +966,7 @@ libmutter-3.so.0:meta_region_iterator_at_end
 libmutter-3.so.0:meta_region_iterator_init
 libmutter-3.so.0:meta_region_iterator_next
 libmutter-3.so.0:meta_region_scale
+libmutter-3.so.0:meta_region_scale_double
 libmutter-3.so.0:meta_register_with_session
 libmutter-3.so.0:meta_remote_access_controller_get_type
 libmutter-3.so.0:meta_remote_access_controller_notify_new_handle
