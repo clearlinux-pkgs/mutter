@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.30.2
-Release  : 49
+Release  : 50
 URL      : https://download.gnome.org/sources/mutter/3.30/mutter-3.30.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.30/mutter-3.30.2.tar.xz
 Summary  : Mutter window manager library
@@ -70,14 +70,6 @@ The conform/ tests:
 These tests should be non-interactive unit-tests that verify a single
 feature is behaving as documented. See conform/ADDING_NEW_TESTS for more
 details.
-
-%package abi
-Summary: abi components for the mutter package.
-Group: Default
-
-%description abi
-abi components for the mutter package.
-
 
 %package bin
 Summary: bin components for the mutter package.
@@ -164,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542164573
+export SOURCE_DATE_EPOCH=1542749547
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -182,7 +174,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542164573
+export SOURCE_DATE_EPOCH=1542749547
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutter
 cp COPYING %{buildroot}/usr/share/package-licenses/mutter/COPYING
@@ -203,10 +195,6 @@ cp COPYING %{buildroot}/usr/share/package-licenses/mutter/COPYING
 /usr/lib64/mutter/CoglPango-3.typelib
 /usr/lib64/mutter/Meta-3.gir
 /usr/lib64/mutter/Meta-3.typelib
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libmutter-3.so.0.abi
 
 %files bin
 %defattr(-,root,root,-)
