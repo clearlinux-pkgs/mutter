@@ -1,2 +1,6 @@
-3.30.2
+3.32.0
+gnome-settings-daemon-dev
+gsettings-desktop-schemas-dev
 libXtst-dev
+libwacom-dev
+pipewire-dev
