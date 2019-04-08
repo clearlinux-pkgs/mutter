@@ -4,10 +4,10 @@
 #
 Name     : mutter
 Version  : 3.32.0
-Release  : 53
+Release  : 54
 URL      : https://download.gnome.org/sources/mutter/3.32/mutter-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.32/mutter-3.32.0.tar.xz
-Summary  : A window manager for GNOME
+Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
@@ -52,11 +52,15 @@ BuildRequires : zenity
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: 0001-launch-context-Swap-reversed-timestamp-workspace.patch
 
 %description
-This directory implements a framework for automated tests of Mutter. The basic
-idea is that mutter-test-runner acts as the window manager and compositor, and
-forks off instances of mutter-test-client to act as clients.
+Intro
+=====
+In general, the compositor splits the window from the contents of
+the window from the shape of the window. In other words, a window
+has contents, and the contents of the window have a shape. This is
+represented by the actor hierarchy:
 
 %package bin
 Summary: bin components for the mutter package.
@@ -84,7 +88,6 @@ Requires: mutter-lib = %{version}-%{release}
 Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
 Provides: mutter-devel = %{version}-%{release}
-Requires: mutter = %{version}-%{release}
 
 %description dev
 dev components for the mutter package.
@@ -136,13 +139,14 @@ man components for the mutter package.
 
 %prep
 %setup -q -n mutter-3.32.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552358669
+export SOURCE_DATE_EPOCH=1554761204
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffunction-sections -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
