@@ -1,6 +1,8 @@
-3.32.0
+3.32.1
 gnome-settings-daemon-dev
 gsettings-desktop-schemas-dev
 libXtst-dev
 libwacom-dev
 pipewire-dev
+pkgconfig(libpipewire-0.2)
+pkgconfig(libwacom)
