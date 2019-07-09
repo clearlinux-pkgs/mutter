@@ -2,3 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 gsettings-desktop-schemas
 gnome-settings-daemon
+gnome-session

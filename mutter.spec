@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.32.2
-Release  : 59
+Release  : 60
 URL      : https://download.gnome.org/sources/mutter/3.32/mutter-3.32.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.32/mutter-3.32.2.tar.xz
 Summary  : A window manager for GNOME
@@ -17,10 +17,12 @@ Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
 Requires: mutter-locales = %{version}-%{release}
 Requires: mutter-man = %{version}-%{release}
+Requires: gnome-session
 Requires: gnome-settings-daemon
 Requires: gsettings-desktop-schemas
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
+BuildRequires : gnome-session
 BuildRequires : gnome-settings-daemon
 BuildRequires : gnome-settings-daemon-dev
 BuildRequires : gobject-introspection
@@ -152,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562701357
+export SOURCE_DATE_EPOCH=1562701911
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
