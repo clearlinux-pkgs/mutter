@@ -1,4 +1,4 @@
-3.32.2
+3.34.0
 gnome-settings-daemon-dev
 gsettings-desktop-schemas-dev
 libXtst-dev
@@ -6,3 +6,4 @@ libwacom-dev
 pipewire-dev
 pkgconfig(libpipewire-0.2)
 pkgconfig(libwacom)
+pkgconfig(sysprof-capture-3)
