@@ -4,10 +4,10 @@
 #
 Name     : mutter
 Version  : 3.34.0
-Release  : 62
+Release  : 63
 URL      : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
-Summary  : Mutter window manager library
+Summary  : A window manager for GNOME
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
@@ -99,6 +99,7 @@ Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
 Provides: mutter-devel = %{version}-%{release}
 Requires: mutter = %{version}-%{release}
+Requires: mutter = %{version}-%{release}
 
 %description dev
 dev components for the mutter package.
@@ -156,7 +157,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568068749
+export SOURCE_DATE_EPOCH=1568123454
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
