@@ -1,0 +1,29 @@
+From 26b08d87a8ff31ac9e9ebecde75de5ac94a73efb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 16 Sep 2019 16:36:05 +0200
+Subject: [PATCH 13/30] idle-monitor: Remove redundant type cast
+
+No need to type cast a `MetaIdleMonitorWatch *` to a
+`MetaIdleMonitorWatch *`.
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/799
+---
+ src/backends/meta-idle-monitor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-idle-monitor.c b/src/backends/meta-idle-monitor.c
+index de1c7e0ba..e5124abc1 100644
+--- a/src/backends/meta-idle-monitor.c
++++ b/src/backends/meta-idle-monitor.c
+@@ -511,7 +511,7 @@ meta_idle_monitor_reset_idletime (MetaIdleMonitor *monitor)
+ 
+       if (watch->timeout_msec == 0)
+         {
+-          meta_idle_monitor_watch_fire ((MetaIdleMonitorWatch *) watch);
++          meta_idle_monitor_watch_fire (watch);
+         }
+       else
+         {
+-- 
+2.23.0
+

@@ -1,0 +1,27 @@
+From 4d0869e2060034db98ae68c85aaa52461eadad6f Mon Sep 17 00:00:00 2001
+From: Michal Lazo <xlazom00@gmail.com>
+Date: Mon, 16 Sep 2019 16:41:46 +0000
+Subject: [PATCH 11/30] kms-device: Free path when finalizing
+
+free path in finalize
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/775
+---
+ src/backends/native/meta-kms-device.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backends/native/meta-kms-device.c b/src/backends/native/meta-kms-device.c
+index bda3859d1..d137c63b9 100644
+--- a/src/backends/native/meta-kms-device.c
++++ b/src/backends/native/meta-kms-device.c
+@@ -267,6 +267,7 @@ meta_kms_device_finalize (GObject *object)
+   MetaBackendNative *backend_native = META_BACKEND_NATIVE (backend);
+   MetaLauncher *launcher = meta_backend_native_get_launcher (backend_native);
+ 
++  g_free (device->path);
+   g_list_free (device->crtcs);
+   g_list_free (device->connectors);
+   g_list_free (device->planes);
+-- 
+2.23.0
+

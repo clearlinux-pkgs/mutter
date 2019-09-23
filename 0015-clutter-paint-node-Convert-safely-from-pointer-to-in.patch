@@ -1,0 +1,35 @@
+From 7811865e8432ee175d9fc042e826a1a218e395ac Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Fri, 6 Sep 2019 17:39:47 +0800
+Subject: [PATCH 15/30] clutter/paint-node: Convert safely from pointer to
+ integer
+
+To support 32-bit systems without compiler warnings.
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/778
+---
+ clutter/clutter/clutter-paint-node.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/clutter/clutter/clutter-paint-node.c b/clutter/clutter/clutter-paint-node.c
+index 928c32cce..af098e1ca 100644
+--- a/clutter/clutter/clutter-paint-node.c
++++ b/clutter/clutter/clutter-paint-node.c
+@@ -1099,12 +1099,12 @@ clutter_paint_node_to_json (ClutterPaintNode *node)
+ 
+             case PAINT_OP_PATH:
+               json_builder_set_member_name (builder, "path");
+-              json_builder_add_int_value (builder, (gint64) op->op.path);
++              json_builder_add_int_value (builder, (intptr_t) op->op.path);
+               break;
+ 
+             case PAINT_OP_PRIMITIVE:
+               json_builder_set_member_name (builder, "primitive");
+-              json_builder_add_int_value (builder, (gint64) op->op.primitive);
++              json_builder_add_int_value (builder, (intptr_t) op->op.primitive);
+               break;
+ 
+             case PAINT_OP_INVALID:
+-- 
+2.23.0
+

@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.34.0
-Release  : 63
+Release  : 64
 URL      : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
 Summary  : A window manager for GNOME
@@ -63,6 +63,36 @@ BuildRequires : zenity
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: 0001-Update-Italian-translation.patch
+Patch2: 0002-plugins-default-Get-default-keymap-from-localed.patch
+Patch3: 0003-core-Split-x11-display-initialization-in-2-signals.patch
+Patch4: 0004-Fix-a-few-tracing-typos.patch
+Patch5: 0005-clutter-actor-Fix-a-wrong-comment.patch
+Patch6: 0006-clutter-actor-Remove-unused-private-function.patch
+Patch7: 0007-cogl-egl-Just-notify-about-failure-to-create-high-pr.patch
+Patch8: 0008-x11-Use-the-currently-focused-X-window-for-_NET_ACTI.patch
+Patch9: 0009-x11-Minor-refactor-of-input-focus-handling-code.patch
+Patch10: 0010-kms-device-Handle-impl-device-creation-failure.patch
+Patch11: 0011-kms-device-Free-path-when-finalizing.patch
+Patch12: 0012-idle-monitor-Make-helper-function-static.patch
+Patch13: 0013-idle-monitor-Remove-redundant-type-cast.patch
+Patch14: 0014-idle-monitor-Reset-timeout-before-firing-watch.patch
+Patch15: 0015-clutter-paint-node-Convert-safely-from-pointer-to-in.patch
+Patch16: 0016-clutter-stage-cogl-Use-portable-formatting-for-64-bi.patch
+Patch17: 0017-input-settings-Use-portable-formatting-for-64-bit-in.patch
+Patch18: 0018-output-kms-Use-portable-formatting-for-64-bit-intege.patch
+Patch19: 0019-kms-impl-device-Use-portable-formatting-for-64-bit-i.patch
+Patch20: 0020-build-Compile-with-ffloat-store-on-x86-32-bit.patch
+Patch21: 0021-stage-Compute-view-perspective-when-parameters-chang.patch
+Patch22: 0022-wayland-dma-buf-Handle-zero-modifiers-from-eglQueryD.patch
+Patch23: 0023-clutter-timeline-Use-a-function-to-cancel-the-delay-.patch
+Patch24: 0024-clutter-timeline-Don-t-emit-paused-signal-on-delayed.patch
+Patch25: 0025-clutter-actor-Cancel-delayed-timelines-on-removal.patch
+Patch26: 0026-shaped-texture-Mark-set-the-clip-and-return-value-nu.patch
+Patch27: 0027-window-surface-actor-Add-docstrings.patch
+Patch28: 0028-shaped-texture-Declare-that-we-inherit-from-GObject.patch
+Patch29: 0029-shaped-texture-Use-surface-coordinates-in-get_image.patch
+Patch30: 0030-window-actor-Use-surface-coordinates-for-the-fast-pa.patch
 
 %description
 Intro
@@ -98,7 +128,6 @@ Requires: mutter-lib = %{version}-%{release}
 Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
 Provides: mutter-devel = %{version}-%{release}
-Requires: mutter = %{version}-%{release}
 Requires: mutter = %{version}-%{release}
 
 %description dev
@@ -151,14 +180,43 @@ man components for the mutter package.
 
 %prep
 %setup -q -n mutter-3.34.0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568123454
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1569274740
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

@@ -1,0 +1,39 @@
+From 82901f89d525db86c13821f9f9424f87b5f668b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Fri, 13 Sep 2019 06:00:35 +0200
+Subject: [PATCH 26/30] shaped-texture: Mark set the clip and return value
+ nullable
+
+As per the code definition the clip can be a null rectangle, and we can also
+return a null surface, so mark them as nullable in the introspection.
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/796
+---
+ src/compositor/meta-shaped-texture.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/compositor/meta-shaped-texture.c b/src/compositor/meta-shaped-texture.c
+index f85b55e23..972c33606 100644
+--- a/src/compositor/meta-shaped-texture.c
++++ b/src/compositor/meta-shaped-texture.c
+@@ -1204,7 +1204,7 @@ get_image_via_offscreen (MetaShapedTexture     *stex,
+ /**
+  * meta_shaped_texture_get_image:
+  * @stex: A #MetaShapedTexture
+- * @clip: A clipping rectangle, to help prevent extra processing.
++ * @clip: (nullable): A clipping rectangle, to help prevent extra processing.
+  * In the case that the clipping rectangle is partially or fully
+  * outside the bounds of the texture, the rectangle will be clipped.
+  *
+@@ -1212,7 +1212,7 @@ get_image_via_offscreen (MetaShapedTexture     *stex,
+  * image by alpha blending the two images, and returns the flattened
+  * image.
+  *
+- * Returns: (transfer full): a new cairo surface to be freed with
++ * Returns: (nullable) (transfer full): a new cairo surface to be freed with
+  * cairo_surface_destroy().
+  */
+ cairo_surface_t *
+-- 
+2.23.0
+

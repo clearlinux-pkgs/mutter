@@ -1,0 +1,36 @@
+From 0e69fe07819a289f3156f18c46b749b2f128cf05 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 16 Sep 2019 16:36:51 +0200
+Subject: [PATCH 14/30] idle-monitor: Reset timeout before firing watch
+
+The watch might be removed during firing, meaning the source is
+destroyed after returning. Avoid use-after-free by unsetting the timeout
+before firing. Returning G_SOURCE_CONTINUE in that case is harmless, as
+source is destroyed.
+
+Fixes: https://gitlab.gnome.org/GNOME/mutter/issues/796
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/799
+---
+ src/backends/meta-idle-monitor.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-idle-monitor.c b/src/backends/meta-idle-monitor.c
+index e5124abc1..9fa481742 100644
+--- a/src/backends/meta-idle-monitor.c
++++ b/src/backends/meta-idle-monitor.c
+@@ -324,9 +324,10 @@ idle_monitor_dispatch_timeout (GSource     *source,
+   if (ready_time > now)
+     return G_SOURCE_CONTINUE;
+ 
+-  meta_idle_monitor_watch_fire (watch);
+   g_source_set_ready_time (watch->timeout_source, -1);
+ 
++  meta_idle_monitor_watch_fire (watch);
++
+   return G_SOURCE_CONTINUE;
+ }
+ 
+-- 
+2.23.0
+
