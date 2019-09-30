@@ -1,0 +1,50 @@
+From 0706e021f5bd82cf4c9b2c0d2916d272f3cba406 Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Tue, 24 Sep 2019 16:55:25 +0200
+Subject: [PATCH 31/43] keybindings: Check for a handler before using it
+
+The `process_event()` would check for a existing keybinding handler and
+abort if there is none, however the test is done after the handler had
+been accessed, hence defeating the purpose of the check.
+
+Move the check to verify there is an existing keybinding handler before
+actually using it.
+
+https://gitlab.gnome.org/GNOME/mutter/issues/823
+---
+ src/core/keybindings.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/keybindings.c b/src/core/keybindings.c
+index a5a60e8cd..b9377bfff 100644
+--- a/src/core/keybindings.c
++++ b/src/core/keybindings.c
+@@ -1955,6 +1955,9 @@ process_event (MetaDisplay          *display,
+       (!window && binding->flags & META_KEY_BINDING_PER_WINDOW))
+     goto not_found;
+ 
++  if (binding->handler == NULL)
++    meta_bug ("Binding %s has no handler\n", binding->name);
++
+   if (display->focus_window &&
+       !(binding->handler->flags & META_KEY_BINDING_NON_MASKABLE))
+     {
+@@ -1980,12 +1983,9 @@ process_event (MetaDisplay          *display,
+       return TRUE;
+     }
+ 
+-  if (binding->handler == NULL)
+-    meta_bug ("Binding %s has no handler\n", binding->name);
+-  else
+-    meta_topic (META_DEBUG_KEYBINDINGS,
+-                "Running handler for %s\n",
+-                binding->name);
++  meta_topic (META_DEBUG_KEYBINDINGS,
++              "Running handler for %s\n",
++              binding->name);
+ 
+   /* Global keybindings count as a let-the-terminal-lose-focus
+    * due to new window mapping until the user starts
+-- 
+2.23.0
+

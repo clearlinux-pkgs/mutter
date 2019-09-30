@@ -1,0 +1,78 @@
+From 0f51ae7cf07455af9622e9ea6e53c250a801a38a Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Thu, 7 Mar 2019 11:42:51 -0500
+Subject: [PATCH 42/43] cogl: Remove unused
+ CoglTextureDriver::prep_gl_for_pixels_upload
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/814
+---
+ cogl/cogl/cogl-texture-driver.h                     | 12 ------------
+ cogl/cogl/driver/gl/gl/cogl-texture-driver-gl.c     |  9 ---------
+ cogl/cogl/driver/gl/gles/cogl-texture-driver-gles.c |  1 -
+ 3 files changed, 22 deletions(-)
+
+diff --git a/cogl/cogl/cogl-texture-driver.h b/cogl/cogl/cogl-texture-driver.h
+index f37abb518..fa626e7db 100644
+--- a/cogl/cogl/cogl-texture-driver.h
++++ b/cogl/cogl/cogl-texture-driver.h
+@@ -45,18 +45,6 @@ struct _CoglTextureDriver
+            GLenum gl_target,
+            CoglPixelFormat internal_format);
+ 
+-  /*
+-   * This sets up the glPixelStore state for an upload to a destination with
+-   * the same size, and with no offset.
+-   */
+-  /* NB: GLES can't upload a sub region of pixel data from a larger source
+-   * buffer which is why this interface is limited. The GL driver has a more
+-   * flexible version of this function that is uses internally */
+-  void
+-  (* prep_gl_for_pixels_upload) (CoglContext *ctx,
+-                                 int pixels_rowstride,
+-                                 int pixels_bpp);
+-
+   /*
+    * This uploads a sub-region from source_bmp to a single GL texture
+    * handle (i.e a single CoglTexture slice)
+diff --git a/cogl/cogl/driver/gl/gl/cogl-texture-driver-gl.c b/cogl/cogl/driver/gl/gl/cogl-texture-driver-gl.c
+index 1505a2af7..eabdf6e36 100644
+--- a/cogl/cogl/driver/gl/gl/cogl-texture-driver-gl.c
++++ b/cogl/cogl/driver/gl/gl/cogl-texture-driver-gl.c
+@@ -132,14 +132,6 @@ prep_gl_for_pixels_upload_full (CoglContext *ctx,
+   _cogl_texture_gl_prep_alignment_for_pixels_upload (ctx, pixels_rowstride);
+ }
+ 
+-static void
+-_cogl_texture_driver_prep_gl_for_pixels_upload (CoglContext *ctx,
+-                                                int pixels_rowstride,
+-                                                int pixels_bpp)
+-{
+-  prep_gl_for_pixels_upload_full (ctx, pixels_rowstride, 0, 0, 0, pixels_bpp);
+-}
+-
+ /* OpenGL - unlike GLES - can download pixel data into a sub region of
+  * a larger destination buffer */
+ static void
+@@ -430,7 +422,6 @@ const CoglTextureDriver
+ _cogl_texture_driver_gl =
+   {
+     _cogl_texture_driver_gen,
+-    _cogl_texture_driver_prep_gl_for_pixels_upload,
+     _cogl_texture_driver_upload_subregion_to_gl,
+     _cogl_texture_driver_upload_to_gl,
+     _cogl_texture_driver_prep_gl_for_pixels_download,
+diff --git a/cogl/cogl/driver/gl/gles/cogl-texture-driver-gles.c b/cogl/cogl/driver/gl/gles/cogl-texture-driver-gles.c
+index 22130784b..7c163596b 100644
+--- a/cogl/cogl/driver/gl/gles/cogl-texture-driver-gles.c
++++ b/cogl/cogl/driver/gl/gles/cogl-texture-driver-gles.c
+@@ -453,7 +453,6 @@ const CoglTextureDriver
+ _cogl_texture_driver_gles =
+   {
+     _cogl_texture_driver_gen,
+-    _cogl_texture_driver_prep_gl_for_pixels_upload,
+     _cogl_texture_driver_upload_subregion_to_gl,
+     _cogl_texture_driver_upload_to_gl,
+     _cogl_texture_driver_prep_gl_for_pixels_download,
+-- 
+2.23.0
+

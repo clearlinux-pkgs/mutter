@@ -1,7 +1,7 @@
 From f92e0bec0bf831e3efa7eddbd1be4bf469a0b7cd Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Wed, 11 Sep 2019 12:29:36 +0200
-Subject: [PATCH 05/30] clutter/actor: Fix a wrong comment
+Subject: [PATCH 05/43] clutter/actor: Fix a wrong comment
 
 According to the definition of ClutterAnimationInfo in
 clutter-actor-private.h, `transitions` is the third variable of the

@@ -1,7 +1,7 @@
 From 63a0b702c94af013b94ad3f32a8c5ba86bf6dfba Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
 Date: Fri, 20 Sep 2019 16:13:03 +0200
-Subject: [PATCH 23/30] clutter/timeline: Use a function to cancel the delay
+Subject: [PATCH 23/43] clutter/timeline: Use a function to cancel the delay
  timeout
 
 Avoid repeating the same code for canceling the delay timeout, using a

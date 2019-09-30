@@ -1,0 +1,230 @@
+From bba8f6c53eb5c2d2058ba1c4acc78f89ab7417d4 Mon Sep 17 00:00:00 2001
+From: Robert Mader <robert.mader@posteo.de>
+Date: Fri, 6 Sep 2019 15:13:24 +0200
+Subject: [PATCH 38/43] wayland/actor-surface: Turn get_geometry_scale() into a
+ vfunc
+
+This allows us to implement more sophisticated logic for the different
+cases. For DnD surfaces, use the geometry scale of the monitor where
+the pointer is, instead of incorrectly assuming '1' as it was before.
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/780
+---
+ src/wayland/meta-wayland-actor-surface.c | 21 +++------------
+ src/wayland/meta-wayland-actor-surface.h |  1 +
+ src/wayland/meta-wayland-dnd-surface.c   | 34 ++++++++++++++++++++++++
+ src/wayland/meta-wayland-shell-surface.c | 19 +++++++++++++
+ src/wayland/meta-wayland-subsurface.c    | 24 +++++++++++++++++
+ src/wayland/meta-xwayland.c              |  7 +++++
+ 6 files changed, 88 insertions(+), 18 deletions(-)
+
+diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
+index aea67a589..59c2e5274 100644
+--- a/src/wayland/meta-wayland-actor-surface.c
++++ b/src/wayland/meta-wayland-actor-surface.c
+@@ -100,25 +100,10 @@ meta_wayland_actor_surface_queue_frame_callbacks (MetaWaylandActorSurface *actor
+ double
+ meta_wayland_actor_surface_get_geometry_scale (MetaWaylandActorSurface *actor_surface)
+ {
+-  MetaWaylandSurfaceRole *surface_role =
+-    META_WAYLAND_SURFACE_ROLE (actor_surface);
+-  MetaWaylandSurface *surface =
+-    meta_wayland_surface_role_get_surface (surface_role);
+-  MetaWindow *toplevel_window;
++  MetaWaylandActorSurfaceClass *actor_surface_class =
++    META_WAYLAND_ACTOR_SURFACE_GET_CLASS (actor_surface);
+ 
+-  toplevel_window = meta_wayland_surface_get_toplevel_window (surface);
+-  if (meta_is_stage_views_scaled ())
+-    {
+-      return 1;
+-    }
+-  else
+-    {
+-      if (!toplevel_window ||
+-          toplevel_window->client_type == META_WINDOW_CLIENT_TYPE_X11)
+-        return 1;
+-      else
+-        return meta_window_wayland_get_geometry_scale (toplevel_window);
+-    }
++  return actor_surface_class->get_geometry_scale (actor_surface);
+ }
+ 
+ static void
+diff --git a/src/wayland/meta-wayland-actor-surface.h b/src/wayland/meta-wayland-actor-surface.h
+index aa9f8fa5a..255141f43 100644
+--- a/src/wayland/meta-wayland-actor-surface.h
++++ b/src/wayland/meta-wayland-actor-surface.h
+@@ -33,6 +33,7 @@ struct _MetaWaylandActorSurfaceClass
+ {
+   MetaWaylandSurfaceRoleClass parent_class;
+ 
++  double (* get_geometry_scale) (MetaWaylandActorSurface *actor_surface);
+   void (* sync_actor_state) (MetaWaylandActorSurface *actor_surface);
+ };
+ 
+diff --git a/src/wayland/meta-wayland-dnd-surface.c b/src/wayland/meta-wayland-dnd-surface.c
+index c83bb0c52..31bd68fd5 100644
+--- a/src/wayland/meta-wayland-dnd-surface.c
++++ b/src/wayland/meta-wayland-dnd-surface.c
+@@ -21,6 +21,7 @@
+ 
+ #include "wayland/meta-wayland-dnd-surface.h"
+ 
++#include "backends/meta-logical-monitor.h"
+ #include "compositor/meta-feedback-actor-private.h"
+ 
+ struct _MetaWaylandSurfaceRoleDND
+@@ -62,6 +63,38 @@ dnd_surface_commit (MetaWaylandSurfaceRole  *surface_role,
+   surface_role_class->commit (surface_role, pending);
+ }
+ 
++static MetaLogicalMonitor *
++dnd_surface_find_logical_monitor (MetaWaylandActorSurface *actor_surface)
++{
++  MetaBackend *backend = meta_get_backend ();
++  MetaCursorRenderer *cursor_renderer =
++    meta_backend_get_cursor_renderer (backend);
++  MetaMonitorManager *monitor_manager =
++     meta_backend_get_monitor_manager (backend);
++  ClutterPoint pointer_pos;
++
++  pointer_pos = meta_cursor_renderer_get_position (cursor_renderer);
++  return meta_monitor_manager_get_logical_monitor_at (monitor_manager,
++                                                      pointer_pos.x,
++                                                      pointer_pos.y);
++}
++
++static double
++dnd_subsurface_get_geometry_scale (MetaWaylandActorSurface *actor_surface)
++{
++  if (meta_is_stage_views_scaled ())
++    {
++      return 1;
++    }
++  else
++    {
++      MetaLogicalMonitor *logical_monitor;
++
++      logical_monitor = dnd_surface_find_logical_monitor (actor_surface);
++      return meta_logical_monitor_get_scale (logical_monitor);
++    }
++}
++
+ static void
+ dnd_subsurface_sync_actor_state (MetaWaylandActorSurface *actor_surface)
+ {
+@@ -116,5 +149,6 @@ meta_wayland_surface_role_dnd_class_init (MetaWaylandSurfaceRoleDNDClass *klass)
+   surface_role_class->assigned = dnd_surface_assigned;
+   surface_role_class->commit = dnd_surface_commit;
+ 
++  actor_surface_class->get_geometry_scale = dnd_subsurface_get_geometry_scale;
+   actor_surface_class->sync_actor_state = dnd_subsurface_sync_actor_state;
+ }
+diff --git a/src/wayland/meta-wayland-shell-surface.c b/src/wayland/meta-wayland-shell-surface.c
+index 32b4d981c..e628460ba 100644
+--- a/src/wayland/meta-wayland-shell-surface.c
++++ b/src/wayland/meta-wayland-shell-surface.c
+@@ -180,6 +180,22 @@ meta_wayland_shell_surface_surface_commit (MetaWaylandSurfaceRole  *surface_role
+     meta_wayland_surface_get_height (surface) * geometry_scale;
+ }
+ 
++static double
++meta_wayland_shell_surface_get_geometry_scale (MetaWaylandActorSurface *actor_surface)
++{
++  MetaWaylandSurfaceRole *surface_role =
++    META_WAYLAND_SURFACE_ROLE (actor_surface);
++  MetaWaylandSurface *surface =
++    meta_wayland_surface_role_get_surface (surface_role);
++  MetaWindow *toplevel_window;
++
++  toplevel_window = meta_wayland_surface_get_toplevel_window (surface);
++  if (meta_is_stage_views_scaled () || !toplevel_window)
++    return 1;
++  else
++    return meta_window_wayland_get_geometry_scale (toplevel_window);
++}
++
+ static void
+ meta_wayland_shell_surface_sync_actor_state (MetaWaylandActorSurface *actor_surface)
+ {
+@@ -210,6 +226,9 @@ meta_wayland_shell_surface_class_init (MetaWaylandShellSurfaceClass *klass)
+     META_WAYLAND_ACTOR_SURFACE_CLASS (klass);
+ 
+   surface_role_class->commit = meta_wayland_shell_surface_surface_commit;
++
++  actor_surface_class->get_geometry_scale =
++    meta_wayland_shell_surface_get_geometry_scale;
+   actor_surface_class->sync_actor_state =
+     meta_wayland_shell_surface_sync_actor_state;
+ }
+diff --git a/src/wayland/meta-wayland-subsurface.c b/src/wayland/meta-wayland-subsurface.c
+index 8724da39f..6d181150c 100644
+--- a/src/wayland/meta-wayland-subsurface.c
++++ b/src/wayland/meta-wayland-subsurface.c
+@@ -240,6 +240,28 @@ meta_wayland_subsurface_get_toplevel (MetaWaylandSurfaceRole *surface_role)
+     return NULL;
+ }
+ 
++static double
++meta_wayland_subsurface_get_geometry_scale (MetaWaylandActorSurface *actor_surface)
++{
++  MetaWaylandSurfaceRole *surface_role =
++    META_WAYLAND_SURFACE_ROLE (actor_surface);
++  MetaWaylandSurface *surface =
++    meta_wayland_surface_role_get_surface (surface_role);
++  MetaWaylandSurface *parent = surface->sub.parent;
++
++  if (parent)
++    {
++      MetaWaylandActorSurface *parent_actor;
++
++      parent_actor = META_WAYLAND_ACTOR_SURFACE (surface->sub.parent->role);
++      return meta_wayland_actor_surface_get_geometry_scale (parent_actor);
++    }
++  else
++    {
++      return 1;
++    }
++}
++
+ static void
+ meta_wayland_subsurface_sync_actor_state (MetaWaylandActorSurface *actor_surface)
+ {
+@@ -273,6 +295,8 @@ meta_wayland_subsurface_class_init (MetaWaylandSubsurfaceClass *klass)
+ 
+   surface_role_class->get_toplevel = meta_wayland_subsurface_get_toplevel;
+ 
++  actor_surface_class->get_geometry_scale =
++    meta_wayland_subsurface_get_geometry_scale;
+   actor_surface_class->sync_actor_state =
+     meta_wayland_subsurface_sync_actor_state;
+ }
+diff --git a/src/wayland/meta-xwayland.c b/src/wayland/meta-xwayland.c
+index 948f26518..927a7a332 100644
+--- a/src/wayland/meta-xwayland.c
++++ b/src/wayland/meta-xwayland.c
+@@ -907,6 +907,12 @@ xwayland_surface_get_toplevel (MetaWaylandSurfaceRole *surface_role)
+   return meta_wayland_surface_role_get_surface (surface_role);
+ }
+ 
++static double
++xwayland_surface_get_geometry_scale (MetaWaylandActorSurface *actor_surface)
++{
++  return 1;
++}
++
+ static void
+ xwayland_surface_sync_actor_state (MetaWaylandActorSurface *actor_surface)
+ {
+@@ -938,6 +944,7 @@ meta_wayland_surface_role_xwayland_class_init (MetaWaylandSurfaceRoleXWaylandCla
+   surface_role_class->commit = xwayland_surface_commit;
+   surface_role_class->get_toplevel = xwayland_surface_get_toplevel;
+ 
++  actor_surface_class->get_geometry_scale = xwayland_surface_get_geometry_scale;
+   actor_surface_class->sync_actor_state = xwayland_surface_sync_actor_state;
+ 
+   xwayland_surface_signals[XWAYLAND_SURFACE_WINDOW_ASSOCIATED] =
+-- 
+2.23.0
+

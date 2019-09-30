@@ -1,7 +1,7 @@
 From cd70595b50751669f2e0b58ae2cbfeb3c7291574 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@posteo.de>
 Date: Tue, 27 Aug 2019 16:38:17 +0300
-Subject: [PATCH 29/30] shaped-texture: Use surface coordinates in get_image()
+Subject: [PATCH 29/43] shaped-texture: Use surface coordinates in get_image()
 
 There were multiple bugs present after the ClutterContent transition.
 Refactor `get_image` to:

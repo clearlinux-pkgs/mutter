@@ -1,0 +1,63 @@
+From f352c3d79da99e961341c1d2b5dd334dcade0271 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 25 Sep 2019 22:23:09 +0200
+Subject: [PATCH 34/43] display: Handle late unredirect (un)inhibit calls
+
+When tearing down, gnome-shell may call various methods a bit late,
+specifically while MetaDisplay is closing, after MetaCompositor is
+freed.
+
+Handle calls to the fullscreen unredirect inhibitation counters
+happening after MetaCompositor tear down by ignoring them. We're closing
+anyway, so it's not a problem.
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/issues/1710
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/808
+---
+ src/compositor/compositor.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 1ab65ed5a..c2e2e1923 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -1285,9 +1285,14 @@ meta_compositor_class_init (MetaCompositorClass *klass)
+ void
+ meta_disable_unredirect_for_display (MetaDisplay *display)
+ {
+-  MetaCompositor *compositor = get_compositor_for_display (display);
+-  MetaCompositorPrivate *priv =
+-    meta_compositor_get_instance_private (compositor);
++  MetaCompositor *compositor;
++  MetaCompositorPrivate *priv;
++
++  if (display->closing)
++    return;
++
++  compositor = get_compositor_for_display (display);
++  priv = meta_compositor_get_instance_private (compositor);
+ 
+   priv->disable_unredirect_count++;
+ }
+@@ -1302,9 +1307,14 @@ meta_disable_unredirect_for_display (MetaDisplay *display)
+ void
+ meta_enable_unredirect_for_display (MetaDisplay *display)
+ {
+-  MetaCompositor *compositor = get_compositor_for_display (display);
+-  MetaCompositorPrivate *priv =
+-    meta_compositor_get_instance_private (compositor);
++  MetaCompositor *compositor;
++  MetaCompositorPrivate *priv;
++
++  if (display->closing)
++    return;
++
++  compositor = get_compositor_for_display (display);
++  priv = meta_compositor_get_instance_private (compositor);
+ 
+   if (priv->disable_unredirect_count == 0)
+     g_warning ("Called enable_unredirect_for_display while unredirection is enabled.");
+-- 
+2.23.0
+

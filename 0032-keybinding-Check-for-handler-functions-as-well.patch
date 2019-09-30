@@ -1,0 +1,58 @@
+From 76f2579e442d8ad0a3b8b644daab7c72a585506b Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Tue, 24 Sep 2019 16:58:32 +0200
+Subject: [PATCH 32/43] keybinding: Check for handler functions as well
+
+With the addition of the locate-pointer special keybinding (defaults to
+the [Control] key), we have now two separate special modifier keys which
+can be triggered separately, one for the locate-pointer action and
+another one for overlay.
+
+When processing those special modifier keys, mutter must ensure that the
+key was pressed alone, being a modifier, the key could otherwise be part
+of another key combo.
+
+As result, if both special modifiers keys are pressed simultaneously,
+mutter will try to trigger the function for the second key being
+pressed, and since those special modifier keys have no default handler
+function set, that will crash mutter.
+
+Check if the handler has a function associated and treat the keybinding
+as not found if no handler function is set, as with the special modifier
+keys.
+
+https://gitlab.gnome.org/GNOME/mutter/issues/823
+---
+ src/core/keybindings.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/core/keybindings.c b/src/core/keybindings.c
+index b9377bfff..b86272541 100644
+--- a/src/core/keybindings.c
++++ b/src/core/keybindings.c
+@@ -1933,6 +1933,12 @@ invoke_handler (MetaDisplay     *display,
+                                NULL);
+ }
+ 
++static gboolean
++meta_key_binding_has_handler_func (MetaKeyBinding *binding)
++{
++  return (!!binding->handler->func || !!binding->handler->default_func);
++}
++
+ static gboolean
+ process_event (MetaDisplay          *display,
+                MetaWindow           *window,
+@@ -1958,6 +1964,9 @@ process_event (MetaDisplay          *display,
+   if (binding->handler == NULL)
+     meta_bug ("Binding %s has no handler\n", binding->name);
+ 
++  if (!meta_key_binding_has_handler_func (binding))
++    goto not_found;
++
+   if (display->focus_window &&
+       !(binding->handler->flags & META_KEY_BINDING_NON_MASKABLE))
+     {
+-- 
+2.23.0
+

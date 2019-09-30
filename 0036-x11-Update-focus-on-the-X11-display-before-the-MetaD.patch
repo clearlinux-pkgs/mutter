@@ -1,0 +1,59 @@
+From 8fd55fef853f1ca43d7b8766040b827a749187f0 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Fri, 27 Sep 2019 13:06:34 +0200
+Subject: [PATCH 36/43] x11: Update focus on the X11 display before the
+ MetaDisplay
+
+The meta_display_update_focus_window() call has indirect dependencies
+on the X11 focus window, in order to determine the correct focus window
+on the Wayland side (i.e. may turn out NULL with certain X windows).
+
+In order to have the right x11_display->focus_xwindow there, we should
+perform first the focus update on the X11 display.
+
+Fixes focusing of Java applications, as those don't seem to go through
+_NET_ACTIVE_WINDOW.
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/issues/819
+---
+ src/x11/events.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/x11/events.c b/src/x11/events.c
+index eca096c94..742e291f1 100644
+--- a/src/x11/events.c
++++ b/src/x11/events.c
+@@ -808,12 +808,12 @@ handle_window_focus_event (MetaX11Display *x11_display,
+       (!x11_display->focused_by_us &&
+        x11_display->server_focus_serial == x11_display->focus_serial))
+     {
+-      meta_display_update_focus_window (display, focus_window);
+       meta_x11_display_update_focus_window (x11_display,
+                                             focus_window ?
+                                             focus_window->xwindow : None,
+                                             x11_display->server_focus_serial,
+                                             FALSE);
++      meta_display_update_focus_window (display, focus_window);
+       return TRUE;
+     }
+   else
+@@ -1807,13 +1807,13 @@ meta_x11_display_handle_xevent (MetaX11Display *x11_display,
+     {
+       meta_topic (META_DEBUG_FOCUS, "Earlier attempt to focus %s failed\n",
+                   display->focus_window->desc);
+-      meta_display_update_focus_window (display,
+-                                        meta_x11_display_lookup_x_window (x11_display,
+-                                                                          x11_display->server_focus_window));
+       meta_x11_display_update_focus_window (x11_display,
+                                             x11_display->server_focus_window,
+                                             x11_display->server_focus_serial,
+                                             FALSE);
++      meta_display_update_focus_window (display,
++                                        meta_x11_display_lookup_x_window (x11_display,
++                                                                          x11_display->server_focus_window));
+     }
+ 
+   if (event->xany.window == x11_display->xroot)
+-- 
+2.23.0
+

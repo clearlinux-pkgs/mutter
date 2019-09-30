@@ -1,7 +1,7 @@
 From 0863bd240872c538825c0e262621372c452bb4e2 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 6 Sep 2019 17:49:48 +0800
-Subject: [PATCH 18/30] output-kms: Use portable formatting for 64-bit integers
+Subject: [PATCH 18/43] output-kms: Use portable formatting for 64-bit integers
 
 On 64-bit systems uint64_t is %lu but on 32-bit systems it is %llu.
 

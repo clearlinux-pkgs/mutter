@@ -1,7 +1,7 @@
 From b5775e3d85235418fc12c2024a54863d49acf02d Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@posteo.de>
 Date: Sat, 14 Sep 2019 19:21:41 +0200
-Subject: [PATCH 30/30] window-actor: Use surface coordinates for the fast path
+Subject: [PATCH 30/43] window-actor: Use surface coordinates for the fast path
  in get_image()
 
 shaped_texture requires the clip to be in surface coordinates. Scale

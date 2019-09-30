@@ -1,7 +1,7 @@
 From b69d2aa6a0e0e8d69354f6eda0bb9ab68a76f2ee Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
 Date: Thu, 19 Sep 2019 11:27:50 +0200
-Subject: [PATCH 21/30] stage: Compute view perspective when parameters changed
+Subject: [PATCH 21/43] stage: Compute view perspective when parameters changed
 
 Clutter stage used to compute the initial projection using a fixed z
 translation which wasn't matching the one we computed in

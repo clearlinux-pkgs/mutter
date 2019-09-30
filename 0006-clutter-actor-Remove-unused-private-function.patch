@@ -1,7 +1,7 @@
 From ab7af2d0c57da04924b7c478e1970bdec514ce88 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Wed, 11 Sep 2019 12:31:24 +0200
-Subject: [PATCH 06/30] clutter/actor: Remove unused private function
+Subject: [PATCH 06/43] clutter/actor: Remove unused private function
 
 `_clutter_actor_get_transition` is almost identical to
 `clutter_actor_get_transition` and isn't used anywhere in the code (we

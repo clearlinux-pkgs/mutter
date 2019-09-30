@@ -1,7 +1,7 @@
 From d13cea6ccb73bac7e4ae0dd1f4b0fb6ab24a86ab Mon Sep 17 00:00:00 2001
 From: Michal Lazo <xlazom00@gmail.com>
 Date: Mon, 16 Sep 2019 16:34:39 +0000
-Subject: [PATCH 10/30] kms-device: Handle impl device creation failure
+Subject: [PATCH 10/43] kms-device: Handle impl device creation failure
 
 Properly free kms-device in case of invalid initialization
 

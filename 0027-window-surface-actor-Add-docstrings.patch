@@ -1,7 +1,7 @@
 From b8a49a682e5e8d9c79027f9c54ac695bb5098ce5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
 Date: Fri, 13 Sep 2019 06:01:54 +0200
-Subject: [PATCH 27/30] window/surface-actor: Add docstrings
+Subject: [PATCH 27/43] window/surface-actor: Add docstrings
 
 Redefine the docstring for functions using shaped texture, setting the clip
 as nullable.

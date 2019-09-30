@@ -1,7 +1,7 @@
 From 6922f0e16a4aa9873c9f9868b26a9b8ab68ac939 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Thu, 5 Sep 2019 13:17:21 +0200
-Subject: [PATCH 09/30] x11: Minor refactor of input focus handling code
+Subject: [PATCH 09/43] x11: Minor refactor of input focus handling code
 
 Instead of open coding the X11 focus management in display.c, expose
 it as a single function with similar arguments to its MetaDisplay

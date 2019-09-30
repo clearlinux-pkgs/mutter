@@ -1,7 +1,7 @@
 From 7a0340c57d5c7d23783096c174672eb502c6c2b3 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 6 Sep 2019 17:54:00 +0800
-Subject: [PATCH 19/30] kms-impl-device: Use portable formatting for 64-bit
+Subject: [PATCH 19/43] kms-impl-device: Use portable formatting for 64-bit
  integers
 
 On 64-bit systems uint64_t is %lu but on 32-bit systems it is %llu.

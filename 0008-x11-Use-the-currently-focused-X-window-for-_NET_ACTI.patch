@@ -1,7 +1,7 @@
 From 31df06d94ea4975c0d7e769478a5a4c445ce0919 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Thu, 5 Sep 2019 12:59:08 +0200
-Subject: [PATCH 08/30] x11: Use the currently focused X window for
+Subject: [PATCH 08/43] x11: Use the currently focused X window for
  _NET_ACTIVE_WINDOW
 
 MetaDisplay and MetaX11Display focus windows are slightly decoupled,

@@ -28,3 +28,16 @@
 0028-shaped-texture-Declare-that-we-inherit-from-GObject.patch
 0029-shaped-texture-Use-surface-coordinates-in-get_image.patch
 0030-window-actor-Use-surface-coordinates-for-the-fast-pa.patch
+0031-keybindings-Check-for-a-handler-before-using-it.patch
+0032-keybinding-Check-for-handler-functions-as-well.patch
+0033-Update-Dutch-translation.patch
+0034-display-Handle-late-unredirect-un-inhibit-calls.patch
+0035-Updated-Slovenian-translation.patch
+0036-x11-Update-focus-on-the-X11-display-before-the-MetaD.patch
+0037-main-Make-process-PR_SET_DUMPABLE.patch
+0038-wayland-actor-surface-Turn-get_geometry_scale-into-a.patch
+0039-wayland-dnd-surface-Scale-DnD-surface-actor-content-.patch
+0040-clutter-stage-view-Use-cogl_blit_framebuffer-for-sha.patch
+0041-renderer-native-Actually-use-shadow-fb-when-using-so.patch
+0042-cogl-Remove-unused-CoglTextureDriver-prep_gl_for_pix.patch
+0043-Revert-renderer-native-Actually-use-shadow-fb-when-u.patch

@@ -1,7 +1,7 @@
 From 4d0869e2060034db98ae68c85aaa52461eadad6f Mon Sep 17 00:00:00 2001
 From: Michal Lazo <xlazom00@gmail.com>
 Date: Mon, 16 Sep 2019 16:41:46 +0000
-Subject: [PATCH 11/30] kms-device: Free path when finalizing
+Subject: [PATCH 11/43] kms-device: Free path when finalizing
 
 free path in finalize
 

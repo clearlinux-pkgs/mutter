@@ -1,7 +1,7 @@
 From 850ef518795dcc20d3b9a4f661f70ff8d0ddacb2 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Wed, 11 Sep 2019 22:26:49 +0200
-Subject: [PATCH 03/30] core: Split x11-display initialization in 2 signals
+Subject: [PATCH 03/43] core: Split x11-display initialization in 2 signals
 
 We have a "setup" phase, used internally to initialize early the x11
 side of things like the stack tracker, and an "opened" phase where

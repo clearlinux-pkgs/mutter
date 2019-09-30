@@ -4,10 +4,10 @@
 #
 Name     : mutter
 Version  : 3.34.0
-Release  : 64
+Release  : 65
 URL      : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.0.tar.xz
-Summary  : A window manager for GNOME
+Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
@@ -93,6 +93,19 @@ Patch27: 0027-window-surface-actor-Add-docstrings.patch
 Patch28: 0028-shaped-texture-Declare-that-we-inherit-from-GObject.patch
 Patch29: 0029-shaped-texture-Use-surface-coordinates-in-get_image.patch
 Patch30: 0030-window-actor-Use-surface-coordinates-for-the-fast-pa.patch
+Patch31: 0031-keybindings-Check-for-a-handler-before-using-it.patch
+Patch32: 0032-keybinding-Check-for-handler-functions-as-well.patch
+Patch33: 0033-Update-Dutch-translation.patch
+Patch34: 0034-display-Handle-late-unredirect-un-inhibit-calls.patch
+Patch35: 0035-Updated-Slovenian-translation.patch
+Patch36: 0036-x11-Update-focus-on-the-X11-display-before-the-MetaD.patch
+Patch37: 0037-main-Make-process-PR_SET_DUMPABLE.patch
+Patch38: 0038-wayland-actor-surface-Turn-get_geometry_scale-into-a.patch
+Patch39: 0039-wayland-dnd-surface-Scale-DnD-surface-actor-content-.patch
+Patch40: 0040-clutter-stage-view-Use-cogl_blit_framebuffer-for-sha.patch
+Patch41: 0041-renderer-native-Actually-use-shadow-fb-when-using-so.patch
+Patch42: 0042-cogl-Remove-unused-CoglTextureDriver-prep_gl_for_pix.patch
+Patch43: 0043-Revert-renderer-native-Actually-use-shadow-fb-when-u.patch
 
 %description
 Intro
@@ -210,13 +223,26 @@ man components for the mutter package.
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569274740
+export SOURCE_DATE_EPOCH=1569862224
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

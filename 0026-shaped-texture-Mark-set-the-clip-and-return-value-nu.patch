@@ -1,7 +1,7 @@
 From 82901f89d525db86c13821f9f9424f87b5f668b9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
 Date: Fri, 13 Sep 2019 06:00:35 +0200
-Subject: [PATCH 26/30] shaped-texture: Mark set the clip and return value
+Subject: [PATCH 26/43] shaped-texture: Mark set the clip and return value
  nullable
 
 As per the code definition the clip can be a null rectangle, and we can also

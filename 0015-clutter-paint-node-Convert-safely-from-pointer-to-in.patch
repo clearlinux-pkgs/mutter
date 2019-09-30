@@ -1,7 +1,7 @@
 From 7811865e8432ee175d9fc042e826a1a218e395ac Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 6 Sep 2019 17:39:47 +0800
-Subject: [PATCH 15/30] clutter/paint-node: Convert safely from pointer to
+Subject: [PATCH 15/43] clutter/paint-node: Convert safely from pointer to
  integer
 
 To support 32-bit systems without compiler warnings.

@@ -1,7 +1,7 @@
 From ecec9a7eaaf364cf2623c3c447e6ef5913283b10 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
 Date: Fri, 13 Sep 2019 09:45:11 +0200
-Subject: [PATCH 07/30] cogl/egl: Just notify about failure to create high
+Subject: [PATCH 07/43] cogl/egl: Just notify about failure to create high
  priority context
 
 Warning about it causes test case failures if there are not enough

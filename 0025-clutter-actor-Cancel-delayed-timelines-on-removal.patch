@@ -1,7 +1,7 @@
 From c9c53cb55fd6e782c50f36da1e2adbf28111a660 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
 Date: Fri, 20 Sep 2019 16:21:00 +0200
-Subject: [PATCH 25/30] clutter/actor: Cancel delayed timelines on removal
+Subject: [PATCH 25/43] clutter/actor: Cancel delayed timelines on removal
 
 Delayed clutter timelines might be removed while they are still in the
 process of being executed, but if they are not playing yet their delay

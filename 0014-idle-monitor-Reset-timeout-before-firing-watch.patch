@@ -1,7 +1,7 @@
 From 0e69fe07819a289f3156f18c46b749b2f128cf05 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
 Date: Mon, 16 Sep 2019 16:36:51 +0200
-Subject: [PATCH 14/30] idle-monitor: Reset timeout before firing watch
+Subject: [PATCH 14/43] idle-monitor: Reset timeout before firing watch
 
 The watch might be removed during firing, meaning the source is
 destroyed after returning. Avoid use-after-free by unsetting the timeout

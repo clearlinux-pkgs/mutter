@@ -1,7 +1,7 @@
 From ef2e04a613f6af5e16ec9e8aa8197d95638a4178 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
 Date: Mon, 9 Sep 2019 19:13:59 +0200
-Subject: [PATCH 02/30] plugins/default: Get default keymap from localed
+Subject: [PATCH 02/43] plugins/default: Get default keymap from localed
 
 When starting standalone mutter and running using the native backend, we
 always fall back on using the us pc105 keyboard layout. This can be very

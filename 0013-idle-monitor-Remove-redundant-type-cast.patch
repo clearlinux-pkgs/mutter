@@ -1,7 +1,7 @@
 From 26b08d87a8ff31ac9e9ebecde75de5ac94a73efb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
 Date: Mon, 16 Sep 2019 16:36:05 +0200
-Subject: [PATCH 13/30] idle-monitor: Remove redundant type cast
+Subject: [PATCH 13/43] idle-monitor: Remove redundant type cast
 
 No need to type cast a `MetaIdleMonitorWatch *` to a
 `MetaIdleMonitorWatch *`.

@@ -1,7 +1,7 @@
 From 0b19078b2bb588e5664a199025de53db6c7aa8c1 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 6 Sep 2019 17:42:19 +0800
-Subject: [PATCH 16/30] clutter/stage-cogl: Use portable formatting for 64-bit
+Subject: [PATCH 16/43] clutter/stage-cogl: Use portable formatting for 64-bit
  integers
 
 On 64-bit systems int64_t is %ld but on 32-bit systems it is %lld.

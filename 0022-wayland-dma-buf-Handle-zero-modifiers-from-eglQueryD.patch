@@ -1,7 +1,7 @@
 From 031003a5dc8b7f42588196735820028e3cdf2158 Mon Sep 17 00:00:00 2001
 From: Adam Jackson <ajax@redhat.com>
 Date: Fri, 6 Sep 2019 14:45:55 -0400
-Subject: [PATCH 22/30] wayland/dma-buf: Handle zero modifiers from
+Subject: [PATCH 22/43] wayland/dma-buf: Handle zero modifiers from
  eglQueryDmaBufModifiersEXT
 
 Some drivers expose EGL_EXT_image_dma_buf_import_modifiers so you can

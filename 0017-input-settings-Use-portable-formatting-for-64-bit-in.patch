@@ -1,7 +1,7 @@
 From 594cc7c7d61945a82d10b30d54043c7abda0f9bb Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 6 Sep 2019 17:47:13 +0800
-Subject: [PATCH 17/30] input-settings: Use portable formatting for 64-bit
+Subject: [PATCH 17/43] input-settings: Use portable formatting for 64-bit
  integers
 
 On 64-bit systems int64_t is %lx but on 32-bit systems it is %llx.

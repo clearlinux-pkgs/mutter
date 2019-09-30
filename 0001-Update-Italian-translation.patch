@@ -1,7 +1,7 @@
 From e16b75a0b7c2b183b3a7ec68eedbae0c5a3e83b7 Mon Sep 17 00:00:00 2001
 From: Milo Casagrande <milo@ubuntu.com>
 Date: Tue, 10 Sep 2019 08:57:05 +0000
-Subject: [PATCH 01/30] Update Italian translation
+Subject: [PATCH 01/43] Update Italian translation
 
 ---
  po/it.po | 94 +++++++++++++++++++++-----------------------------------
