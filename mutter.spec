@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.34.1
-Release  : 66
+Release  : 67
 URL      : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.1.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.1.tar.xz
 Summary  : Mutter window manager library
@@ -58,6 +58,7 @@ BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xtst)
 BuildRequires : startup-notification-dev
 BuildRequires : sysprof-dev
+BuildRequires : sysprof-staticdev
 BuildRequires : wayland-dev
 BuildRequires : xorg-server
 BuildRequires : zenity
@@ -157,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570644501
+export SOURCE_DATE_EPOCH=1570649807
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -166,7 +167,7 @@ export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-ob
 export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dprofiler=false  builddir
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
 
 %install

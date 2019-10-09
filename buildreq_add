@@ -8,3 +8,5 @@ gobject-introspection
 wayland-dev
 xorg-server
 gnome-settings-daemon-dev
+sysprof-dev
+sysprof-staticdev
