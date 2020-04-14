@@ -4,10 +4,10 @@
 #
 Name     : mutter
 Version  : 3.34.3
-Release  : 70
+Release  : 71
 URL      : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.3.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.34/mutter-3.34.3.tar.xz
-Summary  : A window manager for GNOME
+Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
@@ -29,7 +29,9 @@ BuildRequires : gnome-settings-daemon-dev
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gsettings-desktop-schemas
+BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : hicolor-icon-theme
+BuildRequires : libXtst-dev
 BuildRequires : libgudev-dev
 BuildRequires : libwacom-dev
 BuildRequires : pipewire-dev
@@ -45,6 +47,7 @@ BuildRequires : pkgconfig(libinput)
 BuildRequires : pkgconfig(libpipewire-0.2)
 BuildRequires : pkgconfig(libwacom)
 BuildRequires : pkgconfig(sm)
+BuildRequires : pkgconfig(sysprof-capture-3)
 BuildRequires : pkgconfig(upower-glib)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb-randr)
@@ -98,7 +101,6 @@ Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
 Provides: mutter-devel = %{version}-%{release}
 Requires: mutter = %{version}-%{release}
-Requires: mutter = %{version}-%{release}
 
 %description dev
 dev components for the mutter package.
@@ -148,6 +150,15 @@ Group: Default
 man components for the mutter package.
 
 
+%package tests
+Summary: tests components for the mutter package.
+Group: Default
+Requires: mutter = %{version}-%{release}
+
+%description tests
+tests components for the mutter package.
+
+
 %prep
 %setup -q -n mutter-3.34.3
 cd %{_builddir}/mutter-3.34.3
@@ -157,15 +168,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578330348
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1586892027
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
@@ -219,25 +229,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/share/gnome-control-center/keybindings/50-mutter-system.xml
 /usr/share/gnome-control-center/keybindings/50-mutter-wayland.xml
 /usr/share/gnome-control-center/keybindings/50-mutter-windows.xml
-/usr/share/installed-tests/mutter-5/mutter-all.test
-/usr/share/installed-tests/mutter-5/mutter-cogl.test
-/usr/share/mutter-5/tests/stacking/basic-wayland.metatest
-/usr/share/mutter-5/tests/stacking/basic-x11.metatest
-/usr/share/mutter-5/tests/stacking/client-side-decorated.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parent.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parents.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent-delayed-focus-default-cancelled.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents-queued-default-focus-destroyed.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient-only-take-focus-parents.metatest
-/usr/share/mutter-5/tests/stacking/closed-transient.metatest
-/usr/share/mutter-5/tests/stacking/minimized.metatest
-/usr/share/mutter-5/tests/stacking/mixed-windows.metatest
-/usr/share/mutter-5/tests/stacking/override-redirect.metatest
-/usr/share/mutter-5/tests/stacking/set-override-redirect-parent.metatest
-/usr/share/mutter-5/tests/stacking/set-parent-exported.metatest
-/usr/share/mutter-5/tests/stacking/set-parent.metatest
 
 %files dev
 %defattr(-,root,root,-)
@@ -514,14 +505,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files libexec
 %defattr(-,root,root,-)
-/usr/libexec/installed-tests/mutter-5/cogl/conform/config.env
-/usr/libexec/installed-tests/mutter-5/cogl/conform/run-tests.sh
-/usr/libexec/installed-tests/mutter-5/cogl/conform/test-conformance
-/usr/libexec/installed-tests/mutter-5/cogl/conform/unit-tests
-/usr/libexec/installed-tests/mutter-5/mutter-headless-start-test
-/usr/libexec/installed-tests/mutter-5/mutter-test-client
-/usr/libexec/installed-tests/mutter-5/mutter-test-runner
-/usr/libexec/installed-tests/mutter-5/mutter-test-unit-tests
 /usr/libexec/mutter-restart-helper
 
 %files license
@@ -531,6 +514,36 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/mutter.1
+
+%files tests
+%defattr(-,root,root,-)
+/usr/libexec/installed-tests/mutter-5/cogl/conform/config.env
+/usr/libexec/installed-tests/mutter-5/cogl/conform/run-tests.sh
+/usr/libexec/installed-tests/mutter-5/cogl/conform/test-conformance
+/usr/libexec/installed-tests/mutter-5/cogl/conform/unit-tests
+/usr/libexec/installed-tests/mutter-5/mutter-headless-start-test
+/usr/libexec/installed-tests/mutter-5/mutter-test-client
+/usr/libexec/installed-tests/mutter-5/mutter-test-runner
+/usr/libexec/installed-tests/mutter-5/mutter-test-unit-tests
+/usr/share/installed-tests/mutter-5/mutter-all.test
+/usr/share/installed-tests/mutter-5/mutter-cogl.test
+/usr/share/mutter-5/tests/stacking/basic-wayland.metatest
+/usr/share/mutter-5/tests/stacking/basic-x11.metatest
+/usr/share/mutter-5/tests/stacking/client-side-decorated.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parent.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent-delayed-focus-default-cancelled.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents-queued-default-focus-destroyed.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-only-take-focus-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient.metatest
+/usr/share/mutter-5/tests/stacking/minimized.metatest
+/usr/share/mutter-5/tests/stacking/mixed-windows.metatest
+/usr/share/mutter-5/tests/stacking/override-redirect.metatest
+/usr/share/mutter-5/tests/stacking/set-override-redirect-parent.metatest
+/usr/share/mutter-5/tests/stacking/set-parent-exported.metatest
+/usr/share/mutter-5/tests/stacking/set-parent.metatest
 
 %files locales -f mutter.lang
 %defattr(-,root,root,-)

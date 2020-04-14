@@ -1,0 +1,17 @@
+/usr/share/mutter-5/tests/stacking/basic-wayland.metatest
+/usr/share/mutter-5/tests/stacking/basic-x11.metatest
+/usr/share/mutter-5/tests/stacking/client-side-decorated.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parent.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-no-take-focus-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent-delayed-focus-default-cancelled.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parent.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents-queued-default-focus-destroyed.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-no-input-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient-only-take-focus-parents.metatest
+/usr/share/mutter-5/tests/stacking/closed-transient.metatest
+/usr/share/mutter-5/tests/stacking/minimized.metatest
+/usr/share/mutter-5/tests/stacking/mixed-windows.metatest
+/usr/share/mutter-5/tests/stacking/override-redirect.metatest
+/usr/share/mutter-5/tests/stacking/set-override-redirect-parent.metatest
+/usr/share/mutter-5/tests/stacking/set-parent-exported.metatest
+/usr/share/mutter-5/tests/stacking/set-parent.metatest
