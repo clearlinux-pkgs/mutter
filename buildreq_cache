@@ -1,10 +1,5 @@
-3.34.3
-gnome-settings-daemon-dev
-gsettings-desktop-schemas-dev
-libXtst-dev
+3.36.1
 libwacom-dev
-pipewire-dev
-pkgconfig(libpipewire-0.2)
+pkgconfig(graphene-gobject-1.0)
+pkgconfig(libpipewire-0.3)
 pkgconfig(libwacom)
-pkgconfig(sysprof-capture-3)
-sysprof-dev
