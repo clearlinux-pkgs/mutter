@@ -1,5 +1,6 @@
-3.36.5
+3.38.0
 libwacom-dev
 pkgconfig(graphene-gobject-1.0)
 pkgconfig(libpipewire-0.3)
 pkgconfig(libwacom)
+pkgconfig(sysprof-capture-4)
