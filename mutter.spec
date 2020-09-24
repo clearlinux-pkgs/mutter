@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 3.38.0
-Release  : 77
+Release  : 78
 URL      : https://download.gnome.org/sources/mutter/3.38/mutter-3.38.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/3.38/mutter-3.38.0.tar.xz
 Summary  : Mutter window manager library
