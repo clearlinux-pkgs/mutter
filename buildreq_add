@@ -1,12 +1,16 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-startup-notification-dev
-libgudev-dev
-zenity
-gobject-introspection-dev
-gobject-introspection
-wayland-dev
-xorg-server
 gnome-settings-daemon-dev
+gobject-introspection-dev
+libgudev-dev
+libwacom-dev
+pkgconfig(graphene-gobject-1.0)
+pkgconfig(libpipewire-0.3)
+pkgconfig(libwacom)
+pkgconfig(sysprof-capture-4)
+startup-notification-dev
 sysprof-dev
 sysprof-staticdev
+wayland-dev
+xorg-server
+zenity
