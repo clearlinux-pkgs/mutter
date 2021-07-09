@@ -14,3 +14,4 @@ sysprof-staticdev
 wayland-dev
 xorg-server
 zenity
+xwayland

@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 40.2.1
-Release  : 87
+Release  : 88
 URL      : https://download.gnome.org/sources/mutter/40/mutter-40.2.1.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/40/mutter-40.2.1.tar.xz
 Summary  : Mutter window manager library
@@ -22,6 +22,7 @@ Requires: gnome-session
 Requires: gnome-settings-daemon
 Requires: gsettings-desktop-schemas
 Requires: hicolor-icon-theme
+Requires: xwayland
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gnome-session
@@ -53,11 +54,13 @@ BuildRequires : pkgconfig(xcursor)
 BuildRequires : pkgconfig(xkbfile)
 BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xtst)
+BuildRequires : pkgconfig(xwayland)
 BuildRequires : startup-notification-dev
 BuildRequires : sysprof-dev
 BuildRequires : sysprof-staticdev
 BuildRequires : wayland-dev
 BuildRequires : xorg-server
+BuildRequires : xwayland
 BuildRequires : zenity
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -175,7 +178,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623800600
+export SOURCE_DATE_EPOCH=1625843972
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
