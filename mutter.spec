@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 40.3
-Release  : 89
+Release  : 90
 URL      : https://download.gnome.org/sources/mutter/40/mutter-40.3.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/40/mutter-40.3.tar.xz
 Summary  : Mutter window manager library
@@ -172,27 +172,33 @@ tests components for the mutter package.
 %prep
 %setup -q -n mutter-40.3
 cd %{_builddir}/mutter-40.3
+pushd ..
+cp -a mutter-40.3 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1626186765
+export SOURCE_DATE_EPOCH=1626190036
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -Os -falign-functions=32 -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mutter
 cp %{_builddir}/mutter-40.3/COPYING %{buildroot}/usr/share/package-licenses/mutter/4cc77b90af91e615a64ae04893fdffa7939db84c
+DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang mutter
 ## Remove excluded files
@@ -212,6 +218,18 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/haswell/mutter-8/Cally-8.gir
+/usr/lib64/haswell/mutter-8/Cally-8.typelib
+/usr/lib64/haswell/mutter-8/Clutter-8.gir
+/usr/lib64/haswell/mutter-8/Clutter-8.typelib
+/usr/lib64/haswell/mutter-8/ClutterX11-8.gir
+/usr/lib64/haswell/mutter-8/ClutterX11-8.typelib
+/usr/lib64/haswell/mutter-8/Cogl-8.gir
+/usr/lib64/haswell/mutter-8/Cogl-8.typelib
+/usr/lib64/haswell/mutter-8/CoglPango-8.gir
+/usr/lib64/haswell/mutter-8/CoglPango-8.typelib
+/usr/lib64/haswell/mutter-8/Meta-8.gir
+/usr/lib64/haswell/mutter-8/Meta-8.typelib
 /usr/lib64/mutter-8/Cally-8.gir
 /usr/lib64/mutter-8/Cally-8.typelib
 /usr/lib64/mutter-8/Clutter-8.gir
@@ -484,6 +502,12 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/include/mutter-8/meta/util.h
 /usr/include/mutter-8/meta/window.h
 /usr/include/mutter-8/meta/workspace.h
+/usr/lib64/haswell/libmutter-8.so
+/usr/lib64/haswell/pkgconfig/libmutter-8.pc
+/usr/lib64/haswell/pkgconfig/mutter-clutter-8.pc
+/usr/lib64/haswell/pkgconfig/mutter-clutter-x11-8.pc
+/usr/lib64/haswell/pkgconfig/mutter-cogl-8.pc
+/usr/lib64/haswell/pkgconfig/mutter-cogl-pango-8.pc
 /usr/lib64/libmutter-8.so
 /usr/lib64/pkgconfig/libmutter-8.pc
 /usr/lib64/pkgconfig/mutter-clutter-8.pc
@@ -493,6 +517,18 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/haswell/libmutter-8.so.0
+/usr/lib64/haswell/libmutter-8.so.0.0.0
+/usr/lib64/haswell/mutter-8/libmutter-clutter-8.so
+/usr/lib64/haswell/mutter-8/libmutter-clutter-8.so.0
+/usr/lib64/haswell/mutter-8/libmutter-clutter-8.so.0.0.0
+/usr/lib64/haswell/mutter-8/libmutter-cogl-8.so
+/usr/lib64/haswell/mutter-8/libmutter-cogl-8.so.0
+/usr/lib64/haswell/mutter-8/libmutter-cogl-8.so.0.0.0
+/usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so
+/usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so.0
+/usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so.0.0.0
+/usr/lib64/haswell/mutter-8/plugins/libdefault.so
 /usr/lib64/libmutter-8.so.0
 /usr/lib64/libmutter-8.so.0.0.0
 /usr/lib64/mutter-8/libmutter-clutter-8.so
