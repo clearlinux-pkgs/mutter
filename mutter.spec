@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 40.3
-Release  : 90
+Release  : 92
 URL      : https://download.gnome.org/sources/mutter/40/mutter-40.3.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/40/mutter-40.3.tar.xz
 Summary  : Mutter window manager library
@@ -181,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1626190036
+export SOURCE_DATE_EPOCH=1626283504
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -528,7 +528,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so
 /usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so.0
 /usr/lib64/haswell/mutter-8/libmutter-cogl-pango-8.so.0.0.0
-/usr/lib64/haswell/mutter-8/plugins/libdefault.so
 /usr/lib64/libmutter-8.so.0
 /usr/lib64/libmutter-8.so.0.0.0
 /usr/lib64/mutter-8/libmutter-clutter-8.so
