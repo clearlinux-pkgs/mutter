@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 40.4
-Release  : 95
+Release  : 96
 URL      : https://download.gnome.org/sources/mutter/40/mutter-40.4.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/40/mutter-40.4.tar.xz
 Summary  : Mutter window manager library
@@ -175,16 +175,13 @@ cd %{_builddir}/mutter-40.4
 pushd ..
 cp -a mutter-40.4 buildavx2
 popd
-pushd ..
-cp -a mutter-40.4 buildavx512
-popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629298795
+export SOURCE_DATE_EPOCH=1629392773
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -197,13 +194,10 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain   builddiravx2
 ninja -v -C builddiravx2
-CFLAGS="$CFLAGS -m64 -march=skylake-avx512" CXXFLAGS="$CXXFLAGS -m64 -march=skylake-avx512 " LDFLAGS="$LDFLAGS -m64 -march=skylake-avx512" meson --libdir=lib64/haswell/avx512_1 --prefix=/usr --buildtype=plain   builddiravx512
-ninja -v -C builddiravx512
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mutter
 cp %{_builddir}/mutter-40.4/COPYING %{buildroot}/usr/share/package-licenses/mutter/4cc77b90af91e615a64ae04893fdffa7939db84c
-DESTDIR=%{buildroot} ninja -C builddiravx512 install
 DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang mutter
@@ -224,18 +218,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/haswell/avx512_1/mutter-8/Cally-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/Cally-8.typelib
-/usr/lib64/haswell/avx512_1/mutter-8/Clutter-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/Clutter-8.typelib
-/usr/lib64/haswell/avx512_1/mutter-8/ClutterX11-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/ClutterX11-8.typelib
-/usr/lib64/haswell/avx512_1/mutter-8/Cogl-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/Cogl-8.typelib
-/usr/lib64/haswell/avx512_1/mutter-8/CoglPango-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/CoglPango-8.typelib
-/usr/lib64/haswell/avx512_1/mutter-8/Meta-8.gir
-/usr/lib64/haswell/avx512_1/mutter-8/Meta-8.typelib
 /usr/lib64/haswell/mutter-8/Cally-8.gir
 /usr/lib64/haswell/mutter-8/Cally-8.typelib
 /usr/lib64/haswell/mutter-8/Clutter-8.gir
@@ -521,12 +503,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/include/mutter-8/meta/util.h
 /usr/include/mutter-8/meta/window.h
 /usr/include/mutter-8/meta/workspace.h
-/usr/lib64/haswell/avx512_1/libmutter-8.so
-/usr/lib64/haswell/avx512_1/pkgconfig/libmutter-8.pc
-/usr/lib64/haswell/avx512_1/pkgconfig/mutter-clutter-8.pc
-/usr/lib64/haswell/avx512_1/pkgconfig/mutter-clutter-x11-8.pc
-/usr/lib64/haswell/avx512_1/pkgconfig/mutter-cogl-8.pc
-/usr/lib64/haswell/avx512_1/pkgconfig/mutter-cogl-pango-8.pc
 /usr/lib64/haswell/libmutter-8.so
 /usr/lib64/haswell/pkgconfig/libmutter-8.pc
 /usr/lib64/haswell/pkgconfig/mutter-clutter-8.pc
@@ -542,14 +518,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/haswell/avx512_1/libmutter-8.so.0
-/usr/lib64/haswell/avx512_1/libmutter-8.so.0.0.0
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-clutter-8.so
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-clutter-8.so.0
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-clutter-8.so.0.0.0
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-cogl-8.so
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-cogl-8.so.0
-/usr/lib64/haswell/avx512_1/mutter-8/libmutter-cogl-8.so.0.0.0
 /usr/lib64/haswell/libmutter-8.so.0
 /usr/lib64/haswell/libmutter-8.so.0.0.0
 /usr/lib64/haswell/mutter-8/libmutter-clutter-8.so
