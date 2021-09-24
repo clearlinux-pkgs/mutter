@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 41.0
-Release  : 97
+Release  : 98
 URL      : https://download.gnome.org/sources/mutter/41/mutter-41.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/41/mutter-41.0.tar.xz
 Summary  : Mutter window manager library
@@ -173,16 +173,13 @@ tests components for the mutter package.
 %prep
 %setup -q -n mutter-41.0
 cd %{_builddir}/mutter-41.0
-pushd ..
-cp -a mutter-41.0 buildavx2
-popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1632496426
+export SOURCE_DATE_EPOCH=1632506954
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -193,13 +190,10 @@ export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=a
 export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
-CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain   builddiravx2
-ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mutter
 cp %{_builddir}/mutter-41.0/COPYING %{buildroot}/usr/share/package-licenses/mutter/4cc77b90af91e615a64ae04893fdffa7939db84c
-DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang mutter
 ## Remove excluded files
@@ -219,16 +213,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/haswell/mutter-9/Cally-9.gir
-/usr/lib64/haswell/mutter-9/Cally-9.typelib
-/usr/lib64/haswell/mutter-9/Clutter-9.gir
-/usr/lib64/haswell/mutter-9/Clutter-9.typelib
-/usr/lib64/haswell/mutter-9/Cogl-9.gir
-/usr/lib64/haswell/mutter-9/Cogl-9.typelib
-/usr/lib64/haswell/mutter-9/CoglPango-9.gir
-/usr/lib64/haswell/mutter-9/CoglPango-9.typelib
-/usr/lib64/haswell/mutter-9/Meta-9.gir
-/usr/lib64/haswell/mutter-9/Meta-9.typelib
 /usr/lib64/mutter-9/Cally-9.gir
 /usr/lib64/mutter-9/Cally-9.typelib
 /usr/lib64/mutter-9/Clutter-9.gir
@@ -502,12 +486,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/include/mutter-9/meta/util.h
 /usr/include/mutter-9/meta/window.h
 /usr/include/mutter-9/meta/workspace.h
-/usr/lib64/haswell/libmutter-9.so
-/usr/lib64/haswell/pkgconfig/libmutter-9.pc
-/usr/lib64/haswell/pkgconfig/libmutter-test-9.pc
-/usr/lib64/haswell/pkgconfig/mutter-clutter-9.pc
-/usr/lib64/haswell/pkgconfig/mutter-cogl-9.pc
-/usr/lib64/haswell/pkgconfig/mutter-cogl-pango-9.pc
 /usr/lib64/libmutter-9.so
 /usr/lib64/libmutter-test-9.so
 /usr/lib64/pkgconfig/libmutter-9.pc
@@ -518,17 +496,6 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/haswell/libmutter-9.so.0
-/usr/lib64/haswell/libmutter-9.so.0.0.0
-/usr/lib64/haswell/mutter-9/libmutter-clutter-9.so
-/usr/lib64/haswell/mutter-9/libmutter-clutter-9.so.0
-/usr/lib64/haswell/mutter-9/libmutter-clutter-9.so.0.0.0
-/usr/lib64/haswell/mutter-9/libmutter-cogl-9.so
-/usr/lib64/haswell/mutter-9/libmutter-cogl-9.so.0
-/usr/lib64/haswell/mutter-9/libmutter-cogl-9.so.0.0.0
-/usr/lib64/haswell/mutter-9/libmutter-cogl-pango-9.so
-/usr/lib64/haswell/mutter-9/libmutter-cogl-pango-9.so.0
-/usr/lib64/haswell/mutter-9/libmutter-cogl-pango-9.so.0.0.0
 /usr/lib64/libmutter-9.so.0
 /usr/lib64/libmutter-9.so.0.0.0
 /usr/lib64/mutter-9/libmutter-clutter-9.so
