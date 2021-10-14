@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 41.0
-Release  : 100
+Release  : 101
 URL      : https://download.gnome.org/sources/mutter/41/mutter-41.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/41/mutter-41.0.tar.xz
 Summary  : Mutter window manager library
@@ -13,6 +13,7 @@ License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
+Requires: mutter-filemap = %{version}-%{release}
 Requires: mutter-lib = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
@@ -82,6 +83,7 @@ Requires: mutter-data = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
+Requires: mutter-filemap = %{version}-%{release}
 
 %description bin
 bin components for the mutter package.
@@ -116,12 +118,21 @@ Requires: mutter = %{version}-%{release}
 dev components for the mutter package.
 
 
+%package filemap
+Summary: filemap components for the mutter package.
+Group: Default
+
+%description filemap
+filemap components for the mutter package.
+
+
 %package lib
 Summary: lib components for the mutter package.
 Group: Libraries
 Requires: mutter-data = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
+Requires: mutter-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mutter package.
@@ -132,6 +143,7 @@ Summary: libexec components for the mutter package.
 Group: Default
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
+Requires: mutter-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the mutter package.
@@ -173,13 +185,16 @@ tests components for the mutter package.
 %prep
 %setup -q -n mutter-41.0
 cd %{_builddir}/mutter-41.0
+pushd ..
+cp -a mutter-41.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633820269
+export SOURCE_DATE_EPOCH=1634226100
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -190,26 +205,30 @@ export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=a
 export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mutter
 cp %{_builddir}/mutter-41.0/COPYING %{buildroot}/usr/share/package-licenses/mutter/4cc77b90af91e615a64ae04893fdffa7939db84c
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang mutter
 ## Remove excluded files
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Cally-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Cally-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Clutter-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Clutter-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/mutter/ClutterX11-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/ClutterX11-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Cogl-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Cogl-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/mutter/CoglPango-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/CoglPango-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Meta-2.gir
-rm -f %{buildroot}/usr/lib64/haswell/mutter/Meta-2.typelib
-rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cally-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cally-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Clutter-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Clutter-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/ClutterX11-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/ClutterX11-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cogl-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cogl-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/CoglPango-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/CoglPango-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.gir
+rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.typelib
+rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -227,6 +246,7 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/mutter
+/usr/share/clear/optimized-elf/bin*
 
 %files config
 %defattr(-,root,root,-)
@@ -494,6 +514,10 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/lib64/pkgconfig/mutter-cogl-9.pc
 /usr/lib64/pkgconfig/mutter-cogl-pango-9.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-mutter
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libmutter-9.so.0
@@ -508,10 +532,12 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/lib64/mutter-9/libmutter-cogl-pango-9.so.0
 /usr/lib64/mutter-9/libmutter-cogl-pango-9.so.0.0.0
 /usr/lib64/mutter-9/plugins/libdefault.so
+/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
 /usr/libexec/mutter-restart-helper
+/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
@@ -547,6 +573,7 @@ rm -f %{buildroot}/usr/lib64/haswell/libmutter-2.so
 /usr/libexec/installed-tests/mutter-9/wayland-test-clients/subsurface-remap-toplevel
 /usr/libexec/installed-tests/mutter-9/wayland-test-clients/subsurface-reparenting
 /usr/libexec/installed-tests/mutter-9/wayland-test-clients/xdg-apply-limits
+/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/mutter-9/mutter-all.test
 /usr/share/installed-tests/mutter-9/mutter-cogl.test
 
