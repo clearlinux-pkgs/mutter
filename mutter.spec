@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 42.2
-Release  : 111
+Release  : 112
 URL      : https://download.gnome.org/sources/mutter/42/mutter-42.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/42/mutter-42.2.tar.xz
 Summary  : Mutter window manager library
@@ -192,7 +192,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653929558
+export SOURCE_DATE_EPOCH=1656394990
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -226,7 +226,7 @@ rm -f %{buildroot}*/usr/lib64/haswell/mutter/CoglPango-2.typelib
 rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.gir
 rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.typelib
 rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -506,6 +506,8 @@ rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
 /usr/include/mutter-10/meta/util.h
 /usr/include/mutter-10/meta/window.h
 /usr/include/mutter-10/meta/workspace.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-10.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-test-10.so
 /usr/lib64/libmutter-10.so
 /usr/lib64/libmutter-test-10.so
 /usr/lib64/pkgconfig/libmutter-10.pc
@@ -520,6 +522,8 @@ rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-10.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-10.so.0.0.0
 /usr/lib64/libmutter-10.so.0
 /usr/lib64/libmutter-10.so.0.0.0
 /usr/lib64/mutter-10/libmutter-clutter-10.so
@@ -532,7 +536,6 @@ rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
 /usr/lib64/mutter-10/libmutter-cogl-pango-10.so.0
 /usr/lib64/mutter-10/libmutter-cogl-pango-10.so.0.0.0
 /usr/lib64/mutter-10/plugins/libdefault.so
-/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
