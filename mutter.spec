@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 42.2
-Release  : 112
+Release  : 113
 URL      : https://download.gnome.org/sources/mutter/42/mutter-42.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/42/mutter-42.2.tar.xz
 Summary  : Mutter window manager library
@@ -192,7 +192,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656394990
+export SOURCE_DATE_EPOCH=1656713926
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -536,6 +536,7 @@ rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
 /usr/lib64/mutter-10/libmutter-cogl-pango-10.so.0
 /usr/lib64/mutter-10/libmutter-cogl-pango-10.so.0.0.0
 /usr/lib64/mutter-10/plugins/libdefault.so
+/usr/share/clear/optimized-elf/other*
 
 %files libexec
 %defattr(-,root,root,-)
