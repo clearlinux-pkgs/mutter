@@ -650,6 +650,7 @@ libmutter-10.so.0:meta_wayland_client_show_in_window_list
 libmutter-10.so.0:meta_wayland_client_spawn
 libmutter-10.so.0:meta_wayland_client_spawnv
 libmutter-10.so.0:meta_wayland_compositor_get_default
+libmutter-10.so.0:meta_wayland_compositor_get_xwayland_manager
 libmutter-10.so.0:meta_wayland_get_public_xwayland_display_name
 libmutter-10.so.0:meta_wayland_get_wayland_display_name
 libmutter-10.so.0:meta_wayland_override_display_name
@@ -829,6 +830,7 @@ libmutter-10.so.0:meta_x11_error_trap_pop_with_return
 libmutter-10.so.0:meta_x11_error_trap_push
 libmutter-10.so.0:meta_x11_init_gdk_display
 libmutter-10.so.0:meta_xwayland_override_display_number
+libmutter-10.so.0:meta_xwayland_signal
 libmutter-test-10.so:meta_async_waiter_destroy
 libmutter-test-10.so:meta_async_waiter_new
 libmutter-test-10.so:meta_async_waiter_process_x11_event
