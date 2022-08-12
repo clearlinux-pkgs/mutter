@@ -1,4 +1,4 @@
-42.3
+42.4
 pkgconfig(wayland-protocols)
 pkgconfig(xwayland)
 xvfb-run

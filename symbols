@@ -636,6 +636,7 @@ libmutter-10.so.0:meta_verify_monitor_mode_spec
 libmutter-10.so.0:meta_verify_monitor_spec
 libmutter-10.so.0:meta_verify_monitors_config
 libmutter-10.so.0:meta_virtual_modifier_get_type
+libmutter-10.so.0:meta_virtual_monitor_get_crtc_mode
 libmutter-10.so.0:meta_virtual_monitor_get_output
 libmutter-10.so.0:meta_virtual_monitor_info_free
 libmutter-10.so.0:meta_virtual_monitor_info_new
@@ -673,7 +674,6 @@ libmutter-10.so.0:meta_window_allows_move
 libmutter-10.so.0:meta_window_allows_resize
 libmutter-10.so.0:meta_window_appears_focused
 libmutter-10.so.0:meta_window_begin_grab_op
-libmutter-10.so.0:meta_window_calculate_main_logical_monitor
 libmutter-10.so.0:meta_window_can_close
 libmutter-10.so.0:meta_window_can_maximize
 libmutter-10.so.0:meta_window_can_minimize
@@ -685,6 +685,7 @@ libmutter-10.so.0:meta_window_client_rect_to_frame_rect
 libmutter-10.so.0:meta_window_client_type_get_type
 libmutter-10.so.0:meta_window_compute_group
 libmutter-10.so.0:meta_window_delete
+libmutter-10.so.0:meta_window_find_monitor_from_frame_rect
 libmutter-10.so.0:meta_window_find_root_ancestor
 libmutter-10.so.0:meta_window_focus
 libmutter-10.so.0:meta_window_foreach_ancestor
