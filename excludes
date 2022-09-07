@@ -1,15 +1,2 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
-/usr/lib64/haswell/mutter/Cally-2.gir
-/usr/lib64/haswell/mutter/Cally-2.typelib
-/usr/lib64/haswell/mutter/Clutter-2.gir
-/usr/lib64/haswell/mutter/Clutter-2.typelib
-/usr/lib64/haswell/mutter/ClutterX11-2.gir
-/usr/lib64/haswell/mutter/ClutterX11-2.typelib
-/usr/lib64/haswell/mutter/Cogl-2.gir
-/usr/lib64/haswell/mutter/Cogl-2.typelib
-/usr/lib64/haswell/mutter/CoglPango-2.gir
-/usr/lib64/haswell/mutter/CoglPango-2.typelib
-/usr/lib64/haswell/mutter/Meta-2.gir
-/usr/lib64/haswell/mutter/Meta-2.typelib
-/usr/lib64/haswell/libmutter-2.so

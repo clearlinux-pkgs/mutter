@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 42.4
-Release  : 118
+Release  : 119
 URL      : https://download.gnome.org/sources/mutter/42/mutter-42.4.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/42/mutter-42.4.tar.xz
 Summary  : Mutter window manager library
@@ -192,7 +192,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1660316030
+export SOURCE_DATE_EPOCH=1662577009
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -212,20 +212,6 @@ cp %{_builddir}/mutter-%{version}/COPYING %{buildroot}/usr/share/package-license
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang mutter
-## Remove excluded files
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cally-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cally-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Clutter-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Clutter-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/ClutterX11-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/ClutterX11-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cogl-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Cogl-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/CoglPango-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/CoglPango-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.gir
-rm -f %{buildroot}*/usr/lib64/haswell/mutter/Meta-2.typelib
-rm -f %{buildroot}*/usr/lib64/haswell/libmutter-2.so
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
