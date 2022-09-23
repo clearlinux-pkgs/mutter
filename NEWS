@@ -1,49 +1,138 @@
-42.4
+43.0
 ====
-* screencast: Set correct stride when using dmabufs [Pascal; !2514]
-* Fix glitches in apps using subsurfaces [Robert; !2501, !2530]
-* Reduce client work when entering overview [Robert; !2502]
-* Highlight actors becoming reactive under the pointer [Carlos; !2533]
-* Fall back to ARGB if XRGB is not supported [Daniel; !2519]
-* Support direct scanout on GPUs without modifiers support [Dor; !2510]
-* Fix registering as X11 window manager if GDK_BACKEND is set [Michel; !2496]
-* Fixed crash [Jonas Å.; !2554]
-* Plugged leak [Sebastian; !2497]
-* Misc. bug fixes and cleanups [Jonas D., Dor; !2348, !2406]
+* Fix stuttering in Xorg session [Daniel; !2625]
+* Make MetaBarrier type derivable again [Jonas; !2626]
+* Fixes crash [Jonas; !2622]
 
 Contributors:
-  Dor Askayo, Jonas Dreßler, Michel Dänzer, Carlos Garnacho, Sebastian Keller,
-  Robert Mader, Pascal Nowack, Daniel van Vugt, Jonas Ådahl
-
-42.3
-====
-* wayland: Fix rotation transform [Robert; !1055]
-* Fix dma-buf screencast regression [Jonas; !2462]
-* Fix monitor mirroring in some cases [Jonas; !2492]
-* Fixed crash [Jonas; !2364]
-* Plugged leak [Michel; !2469]
-
-Contributors:
-  Michel Dänzer, Robert Mader, Jonas Ådahl
-
-42.2
-====
-* Don't use direct scanout for transparent windows [Sebastian; !2409]
-* Fix initialization of privacy mode in displays that support it [Marco; !2372]
-* Fix --replace again [Jonas; !2432]
-* Improve picking a window for direct scanout [Sebastian; !2413]
-* Do not allow windows to steal focus when the shell has a grab [Carlos; !2433]
-* Fix night light without GAMMA_LUT property [Jonas; !2435]
-* Fixed crash [Jonas; !2415]
-* Misc. bug fixes [Jonas, Kazuki, Sebastian, Florian; !2403, !2405,
-  !2414, !2436]
-
-Contributors:
-  Marco Trevisan (Treviño), Carlos Garnacho, Kazuki Hashimoto, Sebastian Keller,
-  Florian Müllner, Jonas Ådahl
+  Daniel van Vugt, Jonas Ådahl
 
 Translators:
-  Pawan Chitrakar [ne]
+  Aleksandr Melman [ru], Fran Dieguez [gl], Daniel Mustieles [es],
+  Aurimas Černius [lt], Matej Urbančič [sl], Leônidas Araújo [pt_BR],
+  Kukuh Syafaat [id], Sveinn í Felli [is], Zurab Kargareteli [ka],
+  Rūdolfs Mazurs [lv], Yosef Or Boczko [he], Alexander Shopov [bg],
+  Alan Mortensen [da]
+
+43.rc
+=====
+* Remember monitor scale when switching configurations [Jonas Å.; !2479]
+* Embed wayland output name into screencast streams [Salman; !2540]
+* Limit precision of stored refresh rates [Daniel; !2465, !2602]
+* Add support for the "max bpc" connector property [Daniel; !2412]
+* Fix focus-tracking corner case [Jonas D.; !2329]
+* Add detail to ::event signal [Jonas D.; !2431]
+* Improve heuristics for adding fallback monitor modes [Mario; !2586]
+* Take over color management from gnome-settings-daemon
+  [Jonas Å.; !2141, !2164, !2165, !2166, !2568]
+* Allow scanout for offscreen rotated views [Robert; !2468]
+* Fix hot corner regression on X11 [Jonas Å.; !2604]
+* Fix losing IM focus in some circumstances [Carlos; !2585]
+* Avoid swapping redundant portions of buffers onscreen [Erico; !2241]
+* Animate windows moving between monitors [Alessandro; !2558]
+* Make NVIDIA + gbm use atomic mode setting [Jonas Å.; !2578]
+* Fixed crashes [Jonas Å., Steev, Carlos, Simon; !2554, !2577, !2592, !2182,
+  !2609, !2612]
+* Plugged memory leak [Alessandro; !2608]
+* Misc. bug fixes and cleanups [Florian, Carlos, Jordan, Simon, Jonas Å.,
+  Jonas D., Daniel, Sebastian K., Alberts, Bilal, Dor, Sebastian W.; !2566,
+  !2573, !2576, !2534, !2581, !2430, !2561, !2584, !2588, !2551, !2552, !2594,
+  !2596, !2598, !2601, !2603, !2589, !2587, !2375, !2486, !2606, !1354, !2605,
+  !2611]
+
+Contributors:
+  Dor Askayo, Alessandro Bono, Jonas Dreßler, Bilal Elmoussaoui,
+  Carlos Garnacho, Sebastian Keller, Steev Klimaszewski, Mario Limonciello,
+  Robert Mader, Salman Malik, Simon McVittie, Alberts Muktupāvels,
+  Florian Müllner, Erico Nunes, Jordan Petridis, Daniel van Vugt,
+  Sebastian Wick, Jonas Ådahl
+
+Translators:
+  Nart Tlisha [ab], Jiri Grönroos [fi], Goran Vidović [hr],
+  Yuri Chornoivan [uk], Jordi Mas [ca], Marek Černocký [cs], Balázs Úr [hu],
+  Emin Tufan Çetin [tr], Danial Behzadi [fa], Piotr Drąg [pl],
+  Rūdolfs Mazurs [lv], Hugo Carvalho [pt], Anders Jonsson [sv],
+  Boyuan Yang [zh_CN], Asier Sarasua Garmendia [eu]
+
+43.beta
+=======
+* Fix glitches in apps using subsurfaces [Robert; !2501, !2530]
+* Reduce client work when entering overview [Robert; !2502]
+* Support direct scanout on GPUs without modifiers support [Dor; !2510]
+* screencast: Set correct stride when using dmabufs [Pascal; !2513]
+* High-resolution scroll wheel support [José, Carlos; !1962]
+* screencast: Use flag to signal failed recording [columbarius; !2516]
+* Fix cursor visibility on X11 with only tablets as input [Carlos; !2518]
+* Notify about privacy screen changes via predictions [Jonas Å.; !2340, !2531]
+* Highlight actors becoming reactive under the pointer [Carlos; !2532]
+* Replace MetaTextureTower with native GL mipmapping [Daniel, Neil; !2506]
+* Add tool to pretty print display configuration [Jonas Å., Marco; !2448]
+* Remove mipmap framerate limiting [Daniel; !2538]
+* Fall back to ARGB if XRGB is not supported [Daniel; !2519]
+* Add basic color-scheme support for server-side decorations [Florian; !2541]
+* Don't skip frames after skipped KMS updates [Michel; !2498]
+* Add support for multi-monitor direct scanout [Dor; !2526]
+* Continue gi-docgen migration [Bilal; !2441]
+* Always send modifiers to clients if supported [Jonas Å.; !2546]
+* Defer and accumulate redraw-clip on scanout [Robert; !2480]
+* Add single pixel buffer support [Robert, Jonas Å.; !2246]
+* Report actual monitor transform [Robert; !344]
+* Better integrate cogl tests with existing infrastructure [Jonas Å.; !2555]
+* Fix registering as X11 window manager if GDK_BACKEND is set [Michel; !2496]
+* Don't skip vblank sync on missing presentation timestamp [Dor; !2481]
+* Fix cursor showing on Xilinx [Daniel; !2520]
+* Plugged leaks [Michel, Daniel; !2527, !2562]
+* Fixed crashes [Robert, Jonas Å.; !2459, !2553]
+* Misc. bug fixes and cleanups [columbarius, Daniel, Carlos, Michel, Jonas Å.,
+  Florian, Jonas D., Julia, Corentin; !2323, !2074, !2517, !2525, !2524, !2442,
+  !2523, !2535, !2348, !2537, !2456, !2542, !2547,  !2556,  !2559, !2564, !2511]
+
+Contributors:
+  Marco Trevisan (Treviño), Dor Askayo, Jonas Dreßler, Michel Dänzer,
+  Bilal Elmoussaoui, José Expósito, Carlos Garnacho, Julia Johannesen,
+  Robert Mader, Neil Moore, Florian Müllner, Pascal Nowack, Corentin Noël,
+  Nart Tlisha, Daniel van Vugt, columbarius, Jonas Ådahl
+
+Translators:
+  Nart Tlisha [ab]
+
+43.alpha
+========
+* Drop zenity dependency [Bilal; !2370]
+* Fix initialization of privacy mode in displays that support it [Marco; !2372]
+* Add NightLightSupported property to DisplayConfig [Jonas; !2310]
+* Don't use direct scanout for transparent windows [Sebastian K.; !2409]
+* Improve picking a window for direct scanout [Sebastian K.; !2413]
+* Drop support for obsolete wayland protocols [Fernando; !2207, !2184]
+* Fix --replace again [Jonas; !2432]
+* Do not allow windows to steal focus when the shell has a grab [Carlos; !2433]
+* Fix night light without GAMM_LUT property [Jonas; !2435]
+* Expose Cogl's Snippet API to introspection [Simon; !2422]
+* wayland: Fix rotation transform [Robert; !1055]
+* Build and deploy API documentation [Bilal; !2427]
+* Attach color state information to actors [Naveen; !2443]
+* Fix pointer confinement on HiDPI setups [Jonas; !2460]
+* Fix dma-bufu screencast regression [Jonas; !2462]
+* Fix monitor mirroring in some cases [Jonas; !2492]
+* Parse HDR and Colorimetry CTA-861 EDID extension blocks [Sebastian W.; !2351]
+* Fix cursor tracking during screencasts on X11 [George; !2474]
+* Fixed crashes [Jonas, Florian; !2415, !2364, !2491]
+* Plugged leaks [Michel, Sebastian K.; !2469, !2497]
+* Misc. bug fixes and cleanups [Kazuki, Dor, Jonas, Bilal, Sebastian K.,
+  Christian, Florian, Georges,, Sebastian W., Olivier; !2405, !2406, !2403,
+  !2416, !2398, !2414, !2425, !2354, !2436, !2447, !2446, !2355, !2429, !2417,
+  !2434, !2439, !2015, !2444, !2458, !2379, !2455, !2463, !2484, !2485, !2488,
+  !2499]
+
+Contributors:
+  Marco Trevisan (Treviño), Dor Askayo, George Barrett, Michel Dänzer,
+  Bilal Elmoussaoui, Olivier Fourdan, Carlos Garnacho, Kazuki Hashimoto,
+  Sebastian Keller, Naveen Kumar, Robert Mader, Fernando Monteiro,
+  Florian Müllner, Georges Basile Stavracas Neto, Christian Rauch,
+  Simon Schneegans, Sebastian Wick, Jonas Ådahl
+
+Translators:
+  Zurab Kargareteli [ka], Pawan Chitrakar [ne]
 
 42.1
 ====

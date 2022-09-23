@@ -93,6 +93,12 @@ option('libwacom',
   description: 'Enable libwacom support'
 )
 
+option('sound_player',
+  type: 'boolean',
+  value: true,
+  description: 'Enable sound player support using libcanberra',
+)
+
 option('pango_ft2',
   type: 'boolean',
   value: true,
@@ -205,4 +211,10 @@ option('xwayland_initfd',
   type: 'feature',
   value: 'auto',
   description: 'Whether -initfd argument is passed to Xwayland to guarantee services (e.g. gsd-xsettings) startup before applications'
+)
+
+option('catch',
+  type: 'boolean',
+  value: false,
+  description: 'Use catch to catch backtraces'
 )
