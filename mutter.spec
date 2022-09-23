@@ -4,7 +4,7 @@
 #
 Name     : mutter
 Version  : 43.0
-Release  : 125
+Release  : 126
 URL      : https://download.gnome.org/sources/mutter/43/mutter-43.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/43/mutter-43.0.tar.xz
 Summary  : Mutter window manager library
