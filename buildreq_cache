@@ -1,0 +1,8 @@
+43.0
+colord-dev
+lcms2-dev
+pkgconfig(colord)
+pkgconfig(lcms2)
+pkgconfig(wayland-protocols)
+pkgconfig(xwayland)
+xvfb-run
