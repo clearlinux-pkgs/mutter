@@ -283,7 +283,6 @@ libmutter-11.so.0:meta_inhibit_shortcuts_dialog_response
 libmutter-11.so.0:meta_inhibit_shortcuts_dialog_response_get_type
 libmutter-11.so.0:meta_inhibit_shortcuts_dialog_show
 libmutter-11.so.0:meta_is_restart
-libmutter-11.so.0:meta_is_stage_views_enabled
 libmutter-11.so.0:meta_is_topic_enabled
 libmutter-11.so.0:meta_is_verbose
 libmutter-11.so.0:meta_is_wayland_compositor
@@ -691,6 +690,8 @@ libmutter-11.so.0:meta_wayland_get_public_xwayland_display_name
 libmutter-11.so.0:meta_wayland_get_wayland_display_name
 libmutter-11.so.0:meta_wayland_override_display_name
 libmutter-11.so.0:meta_wayland_surface_get_actor
+libmutter-11.so.0:meta_wayland_surface_get_height
+libmutter-11.so.0:meta_wayland_surface_get_width
 libmutter-11.so.0:meta_wayland_surface_get_window
 libmutter-11.so.0:meta_window_activate
 libmutter-11.so.0:meta_window_activate_with_workspace
@@ -829,6 +830,8 @@ libmutter-11.so.0:meta_window_unset_demands_attention
 libmutter-11.so.0:meta_window_unshade
 libmutter-11.so.0:meta_window_unstick
 libmutter-11.so.0:meta_window_untile
+libmutter-11.so.0:meta_window_wayland_get_type
+libmutter-11.so.0:meta_window_wayland_is_acked_fullscreen
 libmutter-11.so.0:meta_workspace_activate
 libmutter-11.so.0:meta_workspace_activate_with_focus
 libmutter-11.so.0:meta_workspace_get_display
@@ -848,6 +851,7 @@ libmutter-11.so.0:meta_workspace_manager_get_workspaces
 libmutter-11.so.0:meta_workspace_manager_override_workspace_layout
 libmutter-11.so.0:meta_workspace_manager_remove_workspace
 libmutter-11.so.0:meta_workspace_manager_reorder_workspace
+libmutter-11.so.0:meta_workspace_manager_update_num_workspaces
 libmutter-11.so.0:meta_workspace_set_builtin_struts
 libmutter-11.so.0:meta_x11_display_clear_stage_input_region
 libmutter-11.so.0:meta_x11_display_get_damage_event_base
