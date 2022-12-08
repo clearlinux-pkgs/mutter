@@ -853,6 +853,7 @@ libmutter-11.so.0:meta_workspace_manager_remove_workspace
 libmutter-11.so.0:meta_workspace_manager_reorder_workspace
 libmutter-11.so.0:meta_workspace_manager_update_num_workspaces
 libmutter-11.so.0:meta_workspace_set_builtin_struts
+libmutter-11.so.0:meta_x11_display_add_alarm_filter
 libmutter-11.so.0:meta_x11_display_clear_stage_input_region
 libmutter-11.so.0:meta_x11_display_get_damage_event_base
 libmutter-11.so.0:meta_x11_display_get_screen_number
@@ -863,7 +864,7 @@ libmutter-11.so.0:meta_x11_display_get_xinput_opcode
 libmutter-11.so.0:meta_x11_display_get_xroot
 libmutter-11.so.0:meta_x11_display_has_shape
 libmutter-11.so.0:meta_x11_display_lookup_group
-libmutter-11.so.0:meta_x11_display_set_alarm_filter
+libmutter-11.so.0:meta_x11_display_remove_alarm_filter
 libmutter-11.so.0:meta_x11_display_set_cm_selection
 libmutter-11.so.0:meta_x11_display_set_stage_input_region
 libmutter-11.so.0:meta_x11_display_xwindow_is_a_no_focus_window
@@ -917,7 +918,6 @@ libmutter-test-11.so:meta_test_client_error_quark
 libmutter-test-11.so:meta_test_client_find_window
 libmutter-test-11.so:meta_test_client_get_id
 libmutter-test-11.so:meta_test_client_new
-libmutter-test-11.so:meta_test_client_process_x11_event
 libmutter-test-11.so:meta_test_client_quit
 libmutter-test-11.so:meta_test_client_wait
 libmutter-test-11.so:meta_test_client_wait_for_window_shown
