@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 44.0
-Release  : 141
+Release  : 142
 URL      : https://download.gnome.org/sources/mutter/44/mutter-44.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.0.tar.xz
 Summary  : Mutter window manager library
@@ -199,7 +199,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679695340
+export SOURCE_DATE_EPOCH=1680017171
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
