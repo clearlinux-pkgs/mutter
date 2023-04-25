@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mutter
-Version  : 44.0
-Release  : 144
-URL      : https://download.gnome.org/sources/mutter/44/mutter-44.0.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.0.tar.xz
+Version  : 44.1
+Release  : 145
+URL      : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
 Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -188,10 +188,10 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-44.0
-cd %{_builddir}/mutter-44.0
+%setup -q -n mutter-44.1
+cd %{_builddir}/mutter-44.1
 pushd ..
-cp -a mutter-44.0 buildavx2
+cp -a mutter-44.1 buildavx2
 popd
 
 %build
@@ -199,7 +199,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680040303
+export SOURCE_DATE_EPOCH=1682453426
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -592,6 +592,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/fullscreen
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/invalid-subsurfaces
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/invalid-xdg-shell-actions
+/usr/libexec/installed-tests/mutter-12/wayland-test-clients/kms-cursor-hotplug-helper
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/service-client
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/single-pixel-buffer
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/subsurface-parent-unmapped

@@ -16,6 +16,7 @@ libmutter-12.so.0:meta_backend_get_color_manager
 libmutter-12.so.0:meta_backend_get_context
 libmutter-12.so.0:meta_backend_get_core_idle_monitor
 libmutter-12.so.0:meta_backend_get_current_logical_monitor
+libmutter-12.so.0:meta_backend_get_cursor_renderer
 libmutter-12.so.0:meta_backend_get_cursor_tracker
 libmutter-12.so.0:meta_backend_get_default_seat
 libmutter-12.so.0:meta_backend_get_dnd
@@ -142,6 +143,8 @@ libmutter-12.so.0:meta_crtc_set_config
 libmutter-12.so.0:meta_crtc_unassign_output
 libmutter-12.so.0:meta_crtc_unset_config
 libmutter-12.so.0:meta_cursor_get_type
+libmutter-12.so.0:meta_cursor_renderer_get_cursor
+libmutter-12.so.0:meta_cursor_sprite_wayland_get_type
 libmutter-12.so.0:meta_cursor_tracker_get_for_display
 libmutter-12.so.0:meta_cursor_tracker_get_hot
 libmutter-12.so.0:meta_cursor_tracker_get_pointer
@@ -225,6 +228,7 @@ libmutter-12.so.0:meta_frame_borders_clear
 libmutter-12.so.0:meta_frame_flags_get_type
 libmutter-12.so.0:meta_frame_native_ensure_kms_update
 libmutter-12.so.0:meta_frame_native_from_frame
+libmutter-12.so.0:meta_frame_native_had_kms_update
 libmutter-12.so.0:meta_frame_native_has_kms_update
 libmutter-12.so.0:meta_frame_type_get_type
 libmutter-12.so.0:meta_frame_type_to_string
@@ -488,6 +492,7 @@ libmutter-12.so.0:meta_output_is_primary
 libmutter-12.so.0:meta_output_is_underscanning
 libmutter-12.so.0:meta_output_unassign_crtc
 libmutter-12.so.0:meta_pad_action_type_get_type
+libmutter-12.so.0:meta_parse_monitor_mode
 libmutter-12.so.0:meta_plugin_complete_display_change
 libmutter-12.so.0:meta_plugin_destroy_completed
 libmutter-12.so.0:meta_plugin_get_display
@@ -786,6 +791,7 @@ libmutter-12.so.0:meta_window_group_get_type
 libmutter-12.so.0:meta_window_group_leader_changed
 libmutter-12.so.0:meta_window_has_attached_dialogs
 libmutter-12.so.0:meta_window_has_focus
+libmutter-12.so.0:meta_window_has_pointer
 libmutter-12.so.0:meta_window_is_above
 libmutter-12.so.0:meta_window_is_always_on_all_workspaces
 libmutter-12.so.0:meta_window_is_ancestor_of_transient

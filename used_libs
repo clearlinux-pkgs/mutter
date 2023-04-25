@@ -40,6 +40,7 @@ libsystemd.so.0
 libudev.so.1
 libwacom.so.9
 libwayland-client.so.0
+libwayland-cursor.so.0
 libwayland-server.so.0
 libxkbcommon-x11.so.0
 libxkbcommon.so.0
