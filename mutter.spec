@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 44.1
-Release  : 146
+Release  : 147
 URL      : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
 Summary  : Mutter window manager library
@@ -14,7 +14,6 @@ License  : GPL-2.0
 Requires: mutter-bin = %{version}-%{release}
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-data = %{version}-%{release}
-Requires: mutter-filemap = %{version}-%{release}
 Requires: mutter-lib = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
@@ -88,7 +87,6 @@ Requires: mutter-data = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
-Requires: mutter-filemap = %{version}-%{release}
 
 %description bin
 bin components for the mutter package.
@@ -123,21 +121,12 @@ Requires: mutter = %{version}-%{release}
 dev components for the mutter package.
 
 
-%package filemap
-Summary: filemap components for the mutter package.
-Group: Default
-
-%description filemap
-filemap components for the mutter package.
-
-
 %package lib
 Summary: lib components for the mutter package.
 Group: Libraries
 Requires: mutter-data = %{version}-%{release}
 Requires: mutter-libexec = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
-Requires: mutter-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mutter package.
@@ -148,7 +137,6 @@ Summary: libexec components for the mutter package.
 Group: Default
 Requires: mutter-config = %{version}-%{release}
 Requires: mutter-license = %{version}-%{release}
-Requires: mutter-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the mutter package.
@@ -199,15 +187,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682453426
+export SOURCE_DATE_EPOCH=1683061416
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
@@ -238,8 +226,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/mutter
 /usr/bin/mutter
-/usr/share/clear/optimized-elf/bin*
 
 %files config
 %defattr(-,root,root,-)
@@ -298,6 +286,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libmutter-12.so
+/V3/usr/lib64/libmutter-test-12.so
 /usr/include/mutter-12/clutter/cally/cally-actor.h
 /usr/include/mutter-12/clutter/cally/cally-clone.h
 /usr/include/mutter-12/clutter/cally/cally-factory.h
@@ -514,8 +504,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/mutter-12/meta/util.h
 /usr/include/mutter-12/meta/window.h
 /usr/include/mutter-12/meta/workspace.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-12.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-test-12.so
 /usr/lib64/libmutter-12.so
 /usr/lib64/libmutter-test-12.so
 /usr/lib64/pkgconfig/libmutter-12.pc
@@ -524,14 +512,20 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/pkgconfig/mutter-cogl-12.pc
 /usr/lib64/pkgconfig/mutter-cogl-pango-12.pc
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-mutter
-
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-12.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libmutter-12.so.0.0.0
+/V3/usr/lib64/libmutter-12.so.0
+/V3/usr/lib64/libmutter-12.so.0.0.0
+/V3/usr/lib64/mutter-12/libmutter-clutter-12.so
+/V3/usr/lib64/mutter-12/libmutter-clutter-12.so.0
+/V3/usr/lib64/mutter-12/libmutter-clutter-12.so.0.0.0
+/V3/usr/lib64/mutter-12/libmutter-cogl-12.so
+/V3/usr/lib64/mutter-12/libmutter-cogl-12.so.0
+/V3/usr/lib64/mutter-12/libmutter-cogl-12.so.0.0.0
+/V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so
+/V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0
+/V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0.0.0
+/V3/usr/lib64/mutter-12/plugins/libdefault.so
 /usr/lib64/libmutter-12.so.0
 /usr/lib64/libmutter-12.so.0.0.0
 /usr/lib64/mutter-12/libmutter-clutter-12.so
@@ -544,13 +538,13 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0
 /usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0.0.0
 /usr/lib64/mutter-12/plugins/libdefault.so
-/usr/share/clear/optimized-elf/other*
 
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/mutter-restart-helper
+/V3/usr/libexec/mutter-x11-frames
 /usr/libexec/mutter-restart-helper
 /usr/libexec/mutter-x11-frames
-/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
@@ -562,6 +556,45 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files tests
 %defattr(-,root,root,-)
+/V3/usr/libexec/installed-tests/mutter-12/mutter-anonymous-file
+/V3/usr/libexec/installed-tests/mutter-12/mutter-color-management
+/V3/usr/libexec/installed-tests/mutter-12/mutter-color-management-profile-conflict
+/V3/usr/libexec/installed-tests/mutter-12/mutter-edid
+/V3/usr/libexec/installed-tests/mutter-12/mutter-kms-utils
+/V3/usr/libexec/installed-tests/mutter-12/mutter-monitor-unit
+/V3/usr/libexec/installed-tests/mutter-12/mutter-monitor-utils
+/V3/usr/libexec/installed-tests/mutter-12/mutter-native-unit
+/V3/usr/libexec/installed-tests/mutter-12/mutter-persistent-virtual-monitor
+/V3/usr/libexec/installed-tests/mutter-12/mutter-pointer-constraints
+/V3/usr/libexec/installed-tests/mutter-12/mutter-ref-test-sanity
+/V3/usr/libexec/installed-tests/mutter-12/mutter-screen-cast-client
+/V3/usr/libexec/installed-tests/mutter-12/mutter-service-channel
+/V3/usr/libexec/installed-tests/mutter-12/mutter-stage-views
+/V3/usr/libexec/installed-tests/mutter-12/mutter-test-client
+/V3/usr/libexec/installed-tests/mutter-12/mutter-test-runner
+/V3/usr/libexec/installed-tests/mutter-12/mutter-unit
+/V3/usr/libexec/installed-tests/mutter-12/mutter-wayland-client-tests
+/V3/usr/libexec/installed-tests/mutter-12/mutter-wayland-fractional-scale
+/V3/usr/libexec/installed-tests/mutter-12/mutter-wayland-fullscreen
+/V3/usr/libexec/installed-tests/mutter-12/mutter-wayland-unit
+/V3/usr/libexec/installed-tests/mutter-12/mutter-wayland-x11-interop
+/V3/usr/libexec/installed-tests/mutter-12/mutter-xwayland
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/buffer-transform
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/dma-buf-scanout
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/fractional-scale
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/fullscreen
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/invalid-subsurfaces
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/invalid-xdg-shell-actions
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/kms-cursor-hotplug-helper
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/service-client
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/single-pixel-buffer
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/subsurface-parent-unmapped
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/subsurface-remap-toplevel
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/subsurface-reparenting
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-activation
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-apply-limits
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-foreign
+/V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-toplevel-bounds
 /usr/libexec/installed-tests/mutter-12/mutter-anonymous-file
 /usr/libexec/installed-tests/mutter-12/mutter-color-management
 /usr/libexec/installed-tests/mutter-12/mutter-color-management-profile-conflict
@@ -602,7 +635,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-apply-limits
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-foreign
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-toplevel-bounds
-/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/mutter-12/always-on-top.test
 /usr/share/installed-tests/mutter-12/basic-wayland.test
 /usr/share/installed-tests/mutter-12/basic-x11.test
