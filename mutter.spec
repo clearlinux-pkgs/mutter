@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 44.1
-Release  : 148
+Release  : 149
 URL      : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
 Summary  : Mutter window manager library
@@ -187,7 +187,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683061416
+export SOURCE_DATE_EPOCH=1685591768
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -286,7 +286,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libmutter-12.so
 /V3/usr/lib64/libmutter-test-12.so
 /usr/include/mutter-12/clutter/cally/cally-actor.h
 /usr/include/mutter-12/clutter/cally/cally-clone.h
@@ -514,16 +513,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libmutter-12.so.0
 /V3/usr/lib64/libmutter-12.so.0.0.0
-/V3/usr/lib64/mutter-12/libmutter-clutter-12.so
-/V3/usr/lib64/mutter-12/libmutter-clutter-12.so.0
 /V3/usr/lib64/mutter-12/libmutter-clutter-12.so.0.0.0
-/V3/usr/lib64/mutter-12/libmutter-cogl-12.so
-/V3/usr/lib64/mutter-12/libmutter-cogl-12.so.0
 /V3/usr/lib64/mutter-12/libmutter-cogl-12.so.0.0.0
-/V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so
-/V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0
 /V3/usr/lib64/mutter-12/libmutter-cogl-pango-12.so.0.0.0
 /V3/usr/lib64/mutter-12/plugins/libdefault.so
 /usr/lib64/libmutter-12.so.0
