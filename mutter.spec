@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mutter
-Version  : 44.1
-Release  : 149
-URL      : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.1.tar.xz
+Version  : 44.2
+Release  : 150
+URL      : https://download.gnome.org/sources/mutter/44/mutter-44.2.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.2.tar.xz
 Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -176,10 +176,10 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-44.1
-cd %{_builddir}/mutter-44.1
+%setup -q -n mutter-44.2
+cd %{_builddir}/mutter-44.2
 pushd ..
-cp -a mutter-44.1 buildavx2
+cp -a mutter-44.2 buildavx2
 popd
 
 %build
@@ -187,7 +187,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685591768
+export SOURCE_DATE_EPOCH=1685975414
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -587,6 +587,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-apply-limits
 /V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-foreign
 /V3/usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-toplevel-bounds
+/V3/usr/libexec/installed-tests/mutter-12/x11-compositor-checker
 /usr/libexec/installed-tests/mutter-12/mutter-anonymous-file
 /usr/libexec/installed-tests/mutter-12/mutter-color-management
 /usr/libexec/installed-tests/mutter-12/mutter-color-management-profile-conflict
@@ -627,6 +628,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-apply-limits
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-foreign
 /usr/libexec/installed-tests/mutter-12/wayland-test-clients/xdg-toplevel-bounds
+/usr/libexec/installed-tests/mutter-12/x11-compositor-checker
 /usr/share/installed-tests/mutter-12/always-on-top.test
 /usr/share/installed-tests/mutter-12/basic-wayland.test
 /usr/share/installed-tests/mutter-12/basic-x11.test
