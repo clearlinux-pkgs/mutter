@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mutter
-Version  : 44.2
-Release  : 150
-URL      : https://download.gnome.org/sources/mutter/44/mutter-44.2.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.2.tar.xz
+Version  : 44.3
+Release  : 152
+URL      : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
 Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -30,6 +30,7 @@ BuildRequires : colord-dev
 BuildRequires : gnome-settings-daemon-dev
 BuildRequires : gobject-introspection-dev
 BuildRequires : lcms2-dev
+BuildRequires : libei-dev
 BuildRequires : libgudev-dev
 BuildRequires : libwacom-dev
 BuildRequires : libxcvt
@@ -176,10 +177,10 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-44.2
-cd %{_builddir}/mutter-44.2
+%setup -q -n mutter-44.3
+cd %{_builddir}/mutter-44.3
 pushd ..
-cp -a mutter-44.2 buildavx2
+cp -a mutter-44.3 buildavx2
 popd
 
 %build
@@ -187,7 +188,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685975414
+export SOURCE_DATE_EPOCH=1688685021
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

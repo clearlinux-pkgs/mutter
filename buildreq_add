@@ -16,3 +16,4 @@ xorg-server
 zenity
 xwayland
 libxcvt
+libei-dev
