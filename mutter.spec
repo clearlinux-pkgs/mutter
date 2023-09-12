@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 44.3
-Release  : 152
+Release  : 153
 URL      : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
 Summary  : Mutter window manager library
@@ -72,6 +72,7 @@ BuildRequires : zenity
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: backport-crashfix.patch
 
 %description
 Intro
@@ -179,6 +180,7 @@ tests components for the mutter package.
 %prep
 %setup -q -n mutter-44.3
 cd %{_builddir}/mutter-44.3
+%patch -P 1 -p1
 pushd ..
 cp -a mutter-44.3 buildavx2
 popd
@@ -188,7 +190,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688685021
+export SOURCE_DATE_EPOCH=1694561598
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
