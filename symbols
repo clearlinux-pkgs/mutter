@@ -936,10 +936,10 @@ libmutter-test-12.so:meta_test_client_run
 libmutter-test-12.so:meta_test_client_wait
 libmutter-test-12.so:meta_test_client_wait_for_window_shown
 libmutter-test-12.so:meta_test_get_gpu
-libmutter-test-12.so:meta_test_get_plugin_name
 libmutter-test-12.so:meta_test_monitor_destroy
 libmutter-test-12.so:meta_test_monitor_get_type
 libmutter-test-12.so:meta_test_monitor_new
+libmutter-test-12.so:meta_test_shell_get_type
 libmutter-test-12.so:meta_wait_for_orientation
 libmutter-test-12.so:meta_wait_for_paint
 libmutter-test-12.so:meta_wait_for_possible_orientation_change

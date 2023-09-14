@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mutter
-Version  : 44.3
-Release  : 153
-URL      : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
+Version  : 44.4
+Release  : 154
+URL      : https://download.gnome.org/sources/mutter/44/mutter-44.4.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/44/mutter-44.4.tar.xz
 Summary  : Mutter window manager library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -178,11 +178,11 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-44.3
-cd %{_builddir}/mutter-44.3
+%setup -q -n mutter-44.4
+cd %{_builddir}/mutter-44.4
 %patch -P 1 -p1
 pushd ..
-cp -a mutter-44.3 buildavx2
+cp -a mutter-44.4 buildavx2
 popd
 
 %build
@@ -190,7 +190,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1694561598
+export SOURCE_DATE_EPOCH=1694727149
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -275,6 +275,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/mutter-12/tests/stacking/mixed-windows.metatest
 /usr/share/mutter-12/tests/stacking/modals.metatest
 /usr/share/mutter-12/tests/stacking/override-redirect.metatest
+/usr/share/mutter-12/tests/stacking/overview-focus.metatest
 /usr/share/mutter-12/tests/stacking/restore-position.metatest
 /usr/share/mutter-12/tests/stacking/restore-size.metatest
 /usr/share/mutter-12/tests/stacking/set-override-redirect-parent.metatest
@@ -656,6 +657,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/installed-tests/mutter-12/mixed-windows.test
 /usr/share/installed-tests/mutter-12/modals.test
 /usr/share/installed-tests/mutter-12/override-redirect.test
+/usr/share/installed-tests/mutter-12/overview-focus.test
 /usr/share/installed-tests/mutter-12/restore-position.test
 /usr/share/installed-tests/mutter-12/restore-size.test
 /usr/share/installed-tests/mutter-12/set-override-redirect-parent.test
