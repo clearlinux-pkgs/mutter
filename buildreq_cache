@@ -1,10 +1,10 @@
-44.4
+45.0
 colord-dev
 lcms2-dev
 pkgconfig(colord)
 pkgconfig(gbm)
 pkgconfig(lcms2)
-pkgconfig(libdrm)
+pkgconfig(sysprof-6)
 pkgconfig(wayland-protocols)
 pkgconfig(xwayland)
 xvfb-run
