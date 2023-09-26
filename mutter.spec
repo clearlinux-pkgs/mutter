@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 45.0
-Release  : 156
+Release  : 157
 URL      : https://download.gnome.org/sources/mutter/45/mutter-45.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/45/mutter-45.0.tar.xz
 Summary  : No detailed summary available
@@ -30,6 +30,7 @@ BuildRequires : colord-dev
 BuildRequires : gnome-settings-daemon-dev
 BuildRequires : gobject-introspection-dev
 BuildRequires : lcms2-dev
+BuildRequires : libdisplay-info-dev
 BuildRequires : libei-dev
 BuildRequires : libgudev-dev
 BuildRequires : libwacom-dev
@@ -190,7 +191,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695751586
+export SOURCE_DATE_EPOCH=1695752739
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

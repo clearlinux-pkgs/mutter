@@ -17,3 +17,4 @@ zenity
 xwayland
 libxcvt
 libei-dev
+libdisplay-info-dev
