@@ -5,7 +5,7 @@
 #
 Name     : mutter
 Version  : 45.0
-Release  : 155
+Release  : 156
 URL      : https://download.gnome.org/sources/mutter/45/mutter-45.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/45/mutter-45.0.tar.xz
 Summary  : No detailed summary available
@@ -50,6 +50,7 @@ BuildRequires : pkgconfig(libinput)
 BuildRequires : pkgconfig(libpipewire-0.3)
 BuildRequires : pkgconfig(libwacom)
 BuildRequires : pkgconfig(sm)
+BuildRequires : pkgconfig(sysprof-6)
 BuildRequires : pkgconfig(upower-glib)
 BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(x11-xcb)
@@ -189,7 +190,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695677263
+export SOURCE_DATE_EPOCH=1695751586
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
