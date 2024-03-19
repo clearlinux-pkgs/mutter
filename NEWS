@@ -1,51 +1,124 @@
-45.4
+46.0
 ====
+* Fix duplicate scroll events over libei [Peter; !3637]
+* Fix window menu with mouse button modifier [Jonas; !3623]
+* Fix caret offset in accessible event [Carlos; !3643]
+* Fix handling of scroll events for mice [Carlos; !3642]
+* Use timerfd for clock timing [Christian; !3636]
+* Advertise support for BGRA for all screencast types [Robert; !3617]
+* Add support for preferred_buffer_scale/transform [Robert; !3580]
+* Use memfd to store selection data [Yotam; !3551]
+* Fix globally active input focus [Sebastian K.; !3651]
+* Call malloc_trim() after loading background image [Sebastian K.; !3653]
+* Fix dynamic max render time sometimes getting stuck on constant framerate
+  [Robert; !3655]
+* Introduce base of new gesture framework [Jonas; !2389]
+* Work around windows missing work area changes [Balló; !3601]
+* Fix black screen with some drivers [Sebastian W.; !3646]
+* Improve login screen <-> session transition [Jocelyn; !3659]
+* Fixed crashes [Bilal, Carlos; !3656, !3660]
+* Misc. bug fixes and cleanups [Philip, Peter, Sebastian W., Zander, Petr,
+  Sebastian K., Robert, Bilal, Jonas; !3640, !3647, !3648, !3654, !3658, !3622,
+  !1918, !3067, !3661, !3662, !3652, !3645]
+
+Contributors:
+  Yotam Bar-On, Zander Brown, Jonas Dreßler, Bilal Elmoussaoui, Jocelyn Falempe,
+  Carlos Garnacho, Balló György, Christian Hergert, Petr Hodina, Peter Hutterer,
+  Sebastian Keller, Robert Mader, Sebastian Wick, Philip Withnall
+
+Translators:
+  Sabri Ünal [tr], Aurimas Černius [lt], Jordi Mas i Hernandez [ca],
+  Asier Sarasua Garmendia [eu], Matej Urbančič [sl], Anders Jonsson [sv],
+  Bruce Cowan [en_GB], Guillaume Bernard [fr], Kukuh Syafaat [id],
+  Milo Casagrande [it], Rūdolfs Mazurs [lv], Fran Dieguez [gl],
+  Ask Hjorth Larsen [da]
+
+46.rc
+=====
+* screencast: Renegotiate when DMABUF allocation fails [columbarius; !2557]
+* Unify wayland pointer- and keyboard grab mechanisms [Carlos; !3420]
+* Add modifier-aware screencasting support [Doğukan; !3537]
+* Fix synchronization issue on Xorg [Daniel; !3590]
+* Send fractional_scale event immediately on window creation [Jonas; !3598]
+* wayland/client: Add make_dock() method [Leonhard; !3612]
+* Fix gray area on top of some X11 fullscreen windows [Sebastian K.; !3608]
+* Stick dragged windows to the right anchor point [Carlos; !3546]
+* cally/text: Fix emission of `text_caret_moved` signal [Florian; !3621]
+* clutter/text: Fix minimum height calculation [Julian; !3610]
+* Add experimental support for variable refresh rate [Dor; !1154]
+* Expose the minimum refresh rate of monitors through D-Bus [Dor; !3576]
+* Use "default" cursor for moving windows [Sebastian K.; !3634]
+* Fixed crashes [Carlos, Michel; !3618, !3632]
+* Misc. bug fixes and cleanups [Robert, Bilal, Dor, Florian, Sebastian W.,
+  Daniel, msizanoen, Corentin, Agustín, Sebastian K., Marco, Doğukan, Carlos,
+  Jonas, Barnabás; !3217, !3581, !3582, !3583, !3586, !3574, !3587, !3585,
+  !3584, !3588, !3553, !3589, !3593, !3595, !3597, !3599, !3327, !3603, !3606,
+  !3594, !3611, !3613, !3552, !3620, !3592, !3614, !3619, !3625, !3628, !3627,
+  !3624, !3629, !3630, !3633, !3027]
+
+Contributors:
+  Dor Askayo, columbarius, Agustín Dall'Alba, Michel Dänzer, Jonas Dreßler,
+  Bilal Elmoussaoui, Carlos Garnacho, Sebastian Keller, Doğukan Korkmaztürk,
+  Leonhard, Robert Mader, msizanoen, Florian Müllner, Corentin Noël,
+  Barnabás Pőcze, Julian Sparber, Marco Trevisan (Treviño), Daniel van Vugt,
+  Sebastian Wick
+
+Translators:
+  Ekaterine Papava [ka], Danial Behzadi [fa], Aurimas Černius [lt],
+  Yuri Chornoivan [uk], Yaron Shahrabani [he], Nathan Follens [nl],
+  Matej Urbančič [sl], Jordi Mas i Hernandez [ca], Kukuh Syafaat [id],
+  Luming Zh [zh_CN], Andi Chandler [en_GB], Asier Sarasua Garmendia [eu],
+  Quentin PAGÈS [oc], Rūdolfs Mazurs [lv], Irénée THIRION [fr],
+  Daniel Mustieles [es], Daniel Rusek [cs], Piotr Drąg [pl], Balázs Úr [hu],
+  Artur S0 [ru]
+
+46.beta
+=======
+* Implement mouse cursor hotspots for KMS atomic [Albert, Zack; !3337, !3503]
+* Improve project and development documentation
+  [Bilal, Sebastian W.; !3489, !3505, !3519]
+* Add a documentation website [Bilal; !3490]
+* Refactor wayland focus management [Carlos; !3511]
+* Remove experimental rt-scheduler feature [Dallas; !3296]
+* Remove ClutterCanvas [Shmuel; !3470]
+* Consider reduced blanking with lower pixelclock [Kai-Heng; !3449]
+* Fix centering non-modal transients over parent [Florian; !3533]
+* Allow XKB model to be configured [Leorize; !2760]
+* Enable KMS deadline timer after a VT switch if it was inhibited [Dor; !3534]
+* Prepare for variable refresh rate support [Dor; !3521, !3560, !3561]
 * Restore IM state flushing before handling key events [Carlos; !3536]
-* Fixed crashes [Carlos, Olivier; !3523, !3562]
+* Swap stylus buttons to match traditional order [Peter; !3541]
+* Fix handling of pad ring wrap arounds [Peter; !3545]
+* Support Broadcast RGB/RGB range KMS property [Sebastian W.; !3535]
+* Ensure all planes support EGL config format [Sebastian W.; !3512]
+* Handle Alt modifier in pad actions [Peter; !3522]
+* Store eraser and stylus tools separately [Peter; !3542]
+* Disambiguate output mapped to tablet with connector name [Carlos; !3556]
+* Fix lost keyboard focus after dismissing popups [Carlos; !3568]
+* Implement direct scanout for cropped and scaled surfaces
+  [Robert; !3559, !3177]
+* Fixed crashes [Peter, Carlos, Sebastian W., Simon, Olivier, Daniel; !3383,
+  !3517, !3518, !2774, !3446, !3539, !3562, !3565]
+* Misc. bug fixes and cleanups [Bilal, Daniel, Sebastian W., Robert, Zander,
+  Florian, Carlos, Corentin, Shmuel, Dor, Sebastian K., Jonas; !3498, !3418,
+  !3500, !3492, !3484, !3504, !3499, !3333, !3351, !3501, !3211, !3506, !3387,
+  !3509, !3510, !3483, !3467, !3514, !3515, !3516, !3520, !3513, !3507, !3526,
+  !3527, !3528, !3450, !3531, !3549, !3532, !3543, !3529, !3530, !3550, !3554,
+  !3540, !3569, !3563, !3570, !3555, !3572, !3571, !3538, !3573, !3575]
 
 Contributors:
-  Olivier Fourdan, Carlos Garnacho
+  Dor Askayo, Zander Brown, Jonas Dreßler, Bilal Elmoussaoui, Albert Esteve,
+  Kai-Heng Feng, Olivier Fourdan, Carlos Garnacho, Peter Hutterer,
+  Sebastian Keller, Leorize, Robert Mader, Simon McVittie, Shmuel Melamud,
+  Florian Müllner, Corentin Noël, Zack Rusin, Dallas Strouse, Daniel van Vugt,
+  Sebastian Wick
 
 Translators:
-  Efstathios Iosifidis [el]
+  Ekaterine Papava [ka], Efstathios Iosifidis [el], Artur S0 [ru],
+  Daniel Rusek [cs], Fran Dieguez [gl], Sabri Ünal [tr]
 
-45.3
-====
-* Fix handling of relative mode for tablets [Peter; !3410]
-* Fix forcing EGLStream with NVIDIA proprietary driver [Daniel; !2905]
-* Sync geometry only when window is mapped [Sebastian W.; !3401, !3404]
-* Improve repick due to transform changes [Carlos; !3385]
-* wayland/client: Add make_desktop() method [Florian; !3305]
-* Fix occasional artifacts at top of X11 fullscreen windows [Carlos; !3476]
-* background: Fix background color around image [Sebastian W.; !3459]
-* Fixed crashes [Sebastian K., Carlos, Jonas; !3453, !3422, !3335, !3392]
-* Plugged leaks [Robert, Sebastian K.; !3439, !3411]
-* Misc. bug fixes and cleanups [Sebastian W., Christopher, Daniel, Olivier,
-  Michel, Qiu, Carlos, Ivan, Mike, Mart, Bilal; !3456, !3455, !2620, !3447,
-  !3444, !3440, !3438, !3425, !3413, !3403, !3397, !3469, !3468, !3471, !3479]
-
-Contributors:
-  Jonas Ådahl, Robert Balas, Michel Dänzer, Bilal Elmoussaoui, Christopher Fore,
-  Olivier Fourdan, Carlos Garnacho, Mike Gorse, Peter Hutterer,
-  Sebastian Keller, Ivan Molodetskikh, Florian Müllner, Mart Raudsepp,
-  Daniel van Vugt, Qiu Wenbo, Sebastian Wick
-
-45.2
-====
-* Disable HW cursor when inhibited by backend [Robert; !3412]
-* Fix disabling check-alive timeout [Sebastian K.; !3367]
-* Propagate focus appearance to all ancestors [Sebastian W.; !3356]
-* Fix tablets on X11 having the wrong device [Carlos; !3393]
-* Fixed crash [Carlos; !3370]
-
-Contributors:
-  Carlos Garnacho, Sebastian Keller, Robert Mader, Sebastian Wick
-
-Translators:
-  Ngọc Quân Trần [vi], Ekaterine Papava [ka]
-
-45.1
-====
+46.alpha
+========
 * Fix filtering keybinding events in presence of grabs [Sebastian K.; !3054]
 * Fix direct scanout support when using integer scaling [Daniel; !3290]
 * Fix capitalization of some keys when caps lock is on [Carlos; !3306]
@@ -58,22 +131,70 @@ Translators:
 * Inhibit real-time scheduling when mode setting [Ray; !3324]
 * Don't delay frame updates after idle period [Michel; !3174]
 * Fix running Xwayland in headless setup with nvidia driver [Olivier; !3320]
-* wayland: Send keyboard modifiers after the enter event  [Alexandros; !3341]
-* Fixed crashes [Carlos, Jonas D., Robert, Sebastian W., Jonas Å.; !3287, !3283,
-  !3311, !3322, !3318]
+* wayland: Send keyboard modifiers after the enter event [Alexandros; !3341]
+* wayland/client: Add make_desktop() method [Florian; !3305]
+* Add a target workspace to raise_and_make_recent()  [Sebastian W.; !3315]
+* clutter: Drop cairo helpers [Bilal; !3086]
+* cogl: Port away from CoglObject  [Bilal; !3193]
+* mtk: Add a Region type  [Bilal; !3292]
+* Propagate focus appearance to all ancestors [Sebastian W.; !3356]
+* Ignore locked modifiers in keybinding machinery [Carlos; !3369]
+* Fix disabling check-alive timeout [Sebastian K.; !3367]
+* Drop ClutterContainer interface [Zander; !3377, !3384]
+* Improve sloppy and mouse focus modes [Sebastian W.; !3258]
+* Sync geometry only when window is mapped [Sebastian W.; !3401, !3404]
+* Improve repick due to transform changes [Carlos; !3385]
+* Fix tablets on X11 having the wrong device [Carlos; !3393]
+* Disable HW cursor when inhibited by backend [Robert; !3412]
+* screencast: Bring back blitting [Georges; !3406]
+* backends/native: Try 10 bpc formats [Michel; !3139]
+* Fix forcing EGLStream with NVIDIA proprietary driver [Daniel; !2905]
+* screencast: Add ability to stop streams [Jonas Å., Pascal; !3307]
+* Use standard cursor names from CSS specification [Carlos; !3295]
+* Avoids over-synchronization due to client reads [Michel; !3389, !3408]
+* Add more profiling instrumentation [Ivan; !3417]
+* Allow specifyig the layout manager for an actor type [Florian; !3445]
+* Fix handling of relative mode for tablets [Peter; !3410]
+* Dynamically assign hardware planes during configuration [Jonas Å.; !3428]
+* Simplify X11 focus management [Carlos; !3269]
+* background: Fix background color around image [Sebastian W.; !3459]
+* text-input: Use correct offsets in delete_surrounding_text [Alynx; !2712]
+* Add wayland shm YCbCr support [Sebastian W.; !3371]
+* Set a minimum guessed scale [Joan; !3464]
+* Fix building without native backend [Bilal; !3480]
+* Fix occasional artifacts at top of X11 fullscreen windows [Carlos; !3476]
+* Add documentation for building, running and debugging
+  [Sebastian W.; !3465, !3485]
+* Improve tablet pressure curve calculation [Peter; !3399]
+* Fixed crashes [Carlos, Jonas D., Robert, Sebastian W., Jonas Å., Sebastian K.;
+  !3287, !3283, !3311, !3322, !3318, !3370, !3392, !3335, !3422, !3376, !3453]
+* Plugged leaks [Sebastian K.; !3411, !3442]
 * Misc. bug fixes and cleanups [Daniel, Corentin, Carlos, Jonas Å., Ivan,
-  Michel, Sebastian W., Robert, Barnabás, Peter; !3212, !3298, !3267, !3297,
-  !3313, !3316, !3317, !3323, !3325, !3326, !3328, !3330, !3332, !3319]
+  Michel, Sebastian W., Robert, Barnabás, Peter, Bilal, Sebastian K., Zander,
+  Florian, Mike, Qiu, Olivier, Christopher, Mart; !3212, !3298, !3267, !3297,
+  !3313, !3316, !3317, !3323, !3325, !3326, !3328, !3330, !3332, !3319, !3097,
+  !3288, !3347, !3178, !3240, !3338, !3352, !3321, !2618, !3309, !3353, !3348,
+  !3349, !3358, !3361, !3362, !3276, !3340, !3365, !3366, !3364, !3363, !3375,
+  !3181, !3374, !3379, !3382, !3388, !3354, !3386, !3398, !3395, !3397, !3368,
+  !3400, !3396, !3405, !3403, !3409, !3413, !3402, !3280, !3394, !3421, !3423,
+  !3431, !3432, !3425, !3438, !3440, !3430, !3429, !2016, !3443, !3444, !3441,
+  !3451, !3350, !3434, !3437, !3447, !1908, !3456, !3452, !3454, !3455, !2620,
+  !3463, !3466, !3458, !3468, !3469, !3474, !3473, !3471, !3479, !3482, !3487,
+  !3486, !3478, !3488, !3357, !3491]
 
 Contributors:
-  Jonas Ådahl, Michel Dänzer, Jonas Dreßler, Olivier Fourdan,
-  Alexandros Frantzis, Carlos Garnacho, Peter Hutterer, Rohan Hendrik Jotz-Lean,
-  Sebastian Keller, Robert Mader, Ivan Molodetskikh, Florian Müllner,
-  Corentin Noël, Barnabás Pőcze, Ray Strode, Daniel van Vugt, Sebastian Wick
+  Jonas Ådahl, Zander Brown, Michel Dänzer, Jonas Dreßler, Bilal Elmoussaoui,
+  Christopher Fore, Olivier Fourdan, Alexandros Frantzis, Carlos Garnacho,
+  Mike Gorse, Peter Hutterer, Rohan Hendrik Jotz-Lean, Sebastian Keller,
+  Robert Mader, Ivan Molodetskikh, Florian Müllner,
+  Georges Basile Stavracas Neto, Corentin Noël, Pascal Nowack, Barnabás Pőcze,
+  Mart Raudsepp, Ray Strode, Joan Torres, Daniel van Vugt, Qiu Wenbo,
+  Sebastian Wick, Alynx Zhou
 
 Translators:
   Kristjan SCHMIDT [eo], Rafael Fontenelle [pt_BR], Guillaume Bernard [fr],
-  Jordi Mas i Hernandez [ca], Florentina Mușat [ro]
+  Jordi Mas i Hernandez [ca], Florentina Mușat [ro], Ngọc Quân Trần [vi],
+  Artur S0 [ru]
 
 45.0
 ====
