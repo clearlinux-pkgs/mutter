@@ -1,0 +1,53 @@
+From    Daniel van Vugt <>
+Subject compositor/sync-ring: Allow the gpu_fence to be moved
+Patch   https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3685
+
+When the compositor inserts two waits in a frame, such as [1],
+the second insertion shouldn't break the ring's state machine as easily
+as it does. We can instead merge the two GL waits into one by simply moving
+the GL fence to the latest insertion. Each insertion still does its own X11
+sync though.
+
+Closes: [2]
+
+1. https://gitlab.gnome.org/GNOME/mutter/-/commit/f606a442
+2. https://gitlab.gnome.org/GNOME/mutter/-/issues/3384
+---
+diff -uar a/src/compositor/meta-sync-ring.c b/src/compositor/meta-sync-ring.c
+--- a/src/compositor/meta-sync-ring.c
++++ b/src/compositor/meta-sync-ring.c
+@@ -544,20 +544,29 @@
+ meta_sync_ring_insert_wait (void)
+ {
+   MetaSyncRing *ring = meta_sync_ring_get ();
++  MetaSync *sync;
+ 
+   if (!ring)
+     return FALSE;
+ 
+   g_return_val_if_fail (ring->xdisplay != NULL, FALSE);
+ 
+-  if (ring->current_sync->state != META_SYNC_STATE_READY)
++  sync = ring->current_sync;
++
++  if (sync->state == META_SYNC_STATE_WAITING)
++    {
++      meta_gl_delete_sync (sync->gpu_fence);
++      sync->gpu_fence = 0;
++      sync->state = META_SYNC_STATE_READY;
++    }
++  else if (sync->state != META_SYNC_STATE_READY)
+     {
+       meta_warning ("MetaSyncRing: Sync object is not ready -- were events handled properly?");
+       if (!meta_sync_ring_reboot (ring->xdisplay))
+         return FALSE;
+     }
+ 
+-  meta_sync_insert (ring->current_sync);
++  meta_sync_insert (sync);
+ 
+   return TRUE;
+ }
+-- 
+2.25.1
+

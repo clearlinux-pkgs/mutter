@@ -1,3 +1,4 @@
 #0001-build-Drop-catchsegv-Meson-dependency.patch
 backport-crashfix.patch
 backport-drm-buffer-gbm-Do-not-call-ensure_fb_id-from-lock_fr.patch
+backport-compositor-sync-ring-Allow-the-gpu_fence-to-be-moved.patch
