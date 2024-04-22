@@ -865,6 +865,8 @@ libmutter-14.so.0:meta_window_shape_new
 libmutter-14.so.0:meta_window_shape_ref
 libmutter-14.so.0:meta_window_shape_to_region
 libmutter-14.so.0:meta_window_shape_unref
+libmutter-14.so.0:meta_window_should_be_showing
+libmutter-14.so.0:meta_window_should_show
 libmutter-14.so.0:meta_window_shove_titlebar_onscreen
 libmutter-14.so.0:meta_window_showing_on_its_workspace
 libmutter-14.so.0:meta_window_stick
