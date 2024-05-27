@@ -6,10 +6,10 @@
 # autospec commit: 5905be9
 #
 Name     : mutter
-Version  : 46.1
-Release  : 165
-URL      : https://download.gnome.org/sources/mutter/46/mutter-46.1.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/46/mutter-46.1.tar.xz
+Version  : 46.2
+Release  : 166
+URL      : https://download.gnome.org/sources/mutter/46/mutter-46.2.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/46/mutter-46.2.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0
@@ -181,11 +181,11 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-46.1
-cd %{_builddir}/mutter-46.1
+%setup -q -n mutter-46.2
+cd %{_builddir}/mutter-46.2
 %patch -P 1 -p1
 pushd ..
-cp -a mutter-46.1 buildavx2
+cp -a mutter-46.2 buildavx2
 popd
 
 %build
@@ -193,7 +193,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713805365
+export SOURCE_DATE_EPOCH=1716832943
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -598,6 +598,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /V3/usr/libexec/installed-tests/mutter-14/mutter-edid
 /V3/usr/libexec/installed-tests/mutter-14/mutter-input-capture
 /V3/usr/libexec/installed-tests/mutter-14/mutter-input-capture-test-client
+/V3/usr/libexec/installed-tests/mutter-14/mutter-keybindings
 /V3/usr/libexec/installed-tests/mutter-14/mutter-kms-utils
 /V3/usr/libexec/installed-tests/mutter-14/mutter-monitor-unit
 /V3/usr/libexec/installed-tests/mutter-14/mutter-monitor-utils
@@ -649,6 +650,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/mutter-14/mutter-input-capture
 /usr/libexec/installed-tests/mutter-14/mutter-input-capture-test-client
 /usr/libexec/installed-tests/mutter-14/mutter-installed-dbus-session.py
+/usr/libexec/installed-tests/mutter-14/mutter-keybindings
 /usr/libexec/installed-tests/mutter-14/mutter-kms-utils
 /usr/libexec/installed-tests/mutter-14/mutter-monitor-unit
 /usr/libexec/installed-tests/mutter-14/mutter-monitor-utils
