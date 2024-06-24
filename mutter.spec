@@ -7,7 +7,7 @@
 #
 Name     : mutter
 Version  : 46.2
-Release  : 166
+Release  : 167
 URL      : https://download.gnome.org/sources/mutter/46/mutter-46.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/46/mutter-46.2.tar.xz
 Summary  : No detailed summary available
