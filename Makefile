@@ -1,5 +1,5 @@
 PKG_NAME := mutter
-URL = https://download.gnome.org/sources/mutter/46/mutter-46.4.tar.xz
+URL = https://download.gnome.org/sources/mutter/47/mutter-47.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common

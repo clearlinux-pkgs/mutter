@@ -1,9 +1,2 @@
-46.4
-colord-dev
-lcms2-dev
-pkgconfig(colord)
-pkgconfig(gbm)
-pkgconfig(lcms2)
-pkgconfig(wayland-protocols)
-pkgconfig(xwayland)
-xvfb-run
+47.0
+gsettings-desktop-schemas
