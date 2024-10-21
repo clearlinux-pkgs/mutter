@@ -1,6 +1,5 @@
-47.0
+47.1
 colord-dev
-gsettings-desktop-schemas
 lcms2-dev
 pkgconfig(colord)
 pkgconfig(gbm)
