@@ -6,10 +6,10 @@
 # autospec commit: 5424026
 #
 Name     : mutter
-Version  : 47.2
-Release  : 175
-URL      : https://download.gnome.org/sources/mutter/47/mutter-47.2.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/47/mutter-47.2.tar.xz
+Version  : 47.3
+Release  : 176
+URL      : https://download.gnome.org/sources/mutter/47/mutter-47.3.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/47/mutter-47.3.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 LGPL-2.1
@@ -181,11 +181,11 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-47.2
-cd %{_builddir}/mutter-47.2
+%setup -q -n mutter-47.3
+cd %{_builddir}/mutter-47.3
 %patch -P 1 -p1
 pushd ..
-cp -a mutter-47.2 buildavx2
+cp -a mutter-47.3 buildavx2
 popd
 
 %build
@@ -193,7 +193,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1732645316
+export SOURCE_DATE_EPOCH=1733841356
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -697,6 +697,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /V3/usr/libexec/installed-tests/mutter-15/mutter-ref-test-sanity
 /V3/usr/libexec/installed-tests/mutter-15/mutter-screen-cast-client
 /V3/usr/libexec/installed-tests/mutter-15/mutter-service-channel
+/V3/usr/libexec/installed-tests/mutter-15/mutter-stage
 /V3/usr/libexec/installed-tests/mutter-15/mutter-stage-views
 /V3/usr/libexec/installed-tests/mutter-15/mutter-test-client
 /V3/usr/libexec/installed-tests/mutter-15/mutter-test-runner
@@ -756,6 +757,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/mutter-15/mutter-ref-test-sanity
 /usr/libexec/installed-tests/mutter-15/mutter-screen-cast-client
 /usr/libexec/installed-tests/mutter-15/mutter-service-channel
+/usr/libexec/installed-tests/mutter-15/mutter-stage
 /usr/libexec/installed-tests/mutter-15/mutter-stage-views
 /usr/libexec/installed-tests/mutter-15/mutter-test-client
 /usr/libexec/installed-tests/mutter-15/mutter-test-runner
@@ -848,6 +850,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/installed-tests/mutter-15/sloppy-focus-pointer-rest.test
 /usr/share/installed-tests/mutter-15/sloppy-focus.test
 /usr/share/installed-tests/mutter-15/stage-views.test
+/usr/share/installed-tests/mutter-15/stage.test
 /usr/share/installed-tests/mutter-15/sticky-modals.test
 /usr/share/installed-tests/mutter-15/sticky-transients.test
 /usr/share/installed-tests/mutter-15/sticky.test

@@ -131,6 +131,7 @@ libmutter-15.so.0:meta_context_run_main_loop
 libmutter-15.so.0:meta_context_set_gnome_wm_keybindings
 libmutter-15.so.0:meta_context_set_plugin_gtype
 libmutter-15.so.0:meta_context_set_plugin_name
+libmutter-15.so.0:meta_context_set_plugin_options
 libmutter-15.so.0:meta_context_setup
 libmutter-15.so.0:meta_context_start
 libmutter-15.so.0:meta_context_terminate
