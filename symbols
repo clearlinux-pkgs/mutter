@@ -30,6 +30,7 @@ libmutter-15.so.0:meta_backend_get_settings
 libmutter-15.so.0:meta_backend_get_stage
 libmutter-15.so.0:meta_backend_get_type
 libmutter-15.so.0:meta_backend_is_headless
+libmutter-15.so.0:meta_backend_is_hw_cursors_inhibited
 libmutter-15.so.0:meta_backend_is_rendering_hardware_accelerated
 libmutter-15.so.0:meta_backend_lock_layout_group
 libmutter-15.so.0:meta_backend_native_get_device_pool
@@ -109,6 +110,7 @@ libmutter-15.so.0:meta_color_store_has_pending_profiles
 libmutter-15.so.0:meta_comp_effect_get_type
 libmutter-15.so.0:meta_compositor_get_feedback_group
 libmutter-15.so.0:meta_compositor_get_laters
+libmutter-15.so.0:meta_compositor_get_plugin_manager
 libmutter-15.so.0:meta_compositor_get_type
 libmutter-15.so.0:meta_compositor_type_get_type
 libmutter-15.so.0:meta_context_add_option_entries
@@ -157,6 +159,7 @@ libmutter-15.so.0:meta_crtc_set_config
 libmutter-15.so.0:meta_crtc_unassign_output
 libmutter-15.so.0:meta_crtc_unset_config
 libmutter-15.so.0:meta_crtc_virtual_get_type
+libmutter-15.so.0:meta_cursor_get_name
 libmutter-15.so.0:meta_cursor_get_type
 libmutter-15.so.0:meta_cursor_renderer_get_cursor
 libmutter-15.so.0:meta_cursor_sprite_wayland_get_type
@@ -167,6 +170,7 @@ libmutter-15.so.0:meta_cursor_tracker_get_pointer_visible
 libmutter-15.so.0:meta_cursor_tracker_get_scale
 libmutter-15.so.0:meta_cursor_tracker_get_sprite
 libmutter-15.so.0:meta_cursor_tracker_get_type
+libmutter-15.so.0:meta_cursor_tracker_has_window_cursor
 libmutter-15.so.0:meta_cursor_tracker_set_pointer_visible
 libmutter-15.so.0:meta_debug_control_get_type
 libmutter-15.so.0:meta_debug_control_set_exported
@@ -239,6 +243,7 @@ libmutter-15.so.0:meta_exit
 libmutter-15.so.0:meta_exit_code_get_type
 libmutter-15.so.0:meta_external_binding_name_for_action
 libmutter-15.so.0:meta_fatal
+libmutter-15.so.0:meta_fraction_from_double
 libmutter-15.so.0:meta_frame_borders_clear
 libmutter-15.so.0:meta_frame_native_ensure_kms_update
 libmutter-15.so.0:meta_frame_native_from_frame
@@ -377,6 +382,8 @@ libmutter-15.so.0:meta_logical_monitor_config_free
 libmutter-15.so.0:meta_logical_monitor_configs_have_monitor
 libmutter-15.so.0:meta_logical_monitor_get_layout
 libmutter-15.so.0:meta_logical_monitor_get_monitors
+libmutter-15.so.0:meta_logical_monitor_get_scale
+libmutter-15.so.0:meta_logical_monitor_get_type
 libmutter-15.so.0:meta_logical_monitor_is_primary
 libmutter-15.so.0:meta_maximize_flags_get_type
 libmutter-15.so.0:meta_monitor_calculate_crtc_pos
@@ -538,6 +545,7 @@ libmutter-15.so.0:meta_plugin_destroy_completed
 libmutter-15.so.0:meta_plugin_get_display
 libmutter-15.so.0:meta_plugin_get_info
 libmutter-15.so.0:meta_plugin_get_type
+libmutter-15.so.0:meta_plugin_manager_get_plugin
 libmutter-15.so.0:meta_plugin_manager_load
 libmutter-15.so.0:meta_plugin_manager_set_plugin_type
 libmutter-15.so.0:meta_plugin_map_completed
@@ -925,6 +933,7 @@ libmutter-test-15.so:meta_check_monitor_configuration
 libmutter-test-15.so:meta_check_monitor_scales
 libmutter-test-15.so:meta_context_test_get_type
 libmutter-test-15.so:meta_context_test_run_tests
+libmutter-test-15.so:meta_context_test_set_background_color
 libmutter-test-15.so:meta_context_test_wait_for_x11_display
 libmutter-test-15.so:meta_create_monitor_test_setup
 libmutter-test-15.so:meta_create_test_context
@@ -934,6 +943,7 @@ libmutter-test-15.so:meta_crtc_test_get_type
 libmutter-test-15.so:meta_find_window_from_title
 libmutter-test-15.so:meta_flush_input
 libmutter-test-15.so:meta_init_monitor_test_setup
+libmutter-test-15.so:meta_launch_test_executable
 libmutter-test-15.so:meta_monitor_manager_test_emulate_hotplug
 libmutter-test-15.so:meta_monitor_manager_test_get_tiled_monitor_count
 libmutter-test-15.so:meta_monitor_manager_test_get_type
@@ -961,13 +971,17 @@ libmutter-test-15.so:meta_test_client_new
 libmutter-test-15.so:meta_test_client_quit
 libmutter-test-15.so:meta_test_client_run
 libmutter-test-15.so:meta_test_client_wait
-libmutter-test-15.so:meta_test_client_wait_for_window_shown
 libmutter-test-15.so:meta_test_get_gpu
 libmutter-test-15.so:meta_test_monitor_destroy
 libmutter-test-15.so:meta_test_monitor_get_type
 libmutter-test-15.so:meta_test_monitor_new
+libmutter-test-15.so:meta_test_shell_disable_animations
 libmutter-test-15.so:meta_test_shell_get_type
+libmutter-test-15.so:meta_test_shell_set_background_color
 libmutter-test-15.so:meta_wait_for_monitors_changed
 libmutter-test-15.so:meta_wait_for_orientation
 libmutter-test-15.so:meta_wait_for_paint
 libmutter-test-15.so:meta_wait_for_possible_orientation_change
+libmutter-test-15.so:meta_wait_for_window_cursor
+libmutter-test-15.so:meta_wait_for_window_shown
+libmutter-test-15.so:meta_wait_test_process
