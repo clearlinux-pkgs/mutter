@@ -1,108 +1,171 @@
-47.6
+48.0
 ====
-* Support presentation-time version 2 [Dudemanguy; !4227]
-* Honor wl_surface.offset on cursor surfaces [Carlos; !4239]
-* Fix sharable surfaces with nvidia as primary [Daniel; !4295]
-* Fixed crash [Jonas; !4257]
+* Improve wp_color_management_v1 support [Joan; !4304]
+* Fix cursor brightness not following HDR luminance setting [Sebastian; !4315]
+* Fix black screen with nvidia driver [Bilal, Daniel; !4323, !4324]
+* Adjust presentation time feedback for triple buffering [Michel; !4325]
+* Fix broken overlay cursor damage tracking [Jonas; !4331]
+* Add support for Kana and Compose USB HID LEDs [Martin; !4002]
+* Fix frequent frame skips under some circumstances [Michel; !4306]
+* Fix random output freezes [Jonas, Michel; !4321]
+* Fixed crashes [Daniel, Michel; !4316, !4326]
+* Misc. bug fixes and cleanups [Daniel, José, Carlos, Sebastian, Jonas; !4309,
+  !3921, !4301, !4307, !4327, !4337]
 
 Contributors:
-  Dudemanguy, Carlos Garnacho, Daniel van Vugt, Jonas Ådahl
-
-47.5
-====
-* Synchronize device enabled state when adding device [Yao; !4188]
-* Do not use modifiers if surface should be sharable [Michel; !4219]
-* Fix notifying shell about modifier-only keyboard layout switches
-  [Olivier; !4232, !4237]
-* Fixed crashes [Jonas, Philip; #3839, !4222]
-* Misc. bug fixes and cleanups [Michel, Alessandro, Daniel; !4208, !4225, !4228]
-
-Contributors:
-  Alessandro Astone, Michel Dänzer, Olivier Fourdan, Daniel van Vugt,
-  Yao Wei (魏銘廷), Philip Withnall, Jonas Ådahl
-
-47.4
-====
-* Use BT709 coefficients and limited range for YUV conversion by defaults
-  [Robert; !4204]
-* Also request high priority secondary EGL context [Jonas; !2973]
-* Fix Xwayland DND coordinates when using fractional scaling [Jonas; !4169]
-* Fix applying initial _NET_WM_WINDOW_OPACITY on Xwayland [Olivier; !4170]
-* Implement wp_viewport support for cursor surfaces [Jonas, Robert; !3859]
-* Improve input → output latency of cursor movements [Michel; !3964]
-* Improve frame rate on monitors attached to secondary GPUs in copy mode
-  [Gert-dev; !4027]
-* Send preferred scales to all surface roles [Jonas; !4205]
-* Misc. bug fixes and cleanups [Bilal, Bartłomiej, Sebastian W., Michel, José,
-  Robert; !4176, !4199, !4157, !4158, !4168, !4149, !4093, !4031, !4196]
-
-Contributors:
-  Michel Dänzer, Bilal Elmoussaoui, José Expósito, Olivier Fourdan, Gert-dev,
-  Robert Mader, Bartłomiej Piotrowski, Sebastian Wick, Jonas Ådahl
+  Michel Dänzer, Bilal Elmoussaoui, José Expósito, Carlos Garnacho,
+  Martin Rys, Joan Torres, Daniel van Vugt, Sebastian Wick, Jonas Ådahl
 
 Translators:
-  Cas Pascal [vi]
+  Artur S0 [ru], Balázs Úr [hu], Jordi Mas i Hernandez [ca],
+  Ask Hjorth Larsen [da], Asier Saratsua Garmendia [eu], Emin Tufan Çetin [tr],
+  Anders Jonsson [sv], Gwan-gyeong Mun [ko], Andika Triwidada [id],
+  Pawan Chitrakar [ne], A S Alam [pa], Bruce Cowan [en_GB], Cas Pascal [vi]
 
-47.3
-====
-* Fix maximized X11 when using native xwayland scaling [Jonas; !4147]
-* Fix blank screen in remote headless sessions [Jonas; !4152]
-* Fix touch-triggered popups being cancelled too early [Carlos; !4166]
-* Fix pointer cursor during compositor grabs [Carlos; !4166]
-* Fixed crash [Michel; !4148]
+48.rc
+=====
+* Support presentation-time version 2 [Dudemanguy; !4227]
+* Honor wl_surface.offset on cursor surfaces [Carlos; !4239]
+* Allow to activate the overview with either Super key [Alessandro B.; !4050]
+* Implement dynamic triple buffering [Daniel; !1441]
+* Implement the cursor_shape_v1 protocol [Sebastian; !3668]
+* Improve window placement when centering new windows [Mattia; !4202]
+* Fix sharable surfaces with nvidia as primary [Daniel; !4284]
+* Default to sticky drag lock [Peter; !4292]
+* Implement a11y keyboard monitoring support [Lukáš; !4217]
+* Support wp_color_management_v1 protocol [Sebastian; !4291]
+* Fix dma-bufs support for headless sessions [Jonas; !4281]
+* Allow to mark monitors for lease via gdctl [José; !4300]
+* Fixed confused IM focus state after closing some windows [Keyu; !4164]
+* Center new windows by default [Mattia; !4294]
+* Add output luminance settings [Jonas; !4271]
+* Do not use triple buffering when update time fits into refresh interval
+  [Michel; !4282]
+* Fixed crashes [Peter, Alban, Michel, Sebastian; !4247, !4257, !4272, !4298]
+* Misc. bug fixes and cleanups [Peter, Nick, Jeremy, Michel, Corentin, Florian,
+  Sebastian, Marco, Bilal, Alessandro A., Daniel, José, Jonas, Joan, Mattia,
+  Carlos, Robert, Philip; !4248, !4220, !4253, !4254, !4224, !4255, !4244,
+  !4259, !4268, !4270, !4267, !4256, !4279, !4280, !4277, !4278, !4285, !4276,
+  !4289, !4288, !4290, !4252, !4235, !4209, !4260, !4251, !4274, !4302, !4230,
+  !4183, !4299, !4308, !4297, !4310, !4311, !4312, !4314]
 
 Contributors:
-  Michel Dänzer, Jonas Ådahl, Carlos Garnacho
+  Alessandro Astone, Alessandro Bono, Alban Browaeys, Jeremy Bícha,
+  Nick Diego Yamane, Dudemanguy, Michel Dänzer, Bilal Elmoussaoui,
+  José Expósito, Mattia Formichetti, Carlos Garnacho, Peter Hutterer,
+  Robert Mader, Florian Müllner, Corentin Noël, Keyu Tao, Joan Torres,
+  Marco Trevisan (Treviño), Lukáš Tyrychtr, Daniel van Vugt, Sebastian Wick,
+  Philip Withnall, Jonas Ådahl
 
-47.2
-====
+Translators:
+  Martin [sl], Sabri Ünal [tr], Artur S0 [ru], Daniel Rusek [cs],
+  Piotr Drąg [pl], Jürgen Benvenuti [de], Ekaterine Papava [ka],
+  Alexander Shopov [bg], Alexandre Franke [fr], Jordi Mas [ca],
+  Yuri Chornoivan [uk], Yosef Or Boczko [he], Danial Behzadi [fa],
+  Luming Zh [zh_CN], Aurimas Černius [lt], Quentin PAGÈS [oc],
+  Hugo Carvalho [pt], Rafael Fontenelle [pt_BR], Jordi Mas i Hernandez [ca],
+  Fran Dieguez [gl], Álvaro Burns [pt_BR], Asier Sarasua Garmendia [eu],
+  Vincent Chatelain [fr], Yaron Shahrabani [he], Brage Fuglseth [nb],
+  Daniel Mustieles [es]
+
+48.beta
+=======
+* Update cursors via the frame clock in virtual monitors [Jonas; !4067]
+* Synchronize device enabled state when adding device [Yao; !4188]
+* Do not use modifiers if surface should be sharable [Michel; !4219]
+* Add accessible state tracking in Clutter [Bilal; !4089]
+* Introduce GNOME Display Control (gdctl) utility [Jonas; !4190]
+* Fix notifying shell about modifier-only keyboard layout switches
+  [Olivier; !4232, !4237]
+* Configure HDR via DisplayConfig D-Bus API [Jonas; !4192]
+* Fixed crashes [Philip, Jonas; !4222, !4210]
+* Misc. bug fixes and cleanups [Michel, Sebastian W., Jonas, José, Alessandro,
+  Sebastian K., Daniel, Philip, Carlos, Florian, Alberto, Bilal; !4208, !4022,
+  !4005, !4218, !4225, !4229, !4228, !4231, !4223, !3972, !4233, !4234, !4242,
+  !4198]
+
+Contributors:
+  Alessandro Astone, Michel Dänzer, Bilal Elmoussaoui, José Expósito,
+  Olivier Fourdan, Carlos Garnacho, Sebastian Keller, Florian Müllner,
+  Alberto Ruiz, Daniel van Vugt, Yao Wei (魏銘廷), Sebastian Wick,
+  Philip Withnall, Jonas Ådahl
+
+48.alpha
+========
+* gwakeup: Reduce wake-ups to only first item in queue [Christian; !4007]
+* x11: Reduce chances XPending does recvmsg() syscall [Christian; !4006]
+* Fix grabbing tablet devices [Jonas Å.; !4033]
+* Improve color-management support [Joan; !3913, !3948, !4020, !4062, !4144]
+* Fix misplaced windows and random resizes on scaled monitors [Jonas Å.; !4041]
+* Improve detecting preferred primary devices [Kamil; !4055]
+* Merge CoglPango into Clutter [Bilal; !4004]
+* Always depend on libdisplay-info for EDID parsing [Sebastian W.; !3602]
+* Fix explicit sync with virtual monitors w/o pipewire streams [Doğukan; !4056]
+* Introspect `event` parameter in MetaKeyHandlerFunc [Guacamolie; !4079]
 * Fix warping pointer after releasing pointer constraints [Sebastian K.; !4098]
-* Default to high thread instead of realtime priority for KMS thread
-  [Jonas Å.; !4124]
 * Avoid CPU stalls with NVIDIA secondary GPUs with directly-attached monitors
   [Gert-dev; !4015]
 * Fix updating cursor immediately when starting window drag [Olivier; !3639]
 * Add pipeline hooks to user program pipelines [Sebastian W.; !4037]
+* Allow to configure monitors as for-lease [José; !4112, !4121]
+* Add support for system bell protocol [Jonas Å.; !3675]
 * Prefer GPUs with built-in panels connected as primary GPU [Mario; !4114]
+* Add `configure` signal to allow tweaking original window configuration
+  [Olivier; !4076]
 * Fix cursor glitches when using virtual monitors [Jonas Å.; !4066]
+* Default to high thread instead of realtime priority for KMS thread
+  [Jonas Å.; !4124]
+* Add built-in renderdoc support [Sebastian W.; !4061]
 * Ensure frame events are sent for cursor surfaces [Michel; !4113]
 * Allow BGRX8888 format on big endian [Jocelyn; !4088]
 * Fix touchscreen drag-and-drop on wayland [Alessandro; !4091]
-* Fixed crashes [Robert, Jonas D., Peter, Michel; !3176, !3650, !4117, !4136]
-* Misc. bug fixes and cleanups [Bilal, Michel, José, Sebastian W., Jonas Å.,
-  Takao; !4087, !4057, !4109, !4116, !4123, !4064, !4065, !4128, !3604]
+* Fix maximized X11 when using native Xwayland scaling [Jonas Å.; !4147]
+* Implement xdg-toplevel-drag-v1 protocol [Nick; !4107]
+* Fix blank screen in remote headless sessions [Jonas Å.; !4152]
+* Query screen cast format modifiers via CoglRenderer [Jonas Å.; !3900]
+* Also request high priority secondary EGL context [Jonas Å.; !2973]
+* Fix Xwayland DND coordinates when using fractional scaling [Jonas Å.; !4169]
+* Remove ClutterImage [Bilal; !4133]
+* Fix applying initial _NET_WM_WINDOW_OPACITY on Xwayland [Olivier; !4170]
+* Implement wp_viewport support for cursor surfaces [Jonas Å., Robert; !3859]
+* Improve input → output latency of cursor movements [Michel; !3964]
+* Make font-rendering support optional [Bilal; !4106]
+* Improve frame rate on monitors attached to secondary GPUs in copy mode
+  [Gert-dev; !4027]
+* Add support for commit-timing-v1 and fifo-v1 protocols [Derek; !3355]
+* Use BT709 coefficients and limited range for YUV conversion by default
+  [Robert; !4204]
+* Send preferred scales to all surface roles [Jonas Å.; !4205]
+* Fixed crashes [Michel, Joan, Daniel, José, Jason, Bilal, Robert, Jonas D.,
+  Peter; !4028, !4032, !4019, !4029, !4030, !4059, !4070, !4034, !3176, !3650,
+  !4117, !4136]
+* Misc. bug fixes and cleanups [Sebastian W., Florian, Joan, Jonas Å., José,
+  Christian, Robert, Marco, Michel, Bilal, Daniel, Sebastian K., Jakub, Jonas D,
+  Takao, Ikey, Georges, Carlos, Corentin, Philip, Bartłomiej; !4036, !4040,
+  !4042, !3965, !4016, !3926, !4031, !4011, !3424, !4047, !4049, !4058, !4068,
+  !4048, !4071, !4074, !3980, !4078, !4080, !4035, !4075, !4090, !4093, !4060,
+  !4069, !3961, !4101, !4057, !4104, !4105, !4108, !4109, !4077, !4111, !4115,
+  !4116, !4087, !4018, !3943, !4123, !4122, !4103, !4064, !4100, !4065, !4125,
+  !4128, !4127, !4129, !4126, !3604, !4150, !4161, !4162, !4160, !4137, !4148,
+  !4166, !4157, !4156, !4158, !4168, !4149, !4165, !4155, !4174, !4163, !4173,
+  !4175, !4176, !4131, !4132, !4179, !4178, !4130, !4180, !4177, !4184, !4186,
+  !4189, !4187, !4197, !4199, !4194, !4181, !4200, !4196, !3878, !4201]
 
 Contributors:
-  Alessandro Astone, Jonas Dreßler, Michel Dänzer, Bilal Elmoussaoui,
-  José Expósito, Jocelyn Falempe, Olivier Fourdan, Takao Fujiwara, Gert-dev,
-  Peter Hutterer, Sebastian Keller, Mario Limonciello, Robert Obkircher,
-  Sebastian Wick, Jonas Ådahl
-
-Translators:
-  Christian Kirbach [de], Nathan Follens [nl], Danial Behzadi [fa],
-  Марко Костић [sr]
-
-47.1
-====
-* gwakeup: Reduce wake-ups to only first item in queue [Christian; !4007]
-* x11: Reduce chances XPending does recvmsg() syscall [Christian; !4006]
-* Fix grabbing tablet devices [Jonas; !4033]
-* Fix misplaced windows and random resizes on scaled monitors [Jonas; !4041]
-* Fix explicit sync with virtual monitors w/o pipewire streams [Doğukan; !4056]
-* Improve detecting preferred primary devices [Kamil; !4055]
-* Fixed crashes [Michel, Jonas, Daniel, José, Jason, Bilal; !4028, !4032,
-  !4019, !4030, !4029, !4059, !4070, !4034]
-* Misc. bug fixes and cleanups [Sebastian, Florian, Jonas, José, Michel;
-  !4036, !4040, !4016, !3926, !4031, !4047, !4058, !4068, !3980, !3980]
-
-Contributors:
-  Jonas Ådahl, Michel Dänzer, Bilal Elmoussaoui, José Expósito, Jason Gerecke,
-  Christian Hergert, Doğukan Korkmaztürk, Florian Müllner, Kamil Szczęk,
-  Joan Torres, Daniel van Vugt, Sebastian Wick
+  Alessandro Astone, Georges Basile Stavracas Neto, Nick Diego Yamane,
+  Ikey Doherty, Jonas Dreßler, Michel Dänzer, Bilal Elmoussaoui,
+  José Expósito, Jocelyn Falempe, Derek Foreman, Olivier Fourdan,
+  Takao Fujiwara, Carlos Garnacho, Jason Gerecke, Gert-dev, Guacamolie,
+  Christian Hergert, Peter Hutterer, Sebastian Keller, Doğukan Korkmaztürk,
+  Mario Limonciello, Robert Mader, Florian Müllner, Corentin Noël,
+  Robert Obkircher, Bartłomiej Piotrowski, Jakub Steiner, Kamil Szczęk,
+  Joan Torres, Marco Trevisan (Treviño), Daniel van Vugt, Sebastian Wick,
+  Philip Withnall, Jonas Ådahl
 
 Translators:
   Vincent Chatelain [fr], Jordi Mas i Hernandez [ca], Daniel Mustieles [es],
-  Jürgen Benvenuti [de]
+  Jürgen Benvenuti [de], Nathan Follens [nl], Danial Behzadi [fa],
+  Марко Костић [sr], Scrambled 777 [hi], Cas Pascal [vi]
 
 47.0
 ====

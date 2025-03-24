@@ -1,9 +1,12 @@
-47.6
+48.0
+bash-completion-dev
 colord-dev
 lcms2-dev
+pkgconfig(bash-completion)
 pkgconfig(colord)
 pkgconfig(gbm)
 pkgconfig(lcms2)
 pkgconfig(wayland-protocols)
 pkgconfig(xwayland)
+pypi-docutils
 xvfb-run
