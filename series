@@ -1,2 +1,3 @@
 #0001-build-Drop-catchsegv-Meson-dependency.patch
 backport-crashfix.patch
+backport-d6005b539ca42905dfaf1c3854540a559332b78e.patch
