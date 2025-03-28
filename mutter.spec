@@ -7,7 +7,7 @@
 #
 Name     : mutter
 Version  : 48.0
-Release  : 181
+Release  : 182
 URL      : https://download.gnome.org/sources/mutter/48/mutter-48.0.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/48/mutter-48.0.tar.xz
 Summary  : No detailed summary available
@@ -81,6 +81,10 @@ BuildRequires : zenity
 %define debug_package %{nil}
 Patch1: backport-crashfix.patch
 Patch2: backport-d6005b539ca42905dfaf1c3854540a559332b78e.patch
+Patch3: backport-a355f68d347830ab1dc8fba0bf409dd0aaf2804d.patch
+Patch4: backport-7b06ec15564def94bedf4330638da436aae1b822.patch
+Patch5: backport-7c86b76caf3d1d28fb356bd8f2ae2a3be6c0adc0.patch
+Patch6: backport-9a1fa7e13b5feefb76902287ae7ca2554d18cf15.patch
 
 %description
 Intro
@@ -190,6 +194,10 @@ tests components for the mutter package.
 cd %{_builddir}/mutter-48.0
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 pushd ..
 cp -a mutter-48.0 buildavx2
 popd
@@ -199,7 +207,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1743020966
+export SOURCE_DATE_EPOCH=1743201461
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
