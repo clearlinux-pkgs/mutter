@@ -39,7 +39,9 @@ libmutter-16.so.0:meta_backend_lock_layout_group
 libmutter-16.so.0:meta_backend_native_get_device_pool
 libmutter-16.so.0:meta_backend_native_get_kms
 libmutter-16.so.0:meta_backend_native_get_type
+libmutter-16.so.0:meta_backend_pause
 libmutter-16.so.0:meta_backend_renderdoc_capture
+libmutter-16.so.0:meta_backend_resume
 libmutter-16.so.0:meta_backend_set_keymap
 libmutter-16.so.0:meta_backend_unfreeze_keyboard
 libmutter-16.so.0:meta_backend_ungrab_keyboard
@@ -958,6 +960,7 @@ libmutter-test-16.so:meta_context_test_set_background_color
 libmutter-test-16.so:meta_context_test_wait_for_x11_display
 libmutter-test-16.so:meta_create_monitor_test_setup
 libmutter-test-16.so:meta_create_test_context
+libmutter-test-16.so:meta_create_test_keyboard
 libmutter-test-16.so:meta_create_test_monitor
 libmutter-test-16.so:meta_crtc_test_disable_gamma_lut
 libmutter-test-16.so:meta_crtc_test_get_type
@@ -1005,6 +1008,8 @@ libmutter-test-16.so:meta_wait_for_monitors_changed
 libmutter-test-16.so:meta_wait_for_orientation
 libmutter-test-16.so:meta_wait_for_paint
 libmutter-test-16.so:meta_wait_for_possible_orientation_change
+libmutter-test-16.so:meta_wait_for_uinput_device
+libmutter-test-16.so:meta_wait_for_update
 libmutter-test-16.so:meta_wait_for_window_cursor
 libmutter-test-16.so:meta_wait_for_window_shown
 libmutter-test-16.so:meta_wait_test_process

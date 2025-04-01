@@ -2,6 +2,3 @@
 backport-crashfix.patch
 backport-d6005b539ca42905dfaf1c3854540a559332b78e.patch
 backport-a355f68d347830ab1dc8fba0bf409dd0aaf2804d.patch
-backport-7b06ec15564def94bedf4330638da436aae1b822.patch
-backport-7c86b76caf3d1d28fb356bd8f2ae2a3be6c0adc0.patch
-backport-9a1fa7e13b5feefb76902287ae7ca2554d18cf15.patch
