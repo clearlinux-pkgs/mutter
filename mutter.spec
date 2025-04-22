@@ -7,7 +7,7 @@
 #
 Name     : mutter
 Version  : 48.2
-Release  : 184
+Release  : 185
 URL      : https://download.gnome.org/sources/mutter/48/mutter-48.2.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/48/mutter-48.2.tar.xz
 Summary  : No detailed summary available
