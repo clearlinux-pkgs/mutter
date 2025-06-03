@@ -7,7 +7,7 @@
 #
 Name     : mutter
 Version  : 48.3
-Release  : 186
+Release  : 187
 URL      : https://download.gnome.org/sources/mutter/48/mutter-48.3.tar.xz
 Source0  : https://download.gnome.org/sources/mutter/48/mutter-48.3.tar.xz
 Summary  : No detailed summary available
