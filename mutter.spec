@@ -6,10 +6,10 @@
 # autospec commit: 65cf152
 #
 Name     : mutter
-Version  : 48.3.1
-Release  : 188
-URL      : https://download.gnome.org/sources/mutter/48/mutter-48.3.1.tar.xz
-Source0  : https://download.gnome.org/sources/mutter/48/mutter-48.3.1.tar.xz
+Version  : 48.4
+Release  : 189
+URL      : https://download.gnome.org/sources/mutter/48/mutter-48.4.tar.xz
+Source0  : https://download.gnome.org/sources/mutter/48/mutter-48.4.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 LGPL-2.1
@@ -187,13 +187,13 @@ tests components for the mutter package.
 
 
 %prep
-%setup -q -n mutter-48.3.1
-cd %{_builddir}/mutter-48.3.1
+%setup -q -n mutter-48.4
+cd %{_builddir}/mutter-48.4
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 pushd ..
-cp -a mutter-48.3.1 buildavx2
+cp -a mutter-48.4 buildavx2
 popd
 
 %build
@@ -201,7 +201,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1748976342
+export SOURCE_DATE_EPOCH=1751314190
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
